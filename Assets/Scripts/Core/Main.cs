@@ -14,7 +14,7 @@ public class Main : MonoBehaviour
     public HudController Hud;
     public GameController Game;
 
-
+    //kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     void Awake()
     {
         if (instance == null)
