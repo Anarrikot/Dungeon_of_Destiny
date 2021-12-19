@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public bool collisionEnemy = false;
     public int lives = 60;
     public int damage = 5;
-    public TransformPlayer player;
+    public Player player;
     public float TimeDelay = 1;
     public float TimeDelayAttack;
     public GameObject[] dropList;
