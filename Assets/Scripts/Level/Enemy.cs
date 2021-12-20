@@ -82,16 +82,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public IEnumerator Attack()
-    {
-        while(player.lives > 0)
-        {
-            player.lives -= damage;
-            yield return new WaitForSeconds(1.0f);
-        }
-        yield return null;
-    }
-
     public void CheckDrop()
     { 
         int rnd = (int)Random.Range(0, 100);
