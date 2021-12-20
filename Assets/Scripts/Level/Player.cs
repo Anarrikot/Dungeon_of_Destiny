@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private Camera camera;
+    private Camera myCamera;
     public Grid map;
     public GameObject player;
     private bool active, click;
@@ -59,6 +59,8 @@ public class Player : MonoBehaviour
         }
         if (TimeDelayAttack <= TimeDelay)
             TimeDelayAttack += Time.deltaTime;
+        else if (TimeDelayAttack/5 <= TimeDelay)
+            coll.SetActive(false);
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         Vector3 tempVect = new Vector3(h, v, 0);
@@ -71,7 +73,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            Vector3 worldPos = camera.ScreenToWorldPoint(Input.mousePosition);            
+            Vector3 worldPos = myCamera.ScreenToWorldPoint(Input.mousePosition);            
             Vector3 dir4 = new Vector3(worldPos.x , worldPos.y , 10);
             if (dir4.x - player.transform.position.x < 0 && dir4.y - player.transform.position.y < 3 && click)
             {
@@ -80,10 +82,10 @@ public class Player : MonoBehaviour
                     i = worldPos.x;
                     k = worldPos.y;
                     controller.transform.position = new Vector3(i, k, 10);
-                    i = i - camera.transform.position.x;
-                    k = k - camera.transform.position.y;
+                    i = i - myCamera.transform.position.x;
+                    k = k - myCamera.transform.position.y;
                     active = false;
-                    controller.active = true;
+                    controller.SetActive(true);
                 }
             }
             else
@@ -92,19 +94,19 @@ public class Player : MonoBehaviour
             }
 
             
-            Vector3 dir3 = new Vector3(worldPos.x - camera.transform.position.x - i, worldPos.y - camera.transform.position.y - k, 0);
+            Vector3 dir3 = new Vector3(worldPos.x - myCamera.transform.position.x - i, worldPos.y - myCamera.transform.position.y - k, 0);
             if (active == false)
             {
-                if (((Mathf.Pow(worldPos.x - i - camera.transform.position.x, 2) + Mathf.Pow(worldPos.y - k - camera.transform.position.y, 2)) <= 4))
+                if (((Mathf.Pow(worldPos.x - i - myCamera.transform.position.x, 2) + Mathf.Pow(worldPos.y - k - myCamera.transform.position.y, 2)) <= 4))
                 {
                     controller.transform.position = Vector3.MoveTowards(controller.transform.position, dir4, 20 * Time.deltaTime);
                 }
                 else
                 {
-                    x = worldPos.x - camera.transform.position.x - i;
-                    y = worldPos.y - camera.transform.position.y - k;
+                    x = worldPos.x - myCamera.transform.position.x - i;
+                    y = worldPos.y - myCamera.transform.position.y - k;
                     x = 2 * x / Mathf.Sqrt(x * x + y * y);
-                    if (worldPos.y - camera.transform.position.y > k)
+                    if (worldPos.y - myCamera.transform.position.y > k)
                     {
                         y = Mathf.Sqrt(4 - x * x);
                     }
@@ -112,15 +114,15 @@ public class Player : MonoBehaviour
                     {
                         y = -Mathf.Sqrt(4 - x * x);
                     }
-                    Vector3 dir5 = new Vector3(x  + i + camera.transform.position.x, y + k + camera.transform.position.y, 10);
+                    Vector3 dir5 = new Vector3(x  + i + myCamera.transform.position.x, y + k + myCamera.transform.position.y, 10);
                     controller.transform.position = Vector3.MoveTowards(controller.transform.position, dir5, 300 * Time.deltaTime);
                 }
                 
-                x = worldPos.x - camera.transform.position.x - i;
-                y = worldPos.y - camera.transform.position.y - k;
+                x = worldPos.x - myCamera.transform.position.x - i;
+                y = worldPos.y - myCamera.transform.position.y - k;
                 if(x!=0 && y!=0)
                 {
-                    if (worldPos.x - camera.transform.position.x >= i)
+                    if (worldPos.x - myCamera.transform.position.x >= i)
                     {
                         x = y / Mathf.Sqrt(x * x + y * y) * 283 / Mathf.PI;
                     }
@@ -132,14 +134,14 @@ public class Player : MonoBehaviour
                     
                 }
                 player.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position + dir3, speed / 2 * Time.deltaTime);
-                if (worldPos.x - i - camera.transform.position.x < 0)
+                if (worldPos.x - i - myCamera.transform.position.x < 0)
                 {
                     
                     GetComponent<SpriteRenderer>().flipX=true;
                     
 
                 }
-                else if(worldPos.x - i - camera.transform.position.x > 0)
+                else if(worldPos.x - i - myCamera.transform.position.x > 0)
                 {
                     GetComponent<SpriteRenderer>().flipX = false;
                     
@@ -152,7 +154,7 @@ public class Player : MonoBehaviour
         {
             click = true;
             active = true;
-            controller.active = false;
+            controller.SetActive(false);
         }
     }
 
@@ -166,7 +168,7 @@ public class Player : MonoBehaviour
         }
         if (isClicked && TimeDelayAttack >= TimeDelay)
         {
-            coll.active = true;
+            coll.SetActive(true);
             isClicked = false;
             TimeDelayAttack = 0;
         }
@@ -198,9 +200,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        camera = Camera.main;
+        myCamera = Camera.main;
         active = true;
-        controller.active = false;
+        controller.SetActive(false);
         click = true;
 
     }

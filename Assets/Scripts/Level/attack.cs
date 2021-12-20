@@ -12,13 +12,10 @@ public class attack : MonoBehaviour
         damage = this.gameObject.name;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-       
         if (collision.gameObject.tag == "Enemy")
         {
-
-           
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             // enemy.accept_damage(player.damage);
            
@@ -28,9 +25,8 @@ public class attack : MonoBehaviour
                 Destroy(enemy.gameObject);
                 enemy.CheckDrop();
             }
-            //enemy.accept_damage(float.Parse(damage));
-            
+            //enemy.accept_damage(float.Parse(damage));  
         }
-        this.gameObject.active = false;
+        this.gameObject.SetActive(false);
     }
 }
