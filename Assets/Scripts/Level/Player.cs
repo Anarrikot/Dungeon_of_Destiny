@@ -34,12 +34,7 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        if (isClicked && TimeDelayAttack >= TimeDelay)
-        {
-            FindEnemy();
-            isClicked = false;
-            TimeDelayAttack = 0;
-        }
+
         HP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, lives * 70 / 100);
         MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mp * 70 / 100);
         if (lives <= 0)
@@ -76,16 +71,15 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            Vector3 worldPos = camera.ScreenToWorldPoint(Input.mousePosition);
-
-            Vector3 dir4 = new Vector3(worldPos.x - 0.6f, worldPos.y - 0.6f, 10);
+            Vector3 worldPos = camera.ScreenToWorldPoint(Input.mousePosition);            
+            Vector3 dir4 = new Vector3(worldPos.x , worldPos.y , 10);
             if (dir4.x - player.transform.position.x < 0 && dir4.y - player.transform.position.y < 3 && click)
             {
                 if (active)
                 {
                     i = worldPos.x;
                     k = worldPos.y;
-                    controller.transform.position = new Vector3(i - 0.6f, k - 0.6f, 10);
+                    controller.transform.position = new Vector3(i, k, 10);
                     i = i - camera.transform.position.x;
                     k = k - camera.transform.position.y;
                     active = false;
@@ -96,6 +90,8 @@ public class Player : MonoBehaviour
             {
                 click = false;
             }
+
+            
             Vector3 dir3 = new Vector3(worldPos.x - camera.transform.position.x - i, worldPos.y - camera.transform.position.y - k, 0);
             if (active == false)
             {
@@ -116,23 +112,42 @@ public class Player : MonoBehaviour
                     {
                         y = -Mathf.Sqrt(4 - x * x);
                     }
-                    Vector3 dir5 = new Vector3(x - 0.6f + i + camera.transform.position.x, y - 0.6f + k + camera.transform.position.y, 10);
+                    Vector3 dir5 = new Vector3(x  + i + camera.transform.position.x, y + k + camera.transform.position.y, 10);
                     controller.transform.position = Vector3.MoveTowards(controller.transform.position, dir5, 300 * Time.deltaTime);
                 }
+                
                 x = worldPos.x - camera.transform.position.x - i;
                 y = worldPos.y - camera.transform.position.y - k;
-                if (worldPos.x - camera.transform.position.x >= i)
+                if(x!=0 && y!=0)
                 {
-                    x = y / Mathf.Sqrt(x * x + y * y) * 283 / Mathf.PI;
+                    if (worldPos.x - camera.transform.position.x >= i)
+                    {
+                        x = y / Mathf.Sqrt(x * x + y * y) * 283 / Mathf.PI;
+                    }
+                    else
+                    {
+                        x = -y / Mathf.Sqrt(x * x + y * y) * 283 / Mathf.PI + 180;
+                    }
+                    coll.transform.rotation = Quaternion.Euler(0, 0, x);
+                    
                 }
-                else
+                player.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position + dir3, speed / 2 * Time.deltaTime);
+                if (worldPos.x - i - camera.transform.position.x < 0)
                 {
-                    x = -y / Mathf.Sqrt(x * x + y * y) * 283 / Mathf.PI + 180;
+                    
+                    GetComponent<SpriteRenderer>().flipX=true;
+                    
+
                 }
-                coll.transform.rotation = Quaternion.Euler(0, 0, x);
-                //player.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position + dir3, speed * Time.deltaTime);
+                else if(worldPos.x - i - camera.transform.position.x > 0)
+                {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                    
+                }
             }
+            
         }
+
         if (Input.GetMouseButtonUp(0))
         {
             click = true;
@@ -149,6 +164,13 @@ public class Player : MonoBehaviour
             anim.SetTrigger("Click");
             mp -= 20;
         }
+        if (isClicked && TimeDelayAttack >= TimeDelay)
+        {
+            coll.active = true;
+            isClicked = false;
+            TimeDelayAttack = 0;
+        }
+        
     }
 
     public void Attack()

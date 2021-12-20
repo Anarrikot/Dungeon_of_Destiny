@@ -32,11 +32,7 @@ public class Enemy : MonoBehaviour
                 enemy.transform.localScale = new Vector3(-0.3f, 0.3f, 1f);
         }
 
-        if (lives <= 0)
-        {
-            Destroy(enemy.gameObject);
-            CheckDrop();
-        }
+
     }
 
     public bool IsFindEnemy()
