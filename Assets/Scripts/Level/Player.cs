@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-
         HP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, lives * 70 / 100);
         MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mp * 70 / 100);
         if (lives <= 0)
@@ -71,7 +70,7 @@ public class Player : MonoBehaviour
         else if (h < 0)
             rb.transform.localScale = new Vector3(-0.1f, 0.1f, 1f);
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && Time.timeScale != 0)
         {
             Vector3 worldPos = myCamera.ScreenToWorldPoint(Input.mousePosition);            
             Vector3 dir4 = new Vector3(worldPos.x , worldPos.y , 10);
