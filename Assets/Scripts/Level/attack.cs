@@ -23,7 +23,7 @@ public class attack : MonoBehaviour
             if (enemy.lives <= 0)
             {
                 Destroy(enemy.gameObject);
-                enemy.CheckDrop();
+                //enemy.CheckDrop();
             }
             //enemy.accept_damage(float.Parse(damage));  
         }

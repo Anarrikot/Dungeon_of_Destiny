@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public float TimeDelayHp;
     public float TimeDelayMp;
     public float TimeDelayAttack;
+    public Animator animator;
 
     public void Update()
     {
@@ -75,7 +76,6 @@ public class Player : MonoBehaviour
             Vector3 worldPos = myCamera.ScreenToWorldPoint(Input.mousePosition);            
             Vector3 dir4 = new Vector3(worldPos.x , worldPos.y , 10);
             if (dir4.x - player.transform.position.x < 0 && dir4.y - player.transform.position.y < 3 && click)
-            {
                 if (active)
                 {
                     i = worldPos.x;
@@ -85,34 +85,26 @@ public class Player : MonoBehaviour
                     k = k - myCamera.transform.position.y;
                     active = false;
                     controller.SetActive(true);
+                    if (animator)
+                        animator.SetBool("isRun", true);
                 }
-            }
             else
-            {
                 click = false;
-            }
-
             
             Vector3 dir3 = new Vector3(worldPos.x - myCamera.transform.position.x - i, worldPos.y - myCamera.transform.position.y - k, 0);
             if (active == false)
             {
                 if (((Mathf.Pow(worldPos.x - i - myCamera.transform.position.x, 2) + Mathf.Pow(worldPos.y - k - myCamera.transform.position.y, 2)) <= 4))
-                {
                     controller.transform.position = Vector3.MoveTowards(controller.transform.position, dir4, 20 * Time.deltaTime);
-                }
                 else
                 {
                     x = worldPos.x - myCamera.transform.position.x - i;
                     y = worldPos.y - myCamera.transform.position.y - k;
                     x = 2 * x / Mathf.Sqrt(x * x + y * y);
                     if (worldPos.y - myCamera.transform.position.y > k)
-                    {
                         y = Mathf.Sqrt(4 - x * x);
-                    }
                     else
-                    {
                         y = -Mathf.Sqrt(4 - x * x);
-                    }
                     Vector3 dir5 = new Vector3(x  + i + myCamera.transform.position.x, y + k + myCamera.transform.position.y, 10);
                     controller.transform.position = Vector3.MoveTowards(controller.transform.position, dir5, 300 * Time.deltaTime);
                 }
@@ -122,29 +114,17 @@ public class Player : MonoBehaviour
                 if(x!=0 && y!=0)
                 {
                     if (worldPos.x - myCamera.transform.position.x >= i)
-                    {
                         x = y / Mathf.Sqrt(x * x + y * y) * 283 / Mathf.PI;
-                    }
                     else
-                    {
                         x = -y / Mathf.Sqrt(x * x + y * y) * 283 / Mathf.PI + 180;
-                    }
                     coll.transform.rotation = Quaternion.Euler(0, 0, x);
                     
                 }
                 player.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position + dir3, speed / 2 * Time.deltaTime);
                 if (worldPos.x - i - myCamera.transform.position.x < 0)
-                {
-                    
                     GetComponent<SpriteRenderer>().flipX=true;
-                    
-
-                }
                 else if(worldPos.x - i - myCamera.transform.position.x > 0)
-                {
                     GetComponent<SpriteRenderer>().flipX = false;
-                    
-                }
             }
             
         }
@@ -154,6 +134,8 @@ public class Player : MonoBehaviour
             click = true;
             active = true;
             controller.SetActive(false);
+            if (animator)
+                animator.SetBool("isRun", false);
         }
     }
 
@@ -203,6 +185,6 @@ public class Player : MonoBehaviour
         active = true;
         controller.SetActive(false);
         click = true;
-
+        animator = GetComponent<Animator>();
     }
 }
