@@ -11193,8 +11193,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1479555631}
-        m_TargetAssemblyTypeName: TransformPlayer, Assembly-CSharp
+      - m_Target: {fileID: 1033127191}
+        m_TargetAssemblyTypeName: attack, Assembly-CSharp
         m_MethodName: TaskOnClick
         m_Mode: 1
         m_Arguments:
@@ -11273,13 +11273,14 @@ GameObject:
   - component: {fileID: 1033127189}
   - component: {fileID: 1033127190}
   - component: {fileID: 1033127191}
+  - component: {fileID: 1033127192}
   m_Layer: 0
   m_Name: coll_attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1033127189
 Transform:
   m_ObjectHideFlags: 0
@@ -11288,7 +11289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033127188}
   m_LocalRotation: {x: 0, y: 0, z: -0.0050614406, w: 0.99998724}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -3.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1479555627}
@@ -11319,12 +11320,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.5740762, y: 4.3569145}
+    - - {x: 1.2774014, y: 5.9862375}
       - {x: -0.14057854, y: 0.081309676}
       - {x: 0.99766827, y: -4.6281834}
       - {x: 6.2576427, y: -4.7893333}
-      - {x: 6.907468, y: 0.002898395}
-      - {x: 6.238382, y: 4.485099}
+      - {x: 6.900752, y: 0.6662832}
+      - {x: 6.38041, y: 6.611146}
 --- !u!114 &1033127191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11337,7 +11338,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28dfc6fc95b75644698c2853ee605a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 11
+  i: 0
   player: {fileID: 1479555631}
+  enemies: []
+  mp: 100
+  MP: {fileID: 1589045868}
+  isClicked: 0
+  anim: {fileID: 1012239264}
+  TimeDelayMp: 0
+  TimeDelay2: 0.2
+  TimeDelayAttack: 0
+  TimeDelay: 0.5
+--- !u!114 &1033127192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033127188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16baa17303dcd604c8e810d0662e8b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1479555631}
+  button: {fileID: 1012239259}
+  one: {fileID: 21300000, guid: f507f03eb80bcbf49bb458bd6a54bd9a, type: 3}
+  two: {fileID: 21300000, guid: 76a827c0b7b700d4fa9e135b970a64b1, type: 3}
 --- !u!1 &1079414245
 GameObject:
   m_ObjectHideFlags: 0
@@ -11874,23 +11902,10 @@ MonoBehaviour:
   speed: 10
   rb: {fileID: 1479555630}
   lives: 100
-  mp: 100
-  damage: 25
-  isClicked: 0
-  enemys:
-  - {fileID: 2020047631}
-  - {fileID: 0}
-  thisEnemy: {fileID: 0}
   death: 0
-  anim: {fileID: 1012239264}
   HP: {fileID: 1181162475}
-  MP: {fileID: 1589045868}
-  TimeDelay: 0.5
   TimeDelay1: 0.4
-  TimeDelay2: 0.2
   TimeDelayHp: 0
-  TimeDelayMp: 0
-  TimeDelayAttack: 0
   animator: {fileID: 0}
 --- !u!95 &1479555632
 Animator:
@@ -12289,6 +12304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1942578595}
   - component: {fileID: 1942578596}
+  - component: {fileID: 1942578597}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -12317,7 +12333,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942578594}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -12336,6 +12352,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &1942578597
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942578594}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1987825076
 GameObject:
   m_ObjectHideFlags: 0
@@ -12746,6 +12778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058730136}
   - component: {fileID: 2058730137}
+  - component: {fileID: 2058730138}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -12774,7 +12807,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058730135}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -12793,3 +12826,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &2058730138
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058730135}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

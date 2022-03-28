@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     }
     public void Update()
     {
-        HP.transform.localScale = new Vector3(lives * 0.3f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
+        //HP.transform.localScale = new Vector3(lives * 0.3f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
 
         if (IsFindEnemy() && !collisionEnemy)
         {
@@ -89,6 +89,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        lives = lives - damage;
+        HP.transform.localScale = new Vector3(lives * 0.3f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
+    }
+
     //public void CheckDrop()
     //{ 
     //    int rnd = (int)Random.Range(0, 100);
@@ -104,6 +110,6 @@ public class Enemy : MonoBehaviour
     //            Instantiate(dropList[1]);
     //        }
     //    }
-        
+
     //}
 }
