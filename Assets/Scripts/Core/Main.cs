@@ -47,6 +47,6 @@ public class Main : MonoBehaviour
 
     public void TaskOnClick()
     {
-        WindowController.OpenWindow("Inventory");
+        WindowController.AddWindow("Inventory");
     }
 }
