@@ -12,28 +12,32 @@ public class Player : MonoBehaviour
     private float i, k, x, y, tg;
     public GameObject controller;
     public GameObject coll;
-
-    public float speed = 10;
-    public Rigidbody2D rb;
-    public int lives = 100;
-    public bool death = false;
     public Image HP;
-    public float TimeDelay1 = 0.4f;
+    public Rigidbody2D rb;
+    
+    public bool death = false;
+    
+    
     public float TimeDelayHp;
     public Animator animator;
 
+
+    
+    //public int lives = 100;
+    //public float speed = 10;
+
     public void Update()
     {
-        HP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, lives * 70 / 100);
+        HP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.lives * 70 / 100);
         //MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mp * 70 / 100);
-        if (lives <= 0)
+        if (PlayerInfo.lives <= 0)
             death = true;
-        if (lives < 100 && !death)
+        if (PlayerInfo.lives < 100 && !death)
         {
             TimeDelayHp += Time.deltaTime;
-            if (TimeDelayHp >= TimeDelay1)
+            if (TimeDelayHp >= PlayerInfo.TimeDelayHP)
             {
-                lives ++;
+                PlayerInfo.lives ++;
                 TimeDelayHp = 0;
             }
         }
@@ -60,7 +64,7 @@ public class Player : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         Vector3 tempVect = new Vector3(h, v, 0);
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
+        tempVect = tempVect.normalized * PlayerInfo.speed * Time.deltaTime;
         rb.MovePosition(rb.transform.position + tempVect);
         if (h > 0)
             rb.transform.localScale = new Vector3(0.1f, 0.1f, 1f);
@@ -74,6 +78,7 @@ public class Player : MonoBehaviour
             if (dir4.x - player.transform.position.x < 0 && dir4.y - player.transform.position.y < 3 && click)
                 if (active)
                 {
+                    
                     i = worldPos.x;
                     k = worldPos.y;
                     controller.transform.position = new Vector3(i, k, 10);
@@ -116,7 +121,7 @@ public class Player : MonoBehaviour
                     coll.transform.rotation = Quaternion.Euler(0, 0, x);
                     
                 }
-                player.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position + dir3, speed / 2 * Time.deltaTime);
+                player.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position + dir3, PlayerInfo.speed / 2 * Time.deltaTime);
                 if (worldPos.x - i - myCamera.transform.position.x < 0)
                     GetComponent<SpriteRenderer>().flipX=true;
                 else if(worldPos.x - i - myCamera.transform.position.x > 0)
@@ -141,5 +146,6 @@ public class Player : MonoBehaviour
         controller.SetActive(false);
         click = true;
         animator = GetComponent<Animator>();
+        //player = this.GetComponent<GameObject>();
     }
 }

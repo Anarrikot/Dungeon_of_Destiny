@@ -5,35 +5,36 @@ using UnityEngine.UI;
 
 public class attack : MonoBehaviour
 {
-    public int damage, i;
-    public Player player;
+    public int i;
+    
     public List<GameObject> enemies;
     private GameObject enemy1;
-    public int mp = 100;
-    public Image MP;
+
 
     public bool isClicked;
     public Animator anim;
     public float TimeDelayMp;
-    public float TimeDelay2 = 0.2f;
     public float TimeDelayAttack;
-    public float TimeDelay = 0.5f;
+    public Image MP;
+    public Player player;
+    
+
     private void Start()
     {
-        damage = 20;
+        PlayerInfo.damage = 20;
     }
     private void Update()
     {
-        if (TimeDelayAttack <= TimeDelay)
+        if (TimeDelayAttack <= PlayerInfo.TimeDelayAttack)
             TimeDelayAttack += Time.deltaTime;
-        if (mp < 100)
+        if (PlayerInfo.mp < 100)
         {
             TimeDelayMp += Time.deltaTime;
-            if (TimeDelayMp >= TimeDelay2)
+            if (TimeDelayMp >= PlayerInfo.TimeDelayMP)
             {
-                mp++;
+                PlayerInfo.mp++;
                 TimeDelayMp = 0;
-                MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mp * 70 / 100);
+                MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
             }
         }
     }
@@ -53,14 +54,14 @@ public class attack : MonoBehaviour
     }
     public void TaskOnClick()
     {
-        if (mp >= 20 && TimeDelayAttack >= TimeDelay)
+        if (PlayerInfo.mp >= 20 && TimeDelayAttack >= PlayerInfo.TimeDelayAttack)
         {
             isClicked = true;
             anim.SetTrigger("Click");
-            mp -= 20;
-            MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mp * 70 / 100);
+            PlayerInfo.mp -= 20;
+            MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
         }
-        if (isClicked && TimeDelayAttack >= TimeDelay)
+        if (isClicked && TimeDelayAttack >= PlayerInfo.TimeDelayAttack)
         {
             hit();
             isClicked = false;
@@ -74,7 +75,7 @@ public class attack : MonoBehaviour
             i = 0;
             while (i < enemies.Count)
             {
-                enemies[i].GetComponent<Enemy>().TakeDamage(damage);
+                enemies[i].GetComponent<Enemy>().TakeDamage(PlayerInfo.damage);
                 if (enemies[i].GetComponent<Enemy>().lives <= 0)
                 {
                     enemy1 = enemies[i];
