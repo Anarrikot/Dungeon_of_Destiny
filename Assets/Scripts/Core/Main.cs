@@ -12,7 +12,7 @@ public class Main : MonoBehaviour
     public static Main instance = null;
     public AudioController Audio;
     public TranslateController Translate;
-    public HudController Hud;
+    private HudController Hud;
     public Canvas windowCanvas;
   
     public GameController Game;
@@ -31,12 +31,14 @@ public class Main : MonoBehaviour
             Destroy(gameObject); // ׃האכÿול מבתוךע
         }
         WindowController = new WindowsController();
+        Hud = new HudController();
         DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Hud.Show();
     }
 
     // Update is called once per frame
@@ -48,5 +50,10 @@ public class Main : MonoBehaviour
     public void TaskOnClick()
     {
         WindowController.AddWindow("Inventory");
+    }
+
+    public void TaskOnClick1()
+    {
+        WindowController.AddWindow("Store");
     }
 }

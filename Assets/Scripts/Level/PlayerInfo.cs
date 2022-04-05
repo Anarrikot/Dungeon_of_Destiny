@@ -12,39 +12,18 @@ public class PlayerInfo : MonoBehaviour
     public static float TimeDelayHP = 0.4f;
     public static float TimeDelayMP = 0.2f;
     public static float TimeDelayAttack = 0.5f;
+    public static int money = 500;
+    public static int cristals = 100;
     public static PlayerInfo instance;
-    public static GameObject M, C;
 
     public void Awake()
     {
         if (instance == null) instance = this;
        
     }
-    public void Start()
+    public static void AddMoney(int i)
     {
-        M = (GameObject)Resources.Load("Money");
-        C = (GameObject)Resources.Load("Cristals");
-        M=Main.Instantiate(M, Main.instance.windowCanvas.transform);
-        C=Main.Instantiate(C, Main.instance.windowCanvas.transform);
-        foreach(Transform child in M.transform)
-        {
-            if(child.name =="Text")
-            {
-                child.GetComponent<Text>().text = "0";
-            }
-        }
-        foreach (Transform child in C.transform)
-        {
-            if (child.name == "Text")
-            {
-                child.GetComponent<Text>().text = "0";
-            }
-        }
-    }
-
-    public static void CheckMoney(int i)
-    {
-        foreach (Transform child in M.transform)
+        foreach (Transform child in HudController.Money.transform)
         {
             if (child.name == "Text")
             {
@@ -53,15 +32,27 @@ public class PlayerInfo : MonoBehaviour
             }
         }
     }
-    public static void CheckCristal(int i)
+    public static void AddCristal(int i)
     {
-        foreach (Transform child in M.transform)
+        foreach (Transform child in HudController.Cristals.transform)
         {
             if (child.name == "Text")
             {
-                i = int.Parse(child.GetComponent<Text>().text) + 4;
+                i = int.Parse(child.GetComponent<Text>().text) + i;
                 child.GetComponent<Text>().text = i.ToString();
             }
         }
     }
+
+    public static bool Check(int i, string type)
+    {
+        if (type == "Money")
+            if (money >= i)
+                return true;
+        if (type == "Cristals")
+            if (cristals >= i)
+                return true;
+        return false;
+    }
+
 }

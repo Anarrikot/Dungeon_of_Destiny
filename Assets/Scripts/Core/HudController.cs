@@ -1,23 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class HudController : MonoBehaviour
 {
-    private GameObject prefabNotification;
-    public static HudController instance = null;
-    void Awake()
+    public static GameObject Money, Cristals;
+
+    public void Show()
     {
-        if (instance == null)
+        Money = (GameObject)Resources.Load("Money");
+        Cristals = (GameObject)Resources.Load("Cristals");
+        Money = Main.Instantiate(Money, Main.instance.windowCanvas.transform);
+        Cristals = Main.Instantiate(Cristals, Main.instance.windowCanvas.transform);
+        foreach (Transform child in Money.transform)
         {
-            instance = this; // Задаем ссылку на экземпляр объекта
+            if (child.name == "Text")
+            {
+                child.GetComponent<Text>().text = PlayerInfo.money.ToString();
+            }
         }
-        else if (instance == this)
+        foreach (Transform child in Cristals.transform)
         {
-            // Экземпляр объекта уже существует на сцене
-            Destroy(gameObject); // Удаляем объект
+            if (child.name == "Text")
+            {
+                child.GetComponent<Text>().text = PlayerInfo.cristals.ToString();
+            }
         }
-
-        DontDestroyOnLoad(gameObject);
-
     }
+
 }
+ 
