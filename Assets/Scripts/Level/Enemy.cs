@@ -18,10 +18,12 @@ public class Enemy : MonoBehaviour
     public float TimeDelayAttack;
     public GameObject[] dropList;
     public Animator animator;
+    public bool target = false;
 
     public void Start()
     {
         animator = GetComponent<Animator>();
+        HP.SetActive(false);
     }
     public void Update()
     {
@@ -95,6 +97,20 @@ public class Enemy : MonoBehaviour
         HP.transform.localScale = new Vector3(lives * 0.3f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
     }
 
+
+    public void active()
+    {
+        if (target == true)
+        {
+            target = false;
+            HP.SetActive(false);
+        }
+        else
+        {
+            target = true;
+            HP.SetActive(true);
+        }
+    }
     //public void CheckDrop()
     //{ 
     //    int rnd = (int)Random.Range(0, 100);
