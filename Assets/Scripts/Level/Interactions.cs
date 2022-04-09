@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Interactions : MonoBehaviour
 {
-    public Player player;
+    //public Player player;
     private GameObject npc;
     public GameObject button;
     public Sprite one, two;

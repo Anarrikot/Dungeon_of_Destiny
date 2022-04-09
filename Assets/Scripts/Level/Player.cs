@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private Camera myCamera;
     public Grid map;
-    public GameObject player;
+    //public GameObject player;
     private bool active, click;
     private float i, k, x, y, tg;
     public GameObject controller;
@@ -17,16 +17,20 @@ public class Player : MonoBehaviour
     public Button button;
     
     public bool death = false;
-    
+    public static Player instance;
     
     public float TimeDelayHp;
     public Animator animator;
 
 
-    
+
     //public int lives = 100;
     //public float speed = 10;
+    public void Awake()
+    {
+        if (instance == null) instance = this;
 
+    }
     public void Update()
     {
         PlayerInfo.HP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.lives * 70 / 100);
@@ -76,7 +80,7 @@ public class Player : MonoBehaviour
         {
             Vector3 worldPos = myCamera.ScreenToWorldPoint(Input.mousePosition);            
             Vector3 dir4 = new Vector3(worldPos.x , worldPos.y , 10);
-            if (dir4.x - player.transform.position.x < 0 && dir4.y - player.transform.position.y < 3 && click)
+            if (dir4.x - instance.transform.position.x < 0 && dir4.y - instance.transform.position.y < 3 && click)
                 if (active)
                 {
                     
@@ -122,7 +126,7 @@ public class Player : MonoBehaviour
                     coll.transform.rotation = Quaternion.Euler(0, 0, x);
                     
                 }
-                player.transform.position = Vector3.MoveTowards(player.transform.position, player.transform.position + dir3, PlayerInfo.speed / 2 * Time.deltaTime);
+                instance.transform.position = Vector3.MoveTowards(instance.transform.position, instance.transform.position + dir3, PlayerInfo.speed / 2 * Time.deltaTime);
                 if (worldPos.x - i - myCamera.transform.position.x < 0)
                     GetComponent<SpriteRenderer>().flipX=true;
                 else if(worldPos.x - i - myCamera.transform.position.x > 0)

@@ -15,7 +15,7 @@ public class Сlosest_enemy : MonoBehaviour
     public float TimeDelayMp;
     public float TimeDelayAttack;
     //public Image MP;
-    public Player player;
+   // public Player player;
     public GameObject splash,splash1;
     private void Start()
     {
@@ -41,8 +41,8 @@ public class Сlosest_enemy : MonoBehaviour
             {
                 if(this.enemy!= null && this.enemy!=enemy)
                 {
-                    float distance = Vector2.Distance(player.transform.position, enemy.transform.position);
-                    if(distance < Vector2.Distance(player.transform.position, this.enemy.transform.position))
+                    float distance = Vector2.Distance(Player.instance.transform.position, enemy.transform.position);
+                    if(distance < Vector2.Distance(Player.instance.transform.position, this.enemy.transform.position))
                     {
                         this.enemy.GetComponent<Enemy>().active();
                         enemy.GetComponent<Enemy>().active();
@@ -82,7 +82,7 @@ public class Сlosest_enemy : MonoBehaviour
         if (PlayerInfo.mp >= 20 && TimeDelayAttack >= PlayerInfo.TimeDelayAttack && enemy!=null)
         {
             isClicked = true;
-            anim.SetTrigger("Click");
+            //anim.SetTrigger("Click");
             PlayerInfo.mp -= 20;
             PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
         }

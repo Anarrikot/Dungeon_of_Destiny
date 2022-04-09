@@ -27,7 +27,6 @@ public class Swap_class : MonoBehaviour
                 }
                 break;
         }
-        Debug.Log(PlayerInfo.button_atc);
         PlayerInfo.button_atc.onClick.RemoveAllListeners();
     }
     private void add_class(int i)

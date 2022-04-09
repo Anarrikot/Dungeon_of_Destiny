@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public bool collisionEnemy = false;
     public int lives = 60;
     public int damage = 5;
-    public Player player;
+    //public Player player;
     public float TimeDelay = 1;
     public float TimeDelayAttack;
     public GameObject[] dropList;
@@ -106,7 +106,6 @@ public class Enemy : MonoBehaviour
         TimeDelayShowHP = 0;
         lives = lives - damage;
         HP.transform.localScale = new Vector3(lives * 0.3f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
-        Debug.Log(damage.ToString());
     }
 
 

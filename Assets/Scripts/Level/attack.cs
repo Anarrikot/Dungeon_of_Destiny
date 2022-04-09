@@ -16,7 +16,7 @@ public class attack : MonoBehaviour
     public float TimeDelayMp;
     public float TimeDelayAttack;
     //public Image MP;
-    public Player player;
+    //public Player player;
     
 
     private void Start()
