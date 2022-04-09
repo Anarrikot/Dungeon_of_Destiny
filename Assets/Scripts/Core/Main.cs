@@ -14,7 +14,7 @@ public class Main : MonoBehaviour
     public TranslateController Translate;
     private HudController Hud;
     public Canvas windowCanvas;
-  
+    public Canvas HUD;
     public GameController Game;
     private WindowsController WindowController;
     //kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk

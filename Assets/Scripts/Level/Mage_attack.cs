@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Mage_attack : MonoBehaviour
 {
-    public List<GameObject> enemies;
+    public List<GameObject> enemies=new List<GameObject>();
     private GameObject enemy1;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,7 +22,7 @@ public class Mage_attack : MonoBehaviour
             int i = 0;
             while (i < enemies.Count)
             {
-                enemies[i].GetComponent<Enemy>().TakeDamage(PlayerInfo.damage);
+                enemies[i].GetComponent<Enemy>().TakeDamage(PlayerInfo.damage*50/100);
                 if (enemies[i].GetComponent<Enemy>().lives <= 0)
                 {
                     enemy1 = enemies[i];

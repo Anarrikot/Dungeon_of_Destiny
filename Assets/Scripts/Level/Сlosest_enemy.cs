@@ -7,14 +7,14 @@ public class Сlosest_enemy : MonoBehaviour
 {
     public int i;
 
-    public List<GameObject> enemies;
+    public List<GameObject> enemies=new List<GameObject>();
     private GameObject enemy;
 
     public bool isClicked;
     public Animator anim;
     public float TimeDelayMp;
     public float TimeDelayAttack;
-    public Image MP;
+    //public Image MP;
     public Player player;
     public GameObject splash,splash1;
     private void Start()
@@ -32,7 +32,7 @@ public class Сlosest_enemy : MonoBehaviour
             {
                 PlayerInfo.mp++;
                 TimeDelayMp = 0;
-                MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
+                PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
             }
         }
         if(enemies.Count > 0)
@@ -84,7 +84,7 @@ public class Сlosest_enemy : MonoBehaviour
             isClicked = true;
             anim.SetTrigger("Click");
             PlayerInfo.mp -= 20;
-            MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
+            PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
         }
         if (isClicked && TimeDelayAttack >= PlayerInfo.TimeDelayAttack)
         {
@@ -95,6 +95,7 @@ public class Сlosest_enemy : MonoBehaviour
     }
     private void hit()
     {
+        enemy.GetComponent<Enemy>().TakeDamage(PlayerInfo.damage * 50 / 100);
         splash1 = Instantiate(splash);
         splash1.transform.position=enemy.transform.position;     
     }

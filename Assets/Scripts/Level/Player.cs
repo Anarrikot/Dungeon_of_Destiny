@@ -12,8 +12,9 @@ public class Player : MonoBehaviour
     private float i, k, x, y, tg;
     public GameObject controller;
     public GameObject coll;
-    public Image HP;
+    //public Image HP;
     public Rigidbody2D rb;
+    public Button button;
     
     public bool death = false;
     
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        HP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.lives * 70 / 100);
+        PlayerInfo.HP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.lives * 70 / 100);
         //MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mp * 70 / 100);
         if (PlayerInfo.lives <= 0)
             death = true;
@@ -146,6 +147,7 @@ public class Player : MonoBehaviour
         controller.SetActive(false);
         click = true;
         animator = GetComponent<Animator>();
+        PlayerInfo.button_atc = button;
         //player = this.GetComponent<GameObject>();
     }
 }

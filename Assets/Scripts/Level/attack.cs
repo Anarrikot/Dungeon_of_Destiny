@@ -7,7 +7,7 @@ public class attack : MonoBehaviour
 {
     public int i;
     
-    public List<GameObject> enemies;
+    public List<GameObject> enemies= new List<GameObject>();
     private GameObject enemy1;
 
 
@@ -15,7 +15,7 @@ public class attack : MonoBehaviour
     public Animator anim;
     public float TimeDelayMp;
     public float TimeDelayAttack;
-    public Image MP;
+    //public Image MP;
     public Player player;
     
 
@@ -34,7 +34,7 @@ public class attack : MonoBehaviour
             {
                 PlayerInfo.mp++;
                 TimeDelayMp = 0;
-                MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
+                PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
             }
         }
     }
@@ -54,12 +54,13 @@ public class attack : MonoBehaviour
     }
     public void TaskOnClick()
     {
+       
         if (PlayerInfo.mp >= 20 && TimeDelayAttack >= PlayerInfo.TimeDelayAttack)
         {
             isClicked = true;
-            anim.SetTrigger("Click");
+            //anim.SetTrigger("Click");
             PlayerInfo.mp -= 20;
-            MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
+            PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
         }
         if (isClicked && TimeDelayAttack >= PlayerInfo.TimeDelayAttack)
         {

@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     public GameObject[] dropList;
     public Animator animator;
     public bool target = false;
+    public float TimeDelayShowHP=0.5f;
 
     public void Start()
     {
@@ -28,7 +29,16 @@ public class Enemy : MonoBehaviour
     public void Update()
     {
         //HP.transform.localScale = new Vector3(lives * 0.3f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
+        if (TimeDelayShowHP <= 0.7f||target==true)
+        {
+            HP.SetActive(true);
+            TimeDelayShowHP += Time.deltaTime;
+        }
 
+        else
+        {
+            HP.SetActive(false);
+        }
         if (IsFindEnemy() && !collisionEnemy)
         {
             if (!collisionEnemy)
@@ -40,7 +50,7 @@ public class Enemy : MonoBehaviour
             if (animator)
                 animator.SetBool("isRun", true);
         }
-
+        
 
     }
 
@@ -93,23 +103,19 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        TimeDelayShowHP = 0;
         lives = lives - damage;
         HP.transform.localScale = new Vector3(lives * 0.3f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
+        Debug.Log(damage.ToString());
     }
 
 
     public void active()
     {
-        if (target == true)
-        {
-            target = false;
-            HP.SetActive(false);
-        }
-        else
-        {
-            target = true;
-            HP.SetActive(true);
-        }
+            if (target == true)
+                target = false;
+            else
+                target = true;
     }
     //public void CheckDrop()
     //{ 
