@@ -117,6 +117,8 @@ public class Player : MonoBehaviour
                 
                 x = worldPos.x - myCamera.transform.position.x - i;
                 y = worldPos.y - myCamera.transform.position.y - k;
+                PlayerInfo.x = x;
+                PlayerInfo.y = y;   
                 if(x!=0 && y!=0)
                 {
                     if (worldPos.x - myCamera.transform.position.x >= i)

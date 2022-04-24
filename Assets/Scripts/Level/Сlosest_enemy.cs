@@ -56,12 +56,22 @@ public class Сlosest_enemy : MonoBehaviour
                 }
             }
         }
+
         else if(enemy != null)
         {
             enemy.GetComponent<Enemy>().active();
             enemy = null;
         }
         
+    }
+    public void OnDestroy()
+    {
+        if (enemy != null)
+        {
+            enemy.GetComponent<Enemy>().active();
+            enemy = null;
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -79,8 +89,10 @@ public class Сlosest_enemy : MonoBehaviour
     }
     public void TaskOnClick()
     {
+
         if (PlayerInfo.mp >= 20 && TimeDelayAttack >= PlayerInfo.TimeDelayAttack && enemy!=null)
         {
+
             isClicked = true;
             //anim.SetTrigger("Click");
             PlayerInfo.mp -= 20;
@@ -88,6 +100,7 @@ public class Сlosest_enemy : MonoBehaviour
         }
         if (isClicked && TimeDelayAttack >= PlayerInfo.TimeDelayAttack)
         {
+
             hit();
             isClicked = false;
             TimeDelayAttack = 0;
@@ -95,8 +108,19 @@ public class Сlosest_enemy : MonoBehaviour
     }
     private void hit()
     {
-        enemy.GetComponent<Enemy>().TakeDamage(PlayerInfo.damage * 50 / 100);
-        splash1 = Instantiate(splash);
-        splash1.transform.position=enemy.transform.position;     
+
+        splash1 = GameObject.Instantiate(splash);
+        if(PlayerInfo.classes[PlayerInfo.this_classes]=="Mage")
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(PlayerInfo.damage * 50 / 100);
+            splash1.transform.position = enemy.transform.position;
+        }
+
+        if (PlayerInfo.classes[PlayerInfo.this_classes] == "Archer")
+        {
+            splash1.transform.position = gameObject.transform.position;
+            splash1.GetComponent<Arrow>().add_cord(enemy.transform.position.x-gameObject.transform.position.x, enemy.transform.position.y - gameObject.transform.position.y);
+        }
     }
+    
 }

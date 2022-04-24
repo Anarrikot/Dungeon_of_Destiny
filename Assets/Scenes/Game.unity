@@ -349,9 +349,10 @@ GameObject:
   - component: {fileID: 388248015}
   - component: {fileID: 388248014}
   - component: {fileID: 388248013}
+  - component: {fileID: 388248016}
   m_Layer: 0
   m_Name: Tilemap wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,8 +424,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
+  m_SortingLayerID: -105541197
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -433,7 +434,7 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
 --- !u!1839735485 &388248015
 Tilemap:
   m_ObjectHideFlags: 0
@@ -2933,19 +2934,40 @@ Tilemap:
     e00: 1
     e01: 0
     e02: 0
-    e03: 0
+    e03: 3.45
     e10: 0
     e11: 1
     e12: 0
-    e13: 0
+    e13: 0.89
     e20: 0
     e21: 0
     e22: 1
-    e23: 0
+    e23: 42.05
     e30: 0
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &388248016
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388248011}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &460800877
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,7 +3120,6 @@ MonoBehaviour:
   collisionEnemy: 0
   lives: 60
   damage: 10
-  player: {fileID: 1479555631}
   TimeDelay: 1
   TimeDelayAttack: 0
   dropList: []
@@ -11165,7 +11186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16baa17303dcd604c8e810d0662e8b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1479555631}
   button: {fileID: 1012239259}
   one: {fileID: 21300000, guid: f507f03eb80bcbf49bb458bd6a54bd9a, type: 3}
   two: {fileID: 21300000, guid: 76a827c0b7b700d4fa9e135b970a64b1, type: 3}
@@ -11563,7 +11583,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 1879780822}
-  player: {fileID: 1479555626}
   controller: {fileID: 1987825076}
   coll: {fileID: 1033127188}
   rb: {fileID: 1479555630}
@@ -12162,7 +12181,6 @@ MonoBehaviour:
   collisionEnemy: 0
   lives: 60
   damage: 10
-  player: {fileID: 1479555631}
   TimeDelay: 1
   TimeDelayAttack: 0
   dropList: []

@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class PlayerInfo : MonoBehaviour
 {
     public static int lives = 100;
-    public static float speed = 10;
+    public static float speed = 10,x,y;
     public static int damage;
     public static int mp = 100;
     public static float TimeDelayHP = 0.4f;
     public static float TimeDelayMP = 0.2f;
-    public static float TimeDelayAttack = 0.5f;
+    public static float TimeDelayAttack = 0.1f;
     public static int money = 500;
     public static int cristals = 100;
     public static PlayerInfo instance;
@@ -27,7 +27,7 @@ public class PlayerInfo : MonoBehaviour
     }
     public void Start()
     {
-        classes[0] = "Knight";
+        classes[0] = "Archer";
         classes[1] = "Mage";
         this_classes = 1;
     }

@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class Swap_class : MonoBehaviour
 {
     public GameObject new_class;
+
     public void swap()
-    {
-        
+    { 
         destroy_class();
         add_class(PlayerInfo.classes.Length-PlayerInfo.this_classes-1);
         PlayerInfo.this_classes = PlayerInfo.classes.Length - PlayerInfo.this_classes-1;
@@ -21,6 +21,12 @@ public class Swap_class : MonoBehaviour
                 Destroy(gameObject.GetComponent<attack>());
                 break;
             case "Mage":
+                foreach (Transform child in gameObject.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+                break;
+            case "Archer":
                 foreach (Transform child in gameObject.transform)
                 {
                     Destroy(child.gameObject);
@@ -40,6 +46,11 @@ public class Swap_class : MonoBehaviour
                 break;
             case "Mage":
                 new_class=Instantiate((GameObject)Resources.Load("Mage"),gameObject.transform);
+                PlayerInfo.button_atc.onClick.AddListener(() => new_class.GetComponent<Ñlosest_enemy>().TaskOnClick());
+                break;
+            case "Archer":
+                new_class = Instantiate((GameObject)Resources.Load("Mage"), gameObject.transform);
+                new_class.GetComponent<Ñlosest_enemy>().splash = (GameObject)Resources.Load("arrow");
                 PlayerInfo.button_atc.onClick.AddListener(() => new_class.GetComponent<Ñlosest_enemy>().TaskOnClick());
                 break;
         }
