@@ -15,7 +15,7 @@ public class PlayerInfo : MonoBehaviour
     public static int money = 500;
     public static int cristals = 100;
     public static PlayerInfo instance;
-    public static string[] classes = new string[2];
+    public static string[] classes = new string[3];
     public static int this_classes;
     public static Button button_atc;
     public static Image HP_Image, MP_Image;
@@ -23,13 +23,14 @@ public class PlayerInfo : MonoBehaviour
     public void Awake()
     {
         if (instance == null) instance = this;
-
+        classes[0] = "Archer";
+        classes[1] = "Mage";
+        classes[2] = "Knight";
+        this_classes = 0;
     }
     public void Start()
     {
-        classes[0] = "Archer";
-        classes[1] = "Mage";
-        this_classes = 1;
+
     }
     public static void AddMoney(int i)
     {

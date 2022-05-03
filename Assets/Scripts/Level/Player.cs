@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     //public Image HP;
     public Rigidbody2D rb;
     public Button button;
-    
+    public GameObject square;
     public bool death = false;
     public static Player instance;
     
@@ -130,9 +130,9 @@ public class Player : MonoBehaviour
                 }
                 instance.transform.position = Vector3.MoveTowards(instance.transform.position, instance.transform.position + dir3, PlayerInfo.speed / 2 * Time.deltaTime);
                 if (worldPos.x - i - myCamera.transform.position.x < 0)
-                    GetComponent<SpriteRenderer>().flipX=true;
+                    square.GetComponent<SpriteRenderer>().flipX=true;
                 else if(worldPos.x - i - myCamera.transform.position.x > 0)
-                    GetComponent<SpriteRenderer>().flipX = false;
+                    square.GetComponent<SpriteRenderer>().flipX = false;
             }
             
         }
@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
         active = true;
         controller.SetActive(false);
         click = true;
-        animator = GetComponent<Animator>();
+        animator = square.GetComponent<Animator>();
         PlayerInfo.button_atc = button;
         //player = this.GetComponent<GameObject>();
     }

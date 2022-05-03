@@ -42,13 +42,16 @@ public class attack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            collision.GetComponent<Enemy>().active();
             enemies.Add(collision.gameObject);
+            
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            collision.GetComponent<Enemy>().active();
             enemies.Remove(collision.gameObject);
         }
     }
