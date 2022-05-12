@@ -42,7 +42,7 @@ public class attack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().active();
+            collision.GetComponent<Enemy_Info>().active();
             enemies.Add(collision.gameObject);
             
         }
@@ -51,7 +51,7 @@ public class attack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().active();
+            collision.GetComponent<Enemy_Info>().active();
             enemies.Remove(collision.gameObject);
         }
     }
@@ -79,8 +79,8 @@ public class attack : MonoBehaviour
             i = 0;
             while (i < enemies.Count)
             {
-                enemies[i].GetComponent<Enemy>().TakeDamage(PlayerInfo.damage);
-                if (enemies[i].GetComponent<Enemy>().lives <= 0)
+                enemies[i].GetComponent<Enemy_Info>().TakeDamage(PlayerInfo.damage);
+                if (enemies[i].GetComponent<Enemy_Info>().lives <= 0)
                 {
                     enemy1 = enemies[i];
                     enemies.Remove(enemies[i]);

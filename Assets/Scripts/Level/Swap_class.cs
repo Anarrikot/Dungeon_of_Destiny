@@ -62,9 +62,12 @@ public class Swap_class : MonoBehaviour
                 new_class = Instantiate((GameObject)Resources.Load("Knight_skin"), gameObject.transform);
                 break;
             case "Mage":
-                new_class=Instantiate((GameObject)Resources.Load("Mage"),gameObject.transform);
+
+                
                 new_class = Instantiate((GameObject)Resources.Load("Mage_skin"), gameObject.transform);
+                new_class = Instantiate((GameObject)Resources.Load("Mage"), gameObject.transform);
                 PlayerInfo.button_atc.onClick.AddListener(() => new_class.GetComponent<Ñlosest_enemy>().TaskOnClick());
+
                 break;
             case "Archer":
                 new_class = Instantiate((GameObject)Resources.Load("Archer_skin"), gameObject.transform);

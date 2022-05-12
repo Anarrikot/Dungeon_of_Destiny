@@ -22,8 +22,8 @@ public class Mage_attack : MonoBehaviour
             int i = 0;
             while (i < enemies.Count)
             {
-                enemies[i].GetComponent<Enemy>().TakeDamage(PlayerInfo.damage*50/100);
-                if (enemies[i].GetComponent<Enemy>().lives <= 0)
+                enemies[i].GetComponent<Enemy_Info>().TakeDamage(PlayerInfo.damage*50/100);
+                if (enemies[i].GetComponent<Enemy_Info>().lives <= 0)
                 {
                     enemy1 = enemies[i];
                     enemies.Remove(enemies[i]);

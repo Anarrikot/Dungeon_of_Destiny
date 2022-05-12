@@ -116,21 +116,4 @@ public class Enemy : MonoBehaviour
             else
                 target = true;
     }
-    //public void CheckDrop()
-    //{ 
-    //    int rnd = (int)Random.Range(0, 100);
-    //    {
-    //        if (rnd <= 50)
-    //        {
-    //            dropList[0].transform.position = gameObject.transform.position;
-    //            Instantiate(dropList[0]);
-    //        }
-    //        else if (rnd > 50)
-    //        {
-    //            dropList[1].transform.position = gameObject.transform.position;
-    //            Instantiate(dropList[1]);
-    //        }
-    //    }
-
-    //}
 }

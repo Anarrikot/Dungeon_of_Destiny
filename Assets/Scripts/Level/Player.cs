@@ -46,26 +46,6 @@ public class Player : MonoBehaviour
                 TimeDelayHp = 0;
             }
         }
-
-
-
-        /*
-        if (mp < 100 && !death)
-        {
-            TimeDelayMp += Time.deltaTime;
-            if (TimeDelayMp >= TimeDelay2)
-            {
-                mp ++;
-                TimeDelayMp = 0;
-            }
-        }
-        if (TimeDelayAttack <= TimeDelay)
-            TimeDelayAttack += Time.deltaTime;
-       // else if (TimeDelayAttack/5 <= TimeDelay)
-            //coll.SetActive(false);
-        */
-
-
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         Vector3 tempVect = new Vector3(h, v, 0);
@@ -154,6 +134,5 @@ public class Player : MonoBehaviour
         click = true;
         animator = square.GetComponent<Animator>();
         PlayerInfo.button_atc = button;
-        //player = this.GetComponent<GameObject>();
     }
 }
