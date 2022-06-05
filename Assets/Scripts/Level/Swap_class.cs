@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Swap_class : MonoBehaviour
 {
     public GameObject new_class;
+    public GameObject Collaider;
     public int k;
 
     public void swap()
@@ -16,9 +17,6 @@ public class Swap_class : MonoBehaviour
         else k = 0;
         add_class(k);
         PlayerInfo.this_classes = k;
-        //add_class(PlayerInfo.classes.Length-PlayerInfo.this_classes-1);
-        //PlayerInfo.this_classes = PlayerInfo.classes.Length - PlayerInfo.this_classes-1;
-
     }
     public void swap(int i)
     {

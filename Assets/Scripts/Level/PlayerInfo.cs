@@ -20,6 +20,8 @@ public class PlayerInfo : MonoBehaviour
     public static Button button_atc;
     public static Image HP_Image, MP_Image;
     public static Inventory inventory= new Inventory();
+    public static GameObject square;
+    public static Animator animator;
     public void Awake()
     {
         if (instance == null) instance = this;

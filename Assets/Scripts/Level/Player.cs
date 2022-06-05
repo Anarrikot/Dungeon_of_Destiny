@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public static Player instance;
     
     public float TimeDelayHp;
-    public Animator animator;
+ 
 
 
 
@@ -71,8 +71,8 @@ public class Player : MonoBehaviour
                     k = k - myCamera.transform.position.y;
                     active = false;
                     controller.SetActive(true);
-                    if (animator)
-                        animator.SetBool("isRun", true);
+                    if (PlayerInfo.animator)
+                        PlayerInfo.animator.SetBool("isRun", true);
                 }
             else
                 click = false;
@@ -110,9 +110,9 @@ public class Player : MonoBehaviour
                 }
                 instance.transform.position = Vector3.MoveTowards(instance.transform.position, instance.transform.position + dir3, PlayerInfo.speed / 2 * Time.deltaTime);
                 if (worldPos.x - i - myCamera.transform.position.x < 0)
-                    square.GetComponent<SpriteRenderer>().flipX=true;
+                   PlayerInfo.square.GetComponent<SpriteRenderer>().flipX=true;
                 else if(worldPos.x - i - myCamera.transform.position.x > 0)
-                    square.GetComponent<SpriteRenderer>().flipX = false;
+                   PlayerInfo.square.GetComponent<SpriteRenderer>().flipX = false;
             }
             
         }
@@ -122,17 +122,19 @@ public class Player : MonoBehaviour
             click = true;
             active = true;
             controller.SetActive(false);
-            if (animator)
-                animator.SetBool("isRun", false);
+            if (PlayerInfo.animator)
+                PlayerInfo.animator.SetBool("isRun", false);
         }
     }
     void Start()
     {
+        PlayerInfo.square = square;
         myCamera = Camera.main;
         active = true;
         controller.SetActive(false);
         click = true;
-        animator = square.GetComponent<Animator>();
+        PlayerInfo.animator = PlayerInfo.square.GetComponent<Animator>();
         PlayerInfo.button_atc = button;
+        
     }
 }

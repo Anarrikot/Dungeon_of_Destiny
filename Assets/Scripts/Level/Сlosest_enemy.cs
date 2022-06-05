@@ -44,14 +44,14 @@ public class Сlosest_enemy : MonoBehaviour
                     float distance = Vector2.Distance(Player.instance.transform.position, enemy.transform.position);
                     if(distance < Vector2.Distance(Player.instance.transform.position, this.enemy.transform.position))
                     {
-                        this.enemy.GetComponent<Enemy_Info>().active();
-                        enemy.GetComponent<Enemy_Info>().active();
+                        this.enemy.GetComponent<Enemy_Info>().target =true;
+                        enemy.GetComponent<Enemy_Info>().target=false;
                         this.enemy = enemy;
                     }
                 }
                 else if(this.enemy != enemy)
                 {
-                    enemy.GetComponent<Enemy_Info>().active();
+                    enemy.GetComponent<Enemy_Info>().target=true;
                     this.enemy = enemy;
                 }
             }
@@ -59,7 +59,7 @@ public class Сlosest_enemy : MonoBehaviour
 
         else if(enemy != null)
         {
-            enemy.GetComponent<Enemy_Info>().active();
+            enemy.GetComponent<Enemy_Info>().target=false;
             enemy = null;
         }
         
