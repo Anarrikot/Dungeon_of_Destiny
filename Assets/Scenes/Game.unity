@@ -240,7 +240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 470.25, y: -30}
+  m_AnchoredPosition: {x: 69.75, y: -30}
   m_SizeDelta: {x: 139.5, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356115163
@@ -16609,6 +16609,7 @@ GameObject:
   - component: {fileID: 1810211482}
   - component: {fileID: 1810211480}
   - component: {fileID: 1810211481}
+  - component: {fileID: 1810211485}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -16730,6 +16731,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.21}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1810211485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810211478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ad1c150dd70d94a93b8c9ac5499fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartItems:
+  - {fileID: 9152348824895067439, guid: eb8eedaefd26be6479c820662e90410c, type: 3}
+  - {fileID: 4690749470937583227, guid: 20cedfaeeab1c8644b3e8b76b93d3103, type: 3}
+  - {fileID: 4690749470937583227, guid: 20cedfaeeab1c8644b3e8b76b93d3103, type: 3}
+  - {fileID: 9152348824895067439, guid: eb8eedaefd26be6479c820662e90410c, type: 3}
+  - {fileID: 9152348824895067439, guid: eb8eedaefd26be6479c820662e90410c, type: 3}
 --- !u!1 &1879780821
 GameObject:
   m_ObjectHideFlags: 0

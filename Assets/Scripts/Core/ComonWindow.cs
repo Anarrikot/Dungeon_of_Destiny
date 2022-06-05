@@ -21,4 +21,5 @@ public class ComonWindow : MonoBehaviour
         Time.timeScale = 1;
         Destroy(gameObject);
     }
+
 }

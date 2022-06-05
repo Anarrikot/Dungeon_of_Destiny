@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4384065503302379261}
+  - component: {fileID: 2659586315611301287}
   m_Layer: 5
   m_Name: Stats_in_HUD
   m_TagString: Untagged
@@ -41,9 +42,21 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 79.57553, y: -30.9872}
-  m_SizeDelta: {x: 159.1511, y: 61.9743}
+  m_AnchoredPosition: {x: 100.4, y: -30.9872}
+  m_SizeDelta: {x: 158.06, y: 61.9743}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2659586315611301287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067801326102248402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537c5926e12ce404ebf0bd2261185d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2000157758336840667
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,8 +167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75.249985, y: -31.000029}
-  m_SizeDelta: {x: 139.5, y: 60}
+  m_AnchoredPosition: {x: 61.875, y: -31.481}
+  m_SizeDelta: {x: 166.25, y: 60.987}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6041884932781279974
 CanvasRenderer:
@@ -239,9 +252,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Main, Assembly-CSharp
-        m_MethodName: TaskOnClick
+      - m_Target: {fileID: 2659586315611301287}
+        m_TargetAssemblyTypeName: OpenInventory, Assembly-CSharp
+        m_MethodName: Open
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
