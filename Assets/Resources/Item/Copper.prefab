@@ -128,4 +128,5 @@ MonoBehaviour:
   quantity: 1
   stack: 8
   price: 100
+  Icon: {fileID: 0}
   image: {fileID: 6006791184026129257}

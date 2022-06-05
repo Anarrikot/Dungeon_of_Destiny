@@ -19,7 +19,7 @@ public class PlayerInfo : MonoBehaviour
     public static int this_classes;
     public static Button button_atc;
     public static Image HP_Image, MP_Image;
-
+    public static Inventory inventory= new Inventory();
     public void Awake()
     {
         if (instance == null) instance = this;

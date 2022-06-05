@@ -13,5 +13,7 @@ public class Item:MonoBehaviour
     public int quantity = 0;
     public int stack; 
     public int price = 100;
+    public Sprite Icon;
     public Image image;
+
 }
