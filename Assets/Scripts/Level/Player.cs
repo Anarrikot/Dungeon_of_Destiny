@@ -15,14 +15,19 @@ public class Player : MonoBehaviour
     //public Image HP;
     public Rigidbody2D rb;
     public Button button;
-    public GameObject square;
+    public GameObject square1;
     public bool death = false;
     public static Player instance;
-    
+    public static GameObject square;
+    public static Animator animator;
     public float TimeDelayHp;
  
 
-
+    public static void New_skin(GameObject square1)
+    {
+        square = square1;
+        animator = square.GetComponent<Animator>();
+    }
 
     //public int lives = 100;
     //public float speed = 10;
@@ -59,20 +64,20 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButton(0) && Time.timeScale != 0)
         {
             Vector3 worldPos = myCamera.ScreenToWorldPoint(Input.mousePosition);            
-            Vector3 dir4 = new Vector3(worldPos.x , worldPos.y , 10);
+            Vector3 dir4 = new Vector3(worldPos.x , worldPos.y , -10);
             if (dir4.x - instance.transform.position.x < 0 && dir4.y - instance.transform.position.y < 3 && click)
                 if (active)
                 {
                     
                     i = worldPos.x;
                     k = worldPos.y;
-                    controller.transform.position = new Vector3(i, k, 10);
+                    controller.transform.position = new Vector3(i, k, -10);
                     i = i - myCamera.transform.position.x;
                     k = k - myCamera.transform.position.y;
                     active = false;
                     controller.SetActive(true);
-                    if (PlayerInfo.animator)
-                        PlayerInfo.animator.SetBool("isRun", true);
+                    if (animator)
+                        animator.SetBool("isRun", true);
                 }
             else
                 click = false;
@@ -91,7 +96,7 @@ public class Player : MonoBehaviour
                         y = Mathf.Sqrt(4 - x * x);
                     else
                         y = -Mathf.Sqrt(4 - x * x);
-                    Vector3 dir5 = new Vector3(x  + i + myCamera.transform.position.x, y + k + myCamera.transform.position.y, 10);
+                    Vector3 dir5 = new Vector3(x  + i + myCamera.transform.position.x, y + k + myCamera.transform.position.y, -10);
                     controller.transform.position = Vector3.MoveTowards(controller.transform.position, dir5, 300 * Time.deltaTime);
                 }
                 
@@ -110,9 +115,9 @@ public class Player : MonoBehaviour
                 }
                 instance.transform.position = Vector3.MoveTowards(instance.transform.position, instance.transform.position + dir3, PlayerInfo.speed / 2 * Time.deltaTime);
                 if (worldPos.x - i - myCamera.transform.position.x < 0)
-                   PlayerInfo.square.GetComponent<SpriteRenderer>().flipX=true;
+                   square.GetComponent<SpriteRenderer>().flipX=true;
                 else if(worldPos.x - i - myCamera.transform.position.x > 0)
-                   PlayerInfo.square.GetComponent<SpriteRenderer>().flipX = false;
+                   square.GetComponent<SpriteRenderer>().flipX = false;
             }
             
         }
@@ -122,18 +127,19 @@ public class Player : MonoBehaviour
             click = true;
             active = true;
             controller.SetActive(false);
-            if (PlayerInfo.animator)
-                PlayerInfo.animator.SetBool("isRun", false);
+            if (animator)
+                animator.SetBool("isRun", false);
         }
     }
     void Start()
     {
-        PlayerInfo.square = square;
+        
         myCamera = Camera.main;
         active = true;
         controller.SetActive(false);
         click = true;
-        PlayerInfo.animator = PlayerInfo.square.GetComponent<Animator>();
+        square = square1;
+        animator = square.GetComponent<Animator>();
         PlayerInfo.button_atc = button;
         
     }

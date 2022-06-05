@@ -55,24 +55,29 @@ public class Swap_class : MonoBehaviour
         switch (PlayerInfo.classes[i])
         {
             case "Knight":
+                Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square 2"));
                 gameObject.AddComponent<attack>();
                 PlayerInfo.button_atc.onClick.AddListener(()=>gameObject.GetComponent<attack>().TaskOnClick());
-                new_class = Instantiate((GameObject)Resources.Load("Knight_skin"), gameObject.transform);
+                //Player.square = (GameObject)Resources.Load("Knight_skin");
                 break;
             case "Mage":
-
-                
-                new_class = Instantiate((GameObject)Resources.Load("Mage_skin"), gameObject.transform);
+                Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square 1"));
+                //Player.New_skin((GameObject)Resources.Load("Mage_S")); 
+                // Player.square = (GameObject)Resources.Load("Mage_S");
                 new_class = Instantiate((GameObject)Resources.Load("Mage"), gameObject.transform);
                 PlayerInfo.button_atc.onClick.AddListener(() => new_class.GetComponent<Ñlosest_enemy>().TaskOnClick());
 
                 break;
             case "Archer":
-                new_class = Instantiate((GameObject)Resources.Load("Archer_skin"), gameObject.transform);
+               
+                Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square"));
+                //Player.New_skin((GameObject)Resources.Load("Archer_S")); 
+                //Player.square = (GameObject)Resources.Load("Archer_S");
                 new_class = Instantiate((GameObject)Resources.Load("Mage"), gameObject.transform);
                 new_class.GetComponent<Ñlosest_enemy>().splash = (GameObject)Resources.Load("arrow");
                 PlayerInfo.button_atc.onClick.AddListener(() => new_class.GetComponent<Ñlosest_enemy>().TaskOnClick());
                 break;
         }
+        //Player.animator=Player.square.GetComponent<Animator>();
     }
 }
