@@ -32,7 +32,6 @@ public class Main : MonoBehaviour
         }
         WindowController = new WindowsController();
         Hud = new HudController();
-        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -55,5 +54,10 @@ public class Main : MonoBehaviour
     public void TaskOnClick1()
     {
         WindowController.AddWindow("Store");
+    }
+
+    public void TaskOnClick2()
+    {
+        WindowController.AddWindow("SelectGame");
     }
 }
