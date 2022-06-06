@@ -34,7 +34,14 @@ public class Player : MonoBehaviour
     public void Awake()
     {
         if (instance == null) instance = this;
-
+        PlayerInfo.button_atc = button;
+        myCamera = Camera.main;
+        active = true;
+        controller.SetActive(false);
+        click = true;
+        square = square1;
+        animator = square.GetComponent<Animator>();
+    
     }
     public void Update()
     {
@@ -131,16 +138,10 @@ public class Player : MonoBehaviour
                 animator.SetBool("isRun", false);
         }
     }
-    void Start()
+    private void Start()
     {
         
-        myCamera = Camera.main;
-        active = true;
-        controller.SetActive(false);
-        click = true;
-        square = square1;
-        animator = square.GetComponent<Animator>();
-        PlayerInfo.button_atc = button;
+
         
     }
 }

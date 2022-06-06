@@ -13,7 +13,7 @@ public class OpenInventory1 : MonoBehaviour
     [SerializeField]List<GameObject> list = new List<GameObject>();
     void Start()
     {
-        grid = gameObject.transform.FindChild("Grid").gameObject;
+        grid = gameObject.transform.Find("Grid").gameObject;
         int i = 0;
         foreach (Transform s in grid.transform)
         {
@@ -21,23 +21,23 @@ public class OpenInventory1 : MonoBehaviour
             if(Inventory.InventoryItems.Count>=i+1 && Inventory.InventoryItems[i].Name!="Empty")
             {
                 
-                s.transform.FindChild("UIItem").FindChild("ImageIcon").GetComponent<Image>().sprite = Inventory.InventoryItems[i].Icon;
-                s.transform.FindChild("UIItem").GetComponent<UIItems>().name = Inventory.InventoryItems[i].Name;
-                s.transform.FindChild("UIItem").GetComponent<UIItems>().stack = Inventory.InventoryItems[i].stack;
-                s.transform.FindChild("UIItem").GetComponent<UIItems>().quantity = Inventory.InventoryItems[i].quantity;
+                s.transform.Find("UIItem").Find("ImageIcon").GetComponent<Image>().sprite = Inventory.InventoryItems[i].Icon;
+                s.transform.Find("UIItem").GetComponent<UIItems>().name = Inventory.InventoryItems[i].Name;
+                s.transform.Find("UIItem").GetComponent<UIItems>().stack = Inventory.InventoryItems[i].stack;
+                s.transform.Find("UIItem").GetComponent<UIItems>().quantity = Inventory.InventoryItems[i].quantity;
                 if (Inventory.InventoryItems[i].quantity > 1)
                 {
-                    s.transform.FindChild("UIItem").FindChild("Text").GetComponent<Text>().text = Inventory.InventoryItems[i].quantity.ToString();
+                    s.transform.Find("UIItem").Find("Text").GetComponent<Text>().text = Inventory.InventoryItems[i].quantity.ToString();
                 }
                 else 
                 {
-                    s.transform.FindChild("UIItem").FindChild("Text").gameObject.SetActive(false);
+                    s.transform.Find("UIItem").Find("Text").gameObject.SetActive(false);
                 }
             }
             else
             {
-                s.transform.FindChild("UIItem").FindChild("ImageIcon").GetComponent<Image>().gameObject.SetActive(false);
-                s.transform.FindChild("UIItem").FindChild("Text").gameObject.SetActive(false);
+                s.transform.Find("UIItem").Find("ImageIcon").GetComponent<Image>().gameObject.SetActive(false);
+                s.transform.Find("UIItem").Find("Text").gameObject.SetActive(false);
             }
             list.Add(s.gameObject);
             i++;
@@ -48,12 +48,12 @@ public class OpenInventory1 : MonoBehaviour
         Inventory.InventoryItems.Clear();   
         foreach (GameObject s in list)
         {
-            if( s.transform.FindChild("UIItem")!= null)
+            if( s.transform.Find("UIItem")!= null)
             {
-                if (s.transform.FindChild("UIItem").FindChild("ImageIcon").GetComponent<Image>().gameObject.activeSelf == true)
+                if (s.transform.Find("UIItem").Find("ImageIcon").GetComponent<Image>().gameObject.activeSelf == true)
                 {
-                    GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.FindChild("UIItem").GetComponent<UIItems>().name) as GameObject);
-                    gameObject.GetComponent<Item>().quantity = s.transform.FindChild("UIItem").GetComponent<UIItems>().quantity;
+                    GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.Find("UIItem").GetComponent<UIItems>().name) as GameObject);
+                    gameObject.GetComponent<Item>().quantity = s.transform.Find("UIItem").GetComponent<UIItems>().quantity;
                     PlayerInfo.inventory.AddItem(gameObject);
                 }
                 else

@@ -8,7 +8,13 @@ public class Swap_class : MonoBehaviour
     public GameObject new_class;
     public GameObject Collaider;
     public int k;
-
+    public Sprite []sprite;
+    private void Start()
+    {
+        Debug.Log(PlayerInfo.this_classes.ToString());
+        swap(2);
+        
+    }
     public void swap()
     { 
         destroy_class();
@@ -23,6 +29,15 @@ public class Swap_class : MonoBehaviour
         destroy_class();
         add_class(i);
         PlayerInfo.this_classes = i;
+    }
+    public void swap_with_button(Button i)
+    {
+        destroy_class();
+        add_class(int.Parse(i.name));
+        string new_name = PlayerInfo.this_classes.ToString();
+        PlayerInfo.this_classes = int.Parse(i.name);
+        i.name = new_name;
+        i.GetComponent<Image>().sprite = sprite[int.Parse(new_name)] ;
     }
     private void destroy_class()
     {
@@ -48,6 +63,7 @@ public class Swap_class : MonoBehaviour
                 }
                 break;
         }
+        if(PlayerInfo.button_atc!=null)
         PlayerInfo.button_atc.onClick.RemoveAllListeners();
     }
     private void add_class(int i)
@@ -55,29 +71,23 @@ public class Swap_class : MonoBehaviour
         switch (PlayerInfo.classes[i])
         {
             case "Knight":
-                Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square 2"));
+                Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square"));
                 gameObject.AddComponent<attack>();
                 PlayerInfo.button_atc.onClick.AddListener(()=>gameObject.GetComponent<attack>().TaskOnClick());
-                //Player.square = (GameObject)Resources.Load("Knight_skin");
+
                 break;
             case "Mage":
                 Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square 1"));
-                //Player.New_skin((GameObject)Resources.Load("Mage_S")); 
-                // Player.square = (GameObject)Resources.Load("Mage_S");
                 new_class = Instantiate((GameObject)Resources.Load("Mage"), gameObject.transform);
                 PlayerInfo.button_atc.onClick.AddListener(() => new_class.GetComponent<Ñlosest_enemy>().TaskOnClick());
 
                 break;
             case "Archer":
-               
-                Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square"));
-                //Player.New_skin((GameObject)Resources.Load("Archer_S")); 
-                //Player.square = (GameObject)Resources.Load("Archer_S");
+                Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square 2"));
                 new_class = Instantiate((GameObject)Resources.Load("Mage"), gameObject.transform);
                 new_class.GetComponent<Ñlosest_enemy>().splash = (GameObject)Resources.Load("arrow");
                 PlayerInfo.button_atc.onClick.AddListener(() => new_class.GetComponent<Ñlosest_enemy>().TaskOnClick());
                 break;
         }
-        //Player.animator=Player.square.GetComponent<Animator>();
     }
 }

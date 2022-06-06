@@ -17,9 +17,9 @@ public class UISlot : MonoBehaviour,IDropHandler
                 otherItemTransform.GetComponent<UIItems>().quantity += thisItemTransform.GetComponent<UIItems>().quantity;
                 if(otherItemTransform.GetComponent<UIItems>().quantity-thisItemTransform.GetComponent<UIItems>().quantity==1)
                 {
-                    otherItemTransform.transform.FindChild("Text").gameObject.SetActive(true);
+                    otherItemTransform.transform.Find("Text").gameObject.SetActive(true);
                 }
-                otherItemTransform.transform.FindChild("Text").GetComponent<Text>().text= otherItemTransform.GetComponent<UIItems>().quantity.ToString();
+                otherItemTransform.transform.Find("Text").GetComponent<Text>().text= otherItemTransform.GetComponent<UIItems>().quantity.ToString();
                 Destroy(thisItemTransform.gameObject);
             }
             else
