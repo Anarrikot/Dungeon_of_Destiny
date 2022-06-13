@@ -21,14 +21,17 @@ public class Player : MonoBehaviour
     public static GameObject square;
     public static Animator animator;
     public float TimeDelayHp;
- 
+    public GameObject drop_item;
 
     public static void New_skin(GameObject square1)
     {
         square = square1;
         animator = square.GetComponent<Animator>();
     }
-
+    public void Start()
+    {
+        Main.instance.Show_HUD();
+    }
     //public int lives = 100;
     //public float speed = 10;
     public void Awake()
@@ -137,11 +140,5 @@ public class Player : MonoBehaviour
             if (animator)
                 animator.SetBool("isRun", false);
         }
-    }
-    private void Start()
-    {
-        
-
-        
     }
 }

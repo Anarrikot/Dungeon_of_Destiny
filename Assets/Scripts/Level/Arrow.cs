@@ -28,6 +28,7 @@ public class Arrow : MonoBehaviour
                 collision.GetComponent<Enemy_Info>().TakeDamage(PlayerInfo.damage);
                 if (collision.GetComponent<Enemy_Info>().lives <= 0)
                 {
+                    collision.GetComponent<Enemy_Info>().Drop();
                     Destroy(collision.gameObject);
 
                 }

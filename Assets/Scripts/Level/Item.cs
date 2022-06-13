@@ -15,5 +15,12 @@ public class Item:MonoBehaviour
     public int price = 100;
     public Sprite Icon;
     public Image image;
-
+    public int id;
+    public void Start()
+    {
+        if(gameObject.GetComponent<Sprite>() != null)
+        {
+            Icon = gameObject.GetComponent<Sprite>();
+        }
+    }
 }

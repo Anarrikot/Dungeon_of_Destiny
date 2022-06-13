@@ -25,6 +25,7 @@ public class OpenInventory1 : MonoBehaviour
                 s.transform.Find("UIItem").GetComponent<UIItems>().name = Inventory.InventoryItems[i].Name;
                 s.transform.Find("UIItem").GetComponent<UIItems>().stack = Inventory.InventoryItems[i].stack;
                 s.transform.Find("UIItem").GetComponent<UIItems>().quantity = Inventory.InventoryItems[i].quantity;
+                s.transform.Find("UIItem").GetComponent<UIItems>().id = Inventory.InventoryItems[i].id;
                 if (Inventory.InventoryItems[i].quantity > 1)
                 {
                     s.transform.Find("UIItem").Find("Text").GetComponent<Text>().text = Inventory.InventoryItems[i].quantity.ToString();
@@ -52,18 +53,20 @@ public class OpenInventory1 : MonoBehaviour
             {
                 if (s.transform.Find("UIItem").Find("ImageIcon").GetComponent<Image>().gameObject.activeSelf == true)
                 {
-                    GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.Find("UIItem").GetComponent<UIItems>().name) as GameObject);
+                    //GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.Find("UIItem").GetComponent<UIItems>().name) as GameObject);
+                    GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.Find("UIItem").GetComponent<UIItems>().id.ToString())as GameObject);
                     gameObject.GetComponent<Item>().quantity = s.transform.Find("UIItem").GetComponent<UIItems>().quantity;
                     PlayerInfo.inventory.AddItem(gameObject);
+                    Destroy(gameObject);
                 }
                 else
                 {
-                   PlayerInfo.inventory.AddItem(Instantiate(Resources.Load("Item/Empty") as GameObject));
+                   PlayerInfo.inventory.AddItem(Resources.Load("Item/0") as GameObject);
                 }
             }
             else
             {
-                PlayerInfo.inventory.AddItem(Instantiate(Resources.Load("Item/Empty") as GameObject));
+                PlayerInfo.inventory.AddItem(Resources.Load("Item/0") as GameObject);
             }
         }
     }

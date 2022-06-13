@@ -84,6 +84,7 @@ public class attack : MonoBehaviour
                 {
                     enemy1 = enemies[i];
                     enemies.Remove(enemies[i]);
+                    enemy1.GetComponent<Enemy_Info>().Drop();
                     Destroy(enemy1.gameObject);
                     //enemy.GetComponent<Enemy>().CheckDrop();
                 }

@@ -11,9 +11,7 @@ public class Swap_class : MonoBehaviour
     public Sprite []sprite;
     private void Start()
     {
-        Debug.Log(PlayerInfo.this_classes.ToString());
-        swap(2);
-        
+        swap(2); 
     }
     public void swap()
     { 

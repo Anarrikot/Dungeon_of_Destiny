@@ -112,14 +112,12 @@ public class Сlosest_enemy : MonoBehaviour
         splash1 = GameObject.Instantiate(splash);
         if(PlayerInfo.classes[PlayerInfo.this_classes]=="Mage")
         {
-            Debug.Log("fff");
             enemy.GetComponent<Enemy_Info>().TakeDamage(PlayerInfo.damage * 50 / 100);
             splash1.transform.position = enemy.transform.position;
         }
 
         if (PlayerInfo.classes[PlayerInfo.this_classes] == "Archer")
         {
-            Debug.Log("sss");
             splash1.transform.position = gameObject.transform.position;
             splash1.GetComponent<Arrow>().add_cord(enemy.transform.position.x-gameObject.transform.position.x, enemy.transform.position.y - gameObject.transform.position.y);
         }

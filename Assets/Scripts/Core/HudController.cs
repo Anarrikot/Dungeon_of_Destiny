@@ -26,11 +26,16 @@ public class HudController : MonoBehaviour
                 child.GetComponent<Text>().text = PlayerInfo.cristals.ToString();
             }
         }
-        HUD=Instantiate((GameObject)Resources.Load("Stats_in_HUD"), Main.instance.HUD.transform);
-        foreach(Transform child in HUD.transform)
+
+    }
+
+    public void Show_HUD()
+    {
+        HUD = Instantiate((GameObject)Resources.Load("Stats_in_HUD"), Main.instance.HUD.transform);
+        foreach (Transform child in HUD.transform)
         {
-            if(child.name == "MP")
-                PlayerInfo.MP_Image=child.GetComponent<Image>();
+            if (child.name == "MP")
+                PlayerInfo.MP_Image = child.GetComponent<Image>();
             if (child.name == "HP")
                 PlayerInfo.HP_Image = child.GetComponent<Image>();
         }

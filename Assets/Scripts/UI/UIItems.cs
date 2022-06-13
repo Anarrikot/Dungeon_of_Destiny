@@ -10,6 +10,7 @@ public class UIItems : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHan
     private Canvas MainCanvas;
     private RectTransform m_RectTransform;
     public string name;
+    public int id;
     public int stack;
     public int quantity;
     void Start()

@@ -39,7 +39,10 @@ public class Main : MonoBehaviour
     {
         Hud.Show();
     }
-
+    public void Show_HUD()
+    {
+        Hud.Show_HUD();
+    }
     // Update is called once per frame
     void Update()
     {
