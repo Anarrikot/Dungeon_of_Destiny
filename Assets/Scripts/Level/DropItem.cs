@@ -21,7 +21,7 @@ public class DropItem : MonoBehaviour
         {
             //PlayerInfo.inventory.AddItem(gameObject);
             Debug.Log(gameObject.GetComponent<Item>().Name);
-            PlayerInfo.inventory.New_Item(gameObject);
+            PlayerInfo.inventory.New_Item(gameObject.GetComponent<Item>());
             Destroy(gameObject);
         }
     }

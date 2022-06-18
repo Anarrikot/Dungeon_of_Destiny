@@ -33,23 +33,27 @@ public class PlayerInfo : MonoBehaviour
     {
 
     }
-    public static void AddMoney(int i)
+    public static bool AddMoney(int i)
     {
         foreach (Transform child in HudController.Money.transform)
         {
-            if (child.name == "Text")
+            if (child.name == "Text" && Check(i,"Money"))
             {
+                money += i;
                 i = int.Parse(child.GetComponent<Text>().text) + i;
                 child.GetComponent<Text>().text = i.ToString();
+                return true;
             }
         }
+        return false;
     }
     public static void AddCristal(int i)
     {
         foreach (Transform child in HudController.Cristals.transform)
         {
-            if (child.name == "Text")
+            if (child.name == "Text" && Check(i, "Cristals"))
             {
+                cristals += i;
                 i = int.Parse(child.GetComponent<Text>().text) + i;
                 child.GetComponent<Text>().text = i.ToString();
             }
@@ -58,11 +62,12 @@ public class PlayerInfo : MonoBehaviour
 
     public static bool Check(int i, string type)
     {
+        
         if (type == "Money")
-            if (money >= i)
-                return true;
+            if (money >= Mathf.Abs(i))
+                return true;   
         if (type == "Cristals")
-            if (cristals >= i)
+            if (cristals >= Mathf.Abs(i))
                 return true;
         return false;
     }

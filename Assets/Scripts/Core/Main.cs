@@ -53,7 +53,11 @@ public class Main : MonoBehaviour
     {
         WindowController.AddWindow("Inventory");
     }
-
+     
+    public void Shop()
+    {
+        WindowController.AddWindow("Shop");
+    }
     public void TaskOnClick1()
     {
         WindowController.AddWindow("Store");

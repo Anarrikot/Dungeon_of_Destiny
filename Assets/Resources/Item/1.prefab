@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Copper
   quantity: 1
-  stack: 8
+  stack: 99
   price: 100
   Icon: {fileID: 21300000, guid: c8977b1ade051034dbfed01d0465020e, type: 3}
   image: {fileID: 6006791184026129257, guid: eb8eedaefd26be6479c820662e90410c, type: 3}

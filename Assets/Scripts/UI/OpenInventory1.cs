@@ -56,17 +56,20 @@ public class OpenInventory1 : MonoBehaviour
                     //GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.Find("UIItem").GetComponent<UIItems>().name) as GameObject);
                     GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.Find("UIItem").GetComponent<UIItems>().id.ToString())as GameObject);
                     gameObject.GetComponent<Item>().quantity = s.transform.Find("UIItem").GetComponent<UIItems>().quantity;
-                    PlayerInfo.inventory.AddItem(gameObject);
+                    PlayerInfo.inventory.AddItem(gameObject.GetComponent<Item>());
                     Destroy(gameObject);
                 }
                 else
                 {
-                   PlayerInfo.inventory.AddItem(Resources.Load("Item/0") as GameObject);
+                   GameObject gameObject =  Resources.Load("Item/0") as GameObject;
+                   PlayerInfo.inventory.AddItem(gameObject.GetComponent<Item>());
                 }
             }
             else
             {
-                PlayerInfo.inventory.AddItem(Resources.Load("Item/0") as GameObject);
+                GameObject gameObject = Resources.Load("Item/0") as GameObject;
+                PlayerInfo.inventory.AddItem(gameObject.GetComponent<Item>());
+                //PlayerInfo.inventory.AddItem(Resources.Load("Item/0") as GameObject);
             }
         }
     }
