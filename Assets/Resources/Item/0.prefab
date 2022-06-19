@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8398290507657668628}
   - component: {fileID: 2142660519323165752}
+  - component: {fileID: 4307526142168421361}
   m_Layer: 5
   m_Name: 0
   m_TagString: Untagged
@@ -52,4 +53,14 @@ MonoBehaviour:
   quantity: 0
   stack: 0
   price: 100
+  Icon: {fileID: 0}
   image: {fileID: 0}
+  id: 0
+--- !u!222 &4307526142168421361
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7283992460348819468}
+  m_CullTransparentMesh: 1
