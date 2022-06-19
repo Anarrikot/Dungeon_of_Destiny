@@ -10,6 +10,7 @@ public class Enemy_attack : MonoBehaviour
     public bool target = false;
     public bool collisionEnemy = false;
     public Enemy_Info info;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +61,7 @@ public class Enemy_attack : MonoBehaviour
     }
     public void attack()
     {
-        if(collisionEnemy==true)
+        if(collisionEnemy==true && PlayerInfo.lives > 0)
         {
             if (PlayerInfo.lives > info.damage)
             {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerInfo : MonoBehaviour
 {
     public static int lives = 100;
+    public static int livesMax = 100;
     public static float speed = 10,x,y;
     public static int damage;
     public static int mp = 100;
