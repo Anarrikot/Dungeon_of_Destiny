@@ -12,7 +12,7 @@ public class Interactions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Untagged")
+        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Untagged" && collision.gameObject.tag != "Wall")
         {
             second_button();
             npc = collision.gameObject;
@@ -20,7 +20,7 @@ public class Interactions : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Untagged")
+        if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Untagged" && collision.gameObject.tag != "Wall")
         {
             npc = null;
             first_button();
