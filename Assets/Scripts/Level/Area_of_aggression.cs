@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Area_of_aggression : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class Area_of_aggression : MonoBehaviour
         {
             collision.GetComponent<AgentScript>().In_area=true;
             enemies.Add(collision.gameObject);
+            collision.GetComponent<Enemy_Info>().die = Enemys_die;
         }
         if (collision.gameObject.tag == "Player")
         {
@@ -26,9 +28,9 @@ public class Area_of_aggression : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
-    void Update()
+    public void Enemys_die(GameObject gameObj)
     {
-        
+        enemies.Remove(gameObj);
     }
+    
 }

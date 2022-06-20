@@ -15,9 +15,6 @@ public class attack : MonoBehaviour
     public Animator anim;
     public float TimeDelayMp;
     public float TimeDelayAttack;
-    //public Image MP;
-    //public Player player;
-    
 
     private void Start()
     {
@@ -86,7 +83,6 @@ public class attack : MonoBehaviour
                     enemies.Remove(enemies[i]);
                     enemy1.GetComponent<Enemy_Info>().Drop();
                     Destroy(enemy1.gameObject);
-                    //enemy.GetComponent<Enemy>().CheckDrop();
                 }
                 else
                 {

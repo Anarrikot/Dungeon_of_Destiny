@@ -151,6 +151,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7121767128902115588, guid: 0b11a716c79a9fe42b960bfca7804ec2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7121767128902115591, guid: 0b11a716c79a9fe42b960bfca7804ec2,
         type: 3}
       propertyPath: m_RootOrder
@@ -3159,6 +3164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Square (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121767128902115588, guid: 0b11a716c79a9fe42b960bfca7804ec2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7121767128902115591, guid: 0b11a716c79a9fe42b960bfca7804ec2,
         type: 3}
@@ -7102,6 +7112,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.42826176
       objectReference: {fileID: 0}
+    - target: {fileID: 4510037934500567107, guid: 526eae04c05bc26428b736b2f1d6523c,
+        type: 3}
+      propertyPath: start
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4510037934500567108, guid: 526eae04c05bc26428b736b2f1d6523c,
         type: 3}
       propertyPath: m_RootOrder
@@ -7191,6 +7206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Square (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121767128902115588, guid: 0b11a716c79a9fe42b960bfca7804ec2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7121767128902115591, guid: 0b11a716c79a9fe42b960bfca7804ec2,
         type: 3}

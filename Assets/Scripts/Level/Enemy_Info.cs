@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy_Info : MonoBehaviour
 {
@@ -17,11 +18,13 @@ public class Enemy_Info : MonoBehaviour
     public Animator animator;
     public float Chance=100f;
     public GameObject drop_item;
-    // Start is called before the first frame update
-    void Start()
+    public Die die;
+    public delegate void Die(GameObject gameObj);
+    void Awake()
     {
         animator = GetComponent<Animator>();
         HP.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -49,13 +52,14 @@ public class Enemy_Info : MonoBehaviour
     }
     public void Drop()
     {
+        die(gameObject);
         int rand = Random.Range(0, 100);
         if (float.Parse(rand.ToString()) <= Chance)
         {
             GameObject new_item = Instantiate(drop_item, gameObject.transform.parent.transform);
             new_item.GetComponent<DropItem>().active(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y-0.5f, gameObject.transform.position.z));
         }
-       
+        
     }
     public void active()
     {

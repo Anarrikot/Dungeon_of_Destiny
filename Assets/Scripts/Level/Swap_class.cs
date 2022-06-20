@@ -11,7 +11,9 @@ public class Swap_class : MonoBehaviour
     public Sprite []sprite;
     private void Start()
     {
-        swap(2); 
+        swap(2);
+        
+
     }
     public void swap()
     { 
@@ -27,15 +29,18 @@ public class Swap_class : MonoBehaviour
         destroy_class();
         add_class(i);
         PlayerInfo.this_classes = i;
+        OpenInventory.image.sprite = sprite[i];
+
     }
     public void swap_with_button(Button i)
     {
         destroy_class();
         add_class(int.Parse(i.name));
+        OpenInventory.image.sprite = sprite[int.Parse(i.name)];
         string new_name = PlayerInfo.this_classes.ToString();
         PlayerInfo.this_classes = int.Parse(i.name);
         i.name = new_name;
-        i.GetComponent<Image>().sprite = sprite[int.Parse(new_name)] ;
+        i.GetComponent<Image>().sprite = sprite[int.Parse(new_name)];
     }
     private void destroy_class()
     {

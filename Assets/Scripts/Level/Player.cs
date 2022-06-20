@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     }
     public void Start()
     {
-        Main.instance.Show_HUD();
+        
     }
     //public int lives = 100;
     //public float speed = 10;
@@ -44,7 +44,8 @@ public class Player : MonoBehaviour
         click = true;
         square = square1;
         animator = square.GetComponent<Animator>();
-    
+        Main.instance.Show_HUD();
+
     }
     public void Update()
     {
