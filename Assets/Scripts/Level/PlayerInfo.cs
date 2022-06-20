@@ -70,6 +70,8 @@ public class PlayerInfo : MonoBehaviour
         if (type == "Cristals")
             if (cristals >= Mathf.Abs(i))
                 return true;
+       
+        Main.instance.Notification();
         return false;
     }
 

@@ -76,7 +76,7 @@ public class Inventory : MonoBehaviour
             
             AddItem(new_item.GetComponent<Item>());
         }
-       
+       Save();
     }
     public void Save()
     {
