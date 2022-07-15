@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -22,7 +23,8 @@ public class Player : MonoBehaviour
     public static Animator animator;
     public float TimeDelayHp;
     public GameObject drop_item, deathPerfab;
-
+    public Vector3 start_position, target_position;
+    [SerializeField] public static NavMeshAgent agent;
     public static void New_skin(GameObject square1)
     {
         square = square1;
@@ -46,11 +48,13 @@ public class Player : MonoBehaviour
         animator = square.GetComponent<Animator>();
         Main.instance.Show_HUD();
 
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateUpAxis = false;
+        agent.updateRotation = false;
     }
     public void Update()
     {
         PlayerInfo.HP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.lives * 70 / 100);
-        //MP.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, mp * 70 / 100);
         if (PlayerInfo.lives == 0)
         {
             death = true;
@@ -67,6 +71,8 @@ public class Player : MonoBehaviour
                 TimeDelayHp = 0;
             }
         }
+
+        /*
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         Vector3 tempVect = new Vector3(h, v, 0);
@@ -146,5 +152,7 @@ public class Player : MonoBehaviour
             if (animator)
                 animator.SetBool("isRun", false);
         }
+        */
+        //agent.destination = new Vector3(gameObject.transform.position.x-1, gameObject.transform.position.y);
     }
 }
