@@ -28,7 +28,8 @@ public class portal : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         PlayerInfo.lives = PlayerInfo.livesMax;
-        PlayerInfo.inventory.Save();
+        ReadJSON.instance.SaveInfo();
+        ReadJSON.instance.SaveInvenory();
         WindowController.AddWindow("Win");
     }
 

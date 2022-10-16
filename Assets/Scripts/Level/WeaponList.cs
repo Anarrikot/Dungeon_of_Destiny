@@ -8,6 +8,7 @@ public class WeaponList : MonoBehaviour
     public static WeaponList instance;
     public TextAsset TextAssetData;
     public static List<Weapone> myWeaponeList = new List<Weapone>();
+    Dictionary<string,int> specifications = new Dictionary<string,int>();
     private void Awake()
     {
         if (instance == null) instance = this;

@@ -2,27 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Move : MonoBehaviour
+public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public GameObject controller;
-    private bool active, click;
+    private bool active, click,start;
     private float i, k, x, y,x1,y1;
     public GameObject coll;
+    public Image im;
 
     public void Start()
     {
-        
-       // myCamera = Camera.main;
     }
     public void Awake()
     {
         active = true;
         controller.SetActive(false);
     }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+       start = false;
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        start = true;
+    }
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)&& start)
         {
             Vector3 dir4 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10);
             controller.active = true;
@@ -44,9 +52,9 @@ public class Move : MonoBehaviour
                     controller.transform.position = Vector3.MoveTowards(controller.transform.position, dir4, 1111111 * Time.deltaTime);
                 else
                 {
-                    
+
                     x = Input.mousePosition.x - i;
-                    y = Input.mousePosition.y  - k;
+                    y = Input.mousePosition.y - k;
                     x = 125 * x / Mathf.Sqrt(x * x + y * y);
                     if (Input.mousePosition.y > k)
                         y = Mathf.Sqrt(15625 - x * x);
@@ -57,7 +65,7 @@ public class Move : MonoBehaviour
                 }
 
                 x = Input.mousePosition.x - i;
-                y = Input.mousePosition.y  - k;
+                y = Input.mousePosition.y - k;
                 if (x != 0 && y != 0)
                 {
                     if (Input.mousePosition.x >= i)
@@ -68,22 +76,22 @@ public class Move : MonoBehaviour
 
                     if (Input.mousePosition.x >= i)
                     {
-                        x1 =x / Mathf.Sqrt(x * x + y * y);
-                        y1 =y / Mathf.Sqrt(x * x + y * y);
-                        
+                        x1 = x / Mathf.Sqrt(x * x + y * y);
+                        y1 = y / Mathf.Sqrt(x * x + y * y);
+
                     }
                     else
                     {
                         x1 = x / Mathf.Sqrt(x * x + y * y);
                         y1 = y / Mathf.Sqrt(x * x + y * y);
-                     
+
                     }
                 }
                 if (Input.mousePosition.x - i < 0)
                     Player.square.GetComponent<SpriteRenderer>().flipX = true;
                 else if (Input.mousePosition.x - i > 0)
                     Player.square.GetComponent<SpriteRenderer>().flipX = false;
-                Player.agent.destination = new Vector3 (Player.instance.gameObject.transform.position.x+x1, Player.instance.gameObject.transform.position.y + y1);
+                Player.agent.destination = new Vector3(Player.instance.gameObject.transform.position.x + x1, Player.instance.gameObject.transform.position.y + y1);
             }
         }
         if (Input.GetMouseButtonUp(0))

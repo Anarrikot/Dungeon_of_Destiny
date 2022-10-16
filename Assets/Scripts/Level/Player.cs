@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     }
     public void Start()
     {
-        
     }
     //public int lives = 100;
     //public float speed = 10;

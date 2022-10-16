@@ -7,17 +7,19 @@ public class PlayerInfo : MonoBehaviour
 {
     public static int lives = 100;
     public static int livesMax = 100;
-    public static float speed = 10,x,y;
+    public static int uid;
+    public static int money = 500;
+    public static int cristals = 100;
     public static int damage;
     public static int mp = 100;
+    public static int this_classes;
+    public static float speed = 10, x, y;
     public static float TimeDelayHP = 0.4f;
     public static float TimeDelayMP = 0.2f;
     public static float TimeDelayAttack = 0.1f;
-    public static int money = 500;
-    public static int cristals = 100;
+    public static char name = new char();
     public static PlayerInfo instance;
     public static string[] classes = new string[3];
-    public static int this_classes;
     public static Button button_atc;
     public static Image HP_Image, MP_Image;
     public static Inventory inventory= new Inventory();
@@ -32,7 +34,7 @@ public class PlayerInfo : MonoBehaviour
     }
     public void Start()
     {
-
+        ReadJSON.instance.Load("Save_Info");
     }
     public static bool AddMoney(int i)
     {

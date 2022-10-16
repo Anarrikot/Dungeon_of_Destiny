@@ -34,9 +34,7 @@ public class Inventory : MonoBehaviour
     }
     private void Start()
     {
-        Load();
-       // foreach (GameObject item in StartItems)
-           // AddItem(item.GetComponent<Item>());
+        ReadJSON.instance.Load("Save_Inventory");
     }
     public void New_Item(Item new_item)
     {
@@ -76,7 +74,7 @@ public class Inventory : MonoBehaviour
             
             AddItem(new_item.GetComponent<Item>());
         }
-       Save();
+      ReadJSON.instance.SaveInvenory();
     }
     public void Save()
     {
@@ -100,22 +98,5 @@ public class Inventory : MonoBehaviour
             JsonConvert.SerializeObject(data,Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
 
             );
-    }
-
-    public void Load()
-    {
-        
-        WorldData worldData = JsonConvert.DeserializeObject<WorldData>(File.ReadAllText("Assets/Resources/Save_Inventory.json"));
-        if(worldData != null)
-        {
-            foreach (var id in worldData.items)
-            { 
-                GameObject gameObject = Instantiate(Resources.Load("Item/" + id.id.ToString()) as GameObject);
-                gameObject.GetComponent<Item>().quantity = id.count;
-                PlayerInfo.inventory.AddItem(gameObject.GetComponent<Item>());
-                Destroy(gameObject);
-                
-            }
-        }
     }
 }

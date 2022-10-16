@@ -1,0 +1,108 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Newtonsoft.Json;
+using System.IO;
+
+public class ReadJSON : MonoBehaviour
+{
+    public static ReadJSON instance;
+
+    private void Start()
+    {
+
+    }
+    public class WorldData<T>
+    {
+        public List<T> items = new List<T>();
+    }
+    public class Item_info
+    {
+        public int id = new int();
+        public int count = new int();
+    }
+    public class Info
+    {
+        public char name = new char();
+        public int uid = new int();
+        public int soft = new int();
+        public int hard = new int();
+    }
+    public void Load(string Name)
+    {
+        
+        
+        if(Name== "Save_Inventory")
+        {
+            WorldData<Item_info> worldData = JsonConvert.DeserializeObject<WorldData<Item_info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
+            if (worldData != null)
+            {
+                foreach (var id in worldData.items)
+                {
+                    GameObject gameObject = Instantiate(Resources.Load("Item/" + id.id.ToString()) as GameObject);
+                    gameObject.GetComponent<Item>().quantity = id.count;
+                    PlayerInfo.inventory.AddItem(gameObject.GetComponent<Item>());
+                    Destroy(gameObject);
+                }
+            }  
+        }
+        if (Name == "Save_Info")
+        {
+            WorldData<Info> worldData = JsonConvert.DeserializeObject<WorldData<Info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
+            PlayerInfo.name = worldData.items[0].name;
+            PlayerInfo.uid = worldData.items[0].uid;
+            PlayerInfo.money = worldData.items[0].soft;
+            PlayerInfo.cristals = worldData.items[0].hard;
+        }
+    }
+    public void SaveInvenory()
+    {
+        List<Item_info> items1 = new List<Item_info>();
+        foreach (Item item in Inventory.InventoryItems)
+        {
+            Item_info info = new Item_info()
+            {
+                id = item.id,
+                count = item.quantity
+            };
+
+            items1.Add(info);
+        }
+        var data = new WorldData<Item_info>()
+        {
+            items = items1
+        };
+        File.WriteAllText(
+            "Assets/Resources/Save_Inventory.json",
+            JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })
+
+            );
+    }
+    public void SaveInfo()
+    {
+        List<Info> items1 = new List<Info>();
+
+        Info info = new Info()
+        {
+            name = PlayerInfo.name,
+            uid = PlayerInfo.uid,
+            soft = PlayerInfo.money,
+            hard = PlayerInfo.cristals,
+        };
+
+        items1.Add(info);
+        var data = new WorldData<Info>()
+        {
+            items = items1
+        };
+        File.WriteAllText(
+            "Assets/Resources/Save_Info.json",
+            JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })
+
+            );
+    }
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+    }
+}
