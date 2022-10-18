@@ -53,7 +53,6 @@ public class OpenInventory1 : MonoBehaviour
             {
                 if (s.transform.Find("UIItem").Find("ImageIcon").GetComponent<Image>().gameObject.activeSelf == true)
                 {
-                    //GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.Find("UIItem").GetComponent<UIItems>().name) as GameObject);
                     GameObject gameObject = Instantiate(Resources.Load("Item/" + s.transform.Find("UIItem").GetComponent<UIItems>().id.ToString())as GameObject);
                     gameObject.GetComponent<Item>().quantity = s.transform.Find("UIItem").GetComponent<UIItems>().quantity;
                     PlayerInfo.inventory.AddItem(gameObject.GetComponent<Item>());
@@ -69,9 +68,9 @@ public class OpenInventory1 : MonoBehaviour
             {
                 GameObject gameObject = Resources.Load("Item/0") as GameObject;
                 PlayerInfo.inventory.AddItem(gameObject.GetComponent<Item>());
-                //PlayerInfo.inventory.AddItem(Resources.Load("Item/0") as GameObject);
             }
         }
+        ReadJSON.instance.SaveInvenory();
     }
 
 }

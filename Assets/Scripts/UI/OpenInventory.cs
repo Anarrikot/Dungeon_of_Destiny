@@ -9,7 +9,7 @@ public class OpenInventory : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.Log("fff");
+
         foreach (Transform child in gameObject.transform)
         {
             if (child.name == "Icon")

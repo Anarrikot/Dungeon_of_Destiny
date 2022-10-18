@@ -10,11 +10,12 @@ public class ReadJSON : MonoBehaviour
 
     private void Start()
     {
-
+        Load("Save_Inventory");
+        Load("Save_Info");
     }
     public class WorldData<T>
     {
-        public List<T> items = new List<T>();
+        public List<T> user = new List<T>();
     }
     public class Item_info
     {
@@ -23,10 +24,20 @@ public class ReadJSON : MonoBehaviour
     }
     public class Info
     {
-        public char name = new char();
+        public string name; 
         public int uid = new int();
         public int soft = new int();
         public int hard = new int();
+    }
+    public void fff(string request)
+    {
+        Info user = new Info();
+        user = JsonUtility.FromJson<Info>(request);
+        PlayerInfo.name = user.name;
+        PlayerInfo.uid = user.uid;
+        PlayerInfo.money = user.soft;
+        PlayerInfo.cristals = user.hard;
+        Debug.Log(user.soft.ToString());
     }
     public void Load(string Name)
     {
@@ -37,7 +48,7 @@ public class ReadJSON : MonoBehaviour
             WorldData<Item_info> worldData = JsonConvert.DeserializeObject<WorldData<Item_info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
             if (worldData != null)
             {
-                foreach (var id in worldData.items)
+                foreach (var id in worldData.user)
                 {
                     GameObject gameObject = Instantiate(Resources.Load("Item/" + id.id.ToString()) as GameObject);
                     gameObject.GetComponent<Item>().quantity = id.count;
@@ -49,10 +60,10 @@ public class ReadJSON : MonoBehaviour
         if (Name == "Save_Info")
         {
             WorldData<Info> worldData = JsonConvert.DeserializeObject<WorldData<Info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
-            PlayerInfo.name = worldData.items[0].name;
-            PlayerInfo.uid = worldData.items[0].uid;
-            PlayerInfo.money = worldData.items[0].soft;
-            PlayerInfo.cristals = worldData.items[0].hard;
+            PlayerInfo.name = worldData.user[0].name;
+            PlayerInfo.uid = worldData.user[0].uid;
+            PlayerInfo.money = worldData.user[0].soft;
+            PlayerInfo.cristals = worldData.user[0].hard;
         }
     }
     public void SaveInvenory()
@@ -70,7 +81,7 @@ public class ReadJSON : MonoBehaviour
         }
         var data = new WorldData<Item_info>()
         {
-            items = items1
+            user = items1
         };
         File.WriteAllText(
             "Assets/Resources/Save_Inventory.json",
@@ -93,7 +104,7 @@ public class ReadJSON : MonoBehaviour
         items1.Add(info);
         var data = new WorldData<Info>()
         {
-            items = items1
+            user = items1
         };
         File.WriteAllText(
             "Assets/Resources/Save_Info.json",

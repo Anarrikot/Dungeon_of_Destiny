@@ -17,7 +17,7 @@ public class PlayerInfo : MonoBehaviour
     public static float TimeDelayHP = 0.4f;
     public static float TimeDelayMP = 0.2f;
     public static float TimeDelayAttack = 0.1f;
-    public static char name = new char();
+    public static string name;
     public static PlayerInfo instance;
     public static string[] classes = new string[3];
     public static Button button_atc;

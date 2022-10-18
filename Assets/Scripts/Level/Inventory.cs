@@ -74,29 +74,10 @@ public class Inventory : MonoBehaviour
             
             AddItem(new_item.GetComponent<Item>());
         }
-      ReadJSON.instance.SaveInvenory();
+      
     }
     public void Save()
     {
-        List<Item_info> items1 = new List<Item_info>();
-        foreach (Item item in InventoryItems)
-        {
-            Item_info info = new Item_info()
-            {
-                id = item.id,
-                count = item.quantity
-            };
-
-            items1.Add(info);
-        }
-        var data = new WorldData()
-        {
-            items= items1
-        };
-        File.WriteAllText(
-            "Assets/Resources/Save_Inventory.json",
-            JsonConvert.SerializeObject(data,Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore})
-
-            );
+        ReadJSON.instance.SaveInvenory();
     }
 }
