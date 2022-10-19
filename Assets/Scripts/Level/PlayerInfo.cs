@@ -23,7 +23,30 @@ public class PlayerInfo : MonoBehaviour
     public static Button button_atc;
     public static Image HP_Image, MP_Image;
     public static Inventory inventory= new Inventory();
+    private static Transform moneyText;
+    private static Transform cristalsText;
 
+    public void Start()
+    {
+        foreach (Transform child in HudController.Money.transform)
+        {
+           moneyText=child;
+        }
+        foreach (Transform child in HudController.Cristals.transform)
+        {
+            cristalsText = child;
+        }
+    }
+    public static void SetMoney(int m)
+    {
+        money = m;
+        moneyText.GetComponent<Text>().text = money.ToString();
+    }
+    public static void SetCristals(int m)
+    {
+        cristals = m;
+        cristalsText.GetComponent<Text>().text = cristals.ToString();
+    }
     public void Awake()
     {
         if (instance == null) instance = this;
@@ -32,35 +55,28 @@ public class PlayerInfo : MonoBehaviour
         classes[2] = "Knight";
         this_classes = 0;
     }
-    public void Start()
-    {
-        ReadJSON.instance.Load("Save_Info");
-    }
     public static bool AddMoney(int i)
     {
-        foreach (Transform child in HudController.Money.transform)
+
+        if (moneyText.name == "Text" && Check(i,"Money"))
         {
-            if (child.name == "Text" && Check(i,"Money"))
-            {
-                money += i;
-                i = int.Parse(child.GetComponent<Text>().text) + i;
-                child.GetComponent<Text>().text = i.ToString();
-                return true;
-            }
+            money += i;
+            i = int.Parse(moneyText.GetComponent<Text>().text) + i;
+            moneyText.GetComponent<Text>().text = i.ToString();
+            return true;
         }
         return false;
     }
-    public static void AddCristal(int i)
-    {
-        foreach (Transform child in HudController.Cristals.transform)
+    public static bool AddCristal(int i) { 
+
+        if (cristalsText.name == "Text" && Check(i, "Cristals"))
         {
-            if (child.name == "Text" && Check(i, "Cristals"))
-            {
-                cristals += i;
-                i = int.Parse(child.GetComponent<Text>().text) + i;
-                child.GetComponent<Text>().text = i.ToString();
-            }
+            cristals += i;
+            i = int.Parse(cristalsText.GetComponent<Text>().text) + i;
+            cristalsText.GetComponent<Text>().text = i.ToString();
+            return true;
         }
+        return false;
     }
 
     public static bool Check(int i, string type)

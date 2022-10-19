@@ -32,12 +32,13 @@ public class ReadJSON : MonoBehaviour
     public void fff(string request)
     {
         Info user = new Info();
-        user = JsonUtility.FromJson<Info>(request);
-        PlayerInfo.name = user.name;
-        PlayerInfo.uid = user.uid;
-        PlayerInfo.money = user.soft;
-        PlayerInfo.cristals = user.hard;
-        Debug.Log(user.soft.ToString());
+        WorldData<Info> worldData = JsonConvert.DeserializeObject<WorldData<Info>>(request);
+        //user = JsonUtility.FromJson<Info>(request);
+        PlayerInfo.name = worldData.user[0].name;
+        PlayerInfo.uid = worldData.user[0].uid;
+        PlayerInfo.money = worldData.user[0].soft;
+        PlayerInfo.cristals = worldData.user[0].hard;
+        Debug.Log(PlayerInfo.name);
     }
     public void Load(string Name)
     {
