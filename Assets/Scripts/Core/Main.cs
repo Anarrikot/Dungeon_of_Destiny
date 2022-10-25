@@ -37,7 +37,7 @@ public class Main : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Hud.Show();
+        //Hud.Show();
     }
     public void Show_HUD()
     {
