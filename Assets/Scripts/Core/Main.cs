@@ -33,11 +33,13 @@ public class Main : MonoBehaviour
         WindowController = new WindowsController();
         Hud = new HudController();
     }
-
-    // Start is called before the first frame update
-    void Start()
+    public void Start_Load()
     {
-        //Hud.Show();
+    }
+    // Start is called before the first frame update
+    public void Start_HUD()
+    {
+        Hud.Show();
     }
     public void Show_HUD()
     {
@@ -52,6 +54,10 @@ public class Main : MonoBehaviour
     public void TaskOnClick()
     {
         WindowController.AddWindow("Inventory");
+    }
+    public void TaskOnClick3()
+    {
+        WindowController.AddWindow("LoadScene");
     }
     public void Notification()
     {

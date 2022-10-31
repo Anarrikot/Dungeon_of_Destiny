@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class LoadSceneManadger : MonoBehaviour
 {
    public void LoadScene(int sceneID)
-    {
-        SceneManager.LoadScene(sceneID);
+   {
+        Main.instance.TaskOnClick3();
+        
+        this.GetComponent<ComonWindow>().Close();
+        Preloader.instance.Load(sceneID,false);
         Time.timeScale = 1;
-    }
+   }
+    
 }

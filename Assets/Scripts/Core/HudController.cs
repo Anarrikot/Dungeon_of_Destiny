@@ -28,7 +28,6 @@ public class HudController : MonoBehaviour
         }
 
     }
-
     public void Show_HUD()
     {
         HUD = Instantiate((GameObject)Resources.Load("Stats_in_HUD"), Main.instance.HUD.transform);

@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     }
     public void Start()
     {
+        Main.instance.Show_HUD();
     }
     //public int lives = 100;
     //public float speed = 10;

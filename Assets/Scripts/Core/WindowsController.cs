@@ -13,6 +13,7 @@ public class WindowsController
         Prefabs.Add((GameObject)Resources.Load(name));
         OpenWindow();
     }
+
     public void OpenWindow()
     {
         if (Prefabs.Count != 0&& access)
@@ -24,6 +25,7 @@ public class WindowsController
             access = false;
         }
     }
+
     public void OpenNextWindow()
     {  
         access = true;

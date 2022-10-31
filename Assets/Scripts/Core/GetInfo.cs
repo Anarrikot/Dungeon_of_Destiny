@@ -26,27 +26,48 @@ public class GetInfo : MonoBehaviour
     //public static InfoP output;
     public void Set_dun_user()
     {
-        LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123");
+        //StartCoroutine(Laodfrom("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123"));
+        //LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123");
     }
-    public async void LaodfromServer(string url)
+    public AsyncOperation LaodfromServer(string url,Slider bar)
+    {
+        WWWForm form = new WWWForm();
+
+        using (UnityWebRequest www = UnityWebRequest.Post(url, form)) 
+        {
+            AsyncOperation async =new AsyncOperation();
+            //www.SendWebRequest();
+            //async= www.SendWebRequest();
+            //bar.value = fff.progress;
+            //Debug.Log(async.progress);
+            //bar.value = async.progress;
+            
+            Main.instance.Start_HUD();
+            PlayerInfo.Start_Set();
+            UserData worldData = JsonConvert.DeserializeObject<UserData>(www.downloadHandler.text);
+            Debug.Log(worldData);
+            //PlayerInfo.name = worldData.user.name;
+            //PlayerInfo.uid = worldData.user.uid;
+            //PlayerInfo.SetMoney(worldData.user.soft);
+            //PlayerInfo.SetCristals(worldData.user.hard);
+        }
+        return null;
+    }
+    IEnumerator Laodfrom(string url)
     {
         WWWForm form = new WWWForm();
         using (UnityWebRequest www = UnityWebRequest.Post(url, form))
         {
-            while (www.isDone !=true)
-            {
-                Task.Delay(100);
-            }
+            yield return www.SendWebRequest();
             UserData worldData = JsonConvert.DeserializeObject<UserData>(www.downloadHandler.text);
-
-
-            PlayerInfo.name = worldData.user.name;
-            PlayerInfo.uid = worldData.user.uid;
-            PlayerInfo.SetMoney(worldData.user.soft);
-            PlayerInfo.SetCristals(worldData.user.hard);
+            Debug.Log(worldData.user.name);
+            //PlayerInfo.name = worldData.user.name;
+            //PlayerInfo.uid = worldData.user.uid;
+            //PlayerInfo.SetMoney(worldData.user.soft);
+            //PlayerInfo.SetCristals(worldData.user.hard);
         }
-        
     }
+
     private void Awake()
     {
         if (instance == null) instance = this;

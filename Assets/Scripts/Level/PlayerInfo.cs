@@ -26,7 +26,7 @@ public class PlayerInfo : MonoBehaviour
     private static Transform moneyText;
     private static Transform cristalsText;
 
-    public void Start()
+    public static void Start_Set()
     {
         foreach (Transform child in HudController.Money.transform)
         {

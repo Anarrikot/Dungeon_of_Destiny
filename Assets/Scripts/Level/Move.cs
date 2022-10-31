@@ -14,6 +14,7 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void Start()
     {
+        Time.timeScale = 1;
     }
     public void Awake()
     {
@@ -32,6 +33,7 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (Input.GetMouseButton(0)&& start)
         {
+            
             Vector3 dir4 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10);
             controller.active = true;
             if (active)
@@ -48,11 +50,11 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 click = false;
             if (active == false)
             {
+                
                 if (((Mathf.Pow(Input.mousePosition.x - i, 2) + Mathf.Pow(Input.mousePosition.y - k, 2)) <= 15625))
                     controller.transform.position = Vector3.MoveTowards(controller.transform.position, dir4, 1111111 * Time.deltaTime);
                 else
                 {
-
                     x = Input.mousePosition.x - i;
                     y = Input.mousePosition.y - k;
                     x = 125 * x / Mathf.Sqrt(x * x + y * y);

@@ -11,7 +11,7 @@ public class ReadJSON : MonoBehaviour
     private void Start()
     {
         Load("Save_Inventory");
-        Load("Save_Info");
+        //Load("Save_Info");
     }
     public class WorldData<T>
     {
