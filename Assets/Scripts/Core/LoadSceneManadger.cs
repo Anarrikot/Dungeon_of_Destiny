@@ -10,7 +10,7 @@ public class LoadSceneManadger : MonoBehaviour
         Main.instance.TaskOnClick3();
         
         this.GetComponent<ComonWindow>().Close();
-        Preloader.instance.Load(sceneID,false);
+        Preloader.instance.Load(sceneID);
         Time.timeScale = 1;
    }
     

@@ -35,9 +35,9 @@ public class Preloader : MonoBehaviour
         if (instance == null)
             instance = this;
     }
-    public void Load(int sceneID, bool FirstLoadScene)
+    public void Load(int sceneID)
     {
-        //StartCoroutine(LoadScene(sceneID, FirstLoadScene));
+        StartCoroutine(LoadScene(sceneID));
         //LoadScene(slider);
     }
     //public async void LoadScene(Slider bar)
@@ -52,12 +52,12 @@ public class Preloader : MonoBehaviour
     //    //}
     //    Main.instance.Show_HUD();
     //}
-    IEnumerator LoadScene(int sceneID ,bool FirstLoadScene)
+    IEnumerator LoadScene(int sceneID)
     {
         AsyncOperation async = SceneManager.LoadSceneAsync(sceneID);
         //AsyncOperation async1 = new AsyncOperation();
         //async1= GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123",slider);
-        //async.allowSceneActivation = false;
+        async.allowSceneActivation = false;
         while (!async.isDone)
         {
             Debug.Log("fff");

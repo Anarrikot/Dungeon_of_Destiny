@@ -132,6 +132,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   info: {fileID: 0}
   slider: {fileID: 906700613608614505}
+  start: 0
 --- !u!114 &2002863056922950123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 906700613489625168}
   m_HandleRect: {fileID: 0}
