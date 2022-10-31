@@ -22,7 +22,7 @@ public class Preloader : MonoBehaviour
     {
         //Load();
         if (start)
-            StartCoroutine(LoadSceneWith());
+            LoadSceneWith();
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class Preloader : MonoBehaviour
     }
     public void Load(int sceneID, bool FirstLoadScene)
     {
-        StartCoroutine(LoadScene(sceneID, FirstLoadScene));
+        //StartCoroutine(LoadScene(sceneID, FirstLoadScene));
         //LoadScene(slider);
     }
     //public async void LoadScene(Slider bar)
@@ -57,9 +57,10 @@ public class Preloader : MonoBehaviour
         AsyncOperation async = SceneManager.LoadSceneAsync(sceneID);
         //AsyncOperation async1 = new AsyncOperation();
         //async1= GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123",slider);
-        async.allowSceneActivation = false;
+        //async.allowSceneActivation = false;
         while (!async.isDone)
         {
+            Debug.Log("fff");
             slider.value = async.progress;
             if (async.progress >= .9f && !async.allowSceneActivation)
             {
@@ -73,26 +74,31 @@ public class Preloader : MonoBehaviour
         }
 
     }
-    IEnumerator LoadSceneWith()
+    public async void LoadSceneWith()
     {
+        Main.instance.Start_HUD();
+        PlayerInfo.Start_Set();
         AsyncOperation async = new AsyncOperation();
-        async = GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123", slider);
+        GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123",slider);
+        // Debug.Log(async.progress);
         //async.allowSceneActivation = false;
-        while (!async.isDone)
-        {
-            Debug.Log("fff");
-            slider.value = async.progress;
-            if (async.progress >= .9f && !async.allowSceneActivation)
-            {
-                Thread.Sleep(500);
-                if (Input.GetMouseButtonDown(0))
-                {
-                    async.allowSceneActivation = true;
-                    Destroy(gameObject);
-                }
-            }
-            yield return null;
-        }
+        //while (!async.isDone)
+        //{
+        //    Debug.Log("fff");
+        //    slider.value = async.progress;
+        //    if (async.progress >= .9f && !async.allowSceneActivation)
+        //    {
+        //        Thread.Sleep(500);
+        //        if (Input.GetMouseButtonDown(0))
+        //        {
+        //            async.allowSceneActivation = true;
+
+        //        }
+        //    }
+        //    await Task.Delay(500);
+        //}
+        
+        Destroy(gameObject);
 
     }
 }

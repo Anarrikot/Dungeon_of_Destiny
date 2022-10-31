@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.Networking;
+using System.Threading;
 
 public class UserData
 {
@@ -24,34 +25,54 @@ public class GetInfo : MonoBehaviour
 {
     public static GetInfo instance;
     //public static InfoP output;
-    public void Set_dun_user()
+    public AsyncOperation Set_dun_user(string url)
     {
-        //StartCoroutine(Laodfrom("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123"));
+        //AsyncOperation async= StartCoroutine(Laodfrom("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123"));
         //LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123");
+        return null;
     }
-    public AsyncOperation LaodfromServer(string url,Slider bar)
+    public async void LaodfromServer(string url,Slider bar)
     {
         WWWForm form = new WWWForm();
+        using var www = UnityWebRequestTexture.GetTexture(url);
+        www.SetRequestHeader("Content-type","aplication/json");
+        var fff = www.SendWebRequest();
 
-        using (UnityWebRequest www = UnityWebRequest.Post(url, form)) 
+
+        while(!fff.isDone)
         {
-            AsyncOperation async =new AsyncOperation();
-            //www.SendWebRequest();
-            //async= www.SendWebRequest();
-            //bar.value = fff.progress;
-            //Debug.Log(async.progress);
-            //bar.value = async.progress;
             
-            Main.instance.Start_HUD();
-            PlayerInfo.Start_Set();
-            UserData worldData = JsonConvert.DeserializeObject<UserData>(www.downloadHandler.text);
-            Debug.Log(worldData);
-            //PlayerInfo.name = worldData.user.name;
-            //PlayerInfo.uid = worldData.user.uid;
-            //PlayerInfo.SetMoney(worldData.user.soft);
-            //PlayerInfo.SetCristals(worldData.user.hard);
+            await Task.Yield();
+            bar.value = fff.progress;
+
         }
-        return null;
+            
+        UserData worldData = JsonConvert.DeserializeObject<UserData>(www.downloadHandler.text);
+        Debug.Log(www.downloadHandler.text);
+        Debug.Log(worldData.user.name);
+        //using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+        //{
+
+
+
+        //AsyncOperation async =new AsyncOperation();
+
+        //async= www.SendWebRequest();
+        //bar.value = fff.progress;
+        //Debug.Log(async.progress);
+        //bar.value = async.progress;
+
+        //Main.instance.Start_HUD();
+        //PlayerInfo.Start_Set();
+
+        //PlayerInfo.name = worldData.user.name;
+        //PlayerInfo.uid = worldData.user.uid;
+        PlayerInfo.SetMoney(worldData.user.soft);
+        PlayerInfo.SetCristals(worldData.user.hard);
+        // }
+
+
+
     }
     IEnumerator Laodfrom(string url)
     {
