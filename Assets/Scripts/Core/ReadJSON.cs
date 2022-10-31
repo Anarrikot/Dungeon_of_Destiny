@@ -113,6 +113,7 @@ public class ReadJSON : MonoBehaviour
 
             );
     }
+
     private void Awake()
     {
         if (instance == null) instance = this;

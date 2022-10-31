@@ -31,13 +31,14 @@ public class GetInfo : MonoBehaviour
         //LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123");
         return null;
     }
-    public async void LaodfromServer(string url,Slider bar)
+    public async Task LaodfromServer(string url,Slider bar)
     {
         WWWForm form = new WWWForm();
         using var www = UnityWebRequestTexture.GetTexture(url);
+        await Task.Yield();
         www.SetRequestHeader("Content-type","aplication/json");
         var fff = www.SendWebRequest();
-
+        
 
         while(!fff.isDone)
         {

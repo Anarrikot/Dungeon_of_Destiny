@@ -79,7 +79,9 @@ public class Preloader : MonoBehaviour
         Main.instance.Start_HUD();
         PlayerInfo.Start_Set();
         AsyncOperation async = new AsyncOperation();
-        GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123",slider);
+        await Task.Delay(1000);
+        await GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123",slider);
+        await Task.Delay(3000);
         // Debug.Log(async.progress);
         //async.allowSceneActivation = false;
         //while (!async.isDone)
@@ -97,7 +99,7 @@ public class Preloader : MonoBehaviour
         //    }
         //    await Task.Delay(500);
         //}
-        
+
         Destroy(gameObject);
 
     }
