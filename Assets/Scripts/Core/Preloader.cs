@@ -21,7 +21,6 @@ public class Preloader : MonoBehaviour
     void Start()
     {
         //Load();
-        if (start)
             LoadSceneWith();
     }
 
@@ -80,7 +79,7 @@ public class Preloader : MonoBehaviour
         PlayerInfo.Start_Set();
         AsyncOperation async = new AsyncOperation();
         await Task.Delay(1000);
-        await GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123",slider);
+        await GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=" + PlayerInfo.uid.ToString(), slider);
         await Task.Delay(3000);
         // Debug.Log(async.progress);
         //async.allowSceneActivation = false;
@@ -100,7 +99,7 @@ public class Preloader : MonoBehaviour
         //    await Task.Delay(500);
         //}
 
-        Destroy(gameObject);
+        gameObject.GetComponent<ComonWindow>().Close();
 
     }
 }

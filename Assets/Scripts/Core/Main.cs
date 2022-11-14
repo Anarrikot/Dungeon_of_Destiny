@@ -16,7 +16,7 @@ public class Main : MonoBehaviour
     public Canvas windowCanvas;
     public Canvas HUD;
     public GameController Game;
-    private WindowsController WindowController;
+    public WindowsController WindowController;
     //kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     void Awake()
     {
@@ -32,6 +32,7 @@ public class Main : MonoBehaviour
         }
         WindowController = new WindowsController();
         Hud = new HudController();
+        WindowController.AddWindow("LoadScene");
     }
     public void Start_Load()
     {

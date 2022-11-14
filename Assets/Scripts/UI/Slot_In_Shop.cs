@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class Slot_In_Shop : MonoBehaviour
 {
     public Image Icon;
@@ -23,8 +22,16 @@ public class Slot_In_Shop : MonoBehaviour
     }
     public void Buy_Item()
     {
-        if(PlayerInfo.AddMoney(-item.price))
-            PlayerInfo.inventory.New_Item(item);
-        
+        UserData userData = new UserData();
+        if(PlayerInfo.money>=item.price)
+        {
+            GetInfo.verified = false;
+            GetInfo.instance.ReturnInfo("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123", item.price);
+            if(GetInfo.verified)
+            {
+                PlayerInfo.AddMoney(-item.price);
+                PlayerInfo.inventory.New_Item(item);
+            }
+        }       
     }
 }
