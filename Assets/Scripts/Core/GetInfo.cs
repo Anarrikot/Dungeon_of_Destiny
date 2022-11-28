@@ -91,7 +91,7 @@ public class GetInfo : MonoBehaviour
         
     }
 
-    public async Task ReturnInfo(string Name,int money)
+    public async Task ReturnInfo(string Name, int money)
     {
         WWWForm form = new WWWForm();
         using var www = UnityWebRequestTexture.GetTexture(Name);

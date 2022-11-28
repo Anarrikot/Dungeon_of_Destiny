@@ -26,7 +26,7 @@ public class Slot_In_Shop : MonoBehaviour
         if(PlayerInfo.money>=item.price)
         {
             GetInfo.verified = false;
-            GetInfo.instance.ReturnInfo("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123", item.price);
+            GetInfo.instance.ReturnInfo("http://game.ispu.ru/game1/dod/api.php?api=buyItem&uid=" + PlayerInfo.uid.ToString() + "&soft=" + item.price.ToString(), item.price);
             if(GetInfo.verified)
             {
                 PlayerInfo.AddMoney(-item.price);
