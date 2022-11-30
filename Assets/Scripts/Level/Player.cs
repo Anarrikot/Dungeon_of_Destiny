@@ -8,12 +8,10 @@ public class Player : MonoBehaviour
 {
     private Camera myCamera;
     public Grid map;
-    //public GameObject player;
     private bool active, click;
     private float i, k, x, y, tg;
     public GameObject controller;
     public GameObject coll;
-    //public Image HP;
     public Rigidbody2D rb;
     public Button button;
     public GameObject square1;
@@ -34,8 +32,6 @@ public class Player : MonoBehaviour
     {
         Main.instance.Show_HUD();
     }
-    //public int lives = 100;
-    //public float speed = 10;
     public void Awake()
     {
         if (instance == null) instance = this;

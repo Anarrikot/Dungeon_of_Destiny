@@ -39,18 +39,12 @@ public class GetInfo : MonoBehaviour
         await Task.Yield();
         www.SetRequestHeader("Content-type","aplication/json");
         var fff = www.SendWebRequest();
-        
-
         while(!fff.isDone)
         {
-            
             await Task.Yield();
             bar.value = fff.progress;
-
-        }
-            
+        }  
         UserData worldData = JsonConvert.DeserializeObject<UserData>(www.downloadHandler.text);
-        Debug.Log(www.downloadHandler.text);
 
         PlayerInfo.SetMoney(worldData.user.soft);
         PlayerInfo.SetCristals(worldData.user.hard);
@@ -59,10 +53,6 @@ public class GetInfo : MonoBehaviour
         {
             Main.instance.WindowController.AddWindow("NewPlayer");
         }
-        // }
-
-
-
     }
 
     public async Task SetForServer(string url)
@@ -75,37 +65,22 @@ public class GetInfo : MonoBehaviour
         while (!fff.isDone)
             await Task.Yield();
     }
-    IEnumerator Laodfrom(string url)
-    {
-        WWWForm form = new WWWForm();
-        using (UnityWebRequest www = UnityWebRequest.Post(url, form))
-        {
-            yield return www.SendWebRequest();
-            UserData worldData = JsonConvert.DeserializeObject<UserData>(www.downloadHandler.text);
-            Debug.Log(worldData.user.name);
-            //PlayerInfo.name = worldData.user.name;
-            //PlayerInfo.uid = worldData.user.uid;
-            //PlayerInfo.SetMoney(worldData.user.soft);
-            //PlayerInfo.SetCristals(worldData.user.hard);
-        }
-        
-    }
-
     public async Task ReturnInfo(string Name, int money)
     {
         WWWForm form = new WWWForm();
+        
         using var www = UnityWebRequestTexture.GetTexture(Name);
         await Task.Yield();
         www.SetRequestHeader("Content-type", "aplication/json");
         var fff = www.SendWebRequest();
         while (!fff.isDone)
             await Task.Yield();
-        UserData worldData = JsonConvert.DeserializeObject<UserData>(www.downloadHandler.text);
         
+        UserData worldData = JsonConvert.DeserializeObject<UserData>(www.downloadHandler.text);
         if (worldData.user.soft >= money)
             verified = true;
-
     }
+
 
     private void Awake()
     {

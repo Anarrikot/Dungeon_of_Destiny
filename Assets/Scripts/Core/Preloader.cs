@@ -37,25 +37,10 @@ public class Preloader : MonoBehaviour
     public void Load(int sceneID)
     {
         StartCoroutine(LoadScene(sceneID));
-        //LoadScene(slider);
     }
-    //public async void LoadScene(Slider bar)
-    //{
-    //    //AsyncOperation async = new AsyncOperation();
-    //    GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123",bar);
-
-    //    //while (GetInfo.instance.enabled==true)
-    //    //{
-    //    //    Debug.Log("fff");
-    //    //    Task.Yield();           
-    //    //}
-    //    Main.instance.Show_HUD();
-    //}
     IEnumerator LoadScene(int sceneID)
     {
         AsyncOperation async = SceneManager.LoadSceneAsync(sceneID);
-        //AsyncOperation async1 = new AsyncOperation();
-        //async1= GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123",slider);
         async.allowSceneActivation = false;
         while (!async.isDone)
         {
@@ -81,24 +66,6 @@ public class Preloader : MonoBehaviour
         await Task.Delay(1000);
         await GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=" + PlayerInfo.uid.ToString(), slider);
         await Task.Delay(3000);
-        // Debug.Log(async.progress);
-        //async.allowSceneActivation = false;
-        //while (!async.isDone)
-        //{
-        //    Debug.Log("fff");
-        //    slider.value = async.progress;
-        //    if (async.progress >= .9f && !async.allowSceneActivation)
-        //    {
-        //        Thread.Sleep(500);
-        //        if (Input.GetMouseButtonDown(0))
-        //        {
-        //            async.allowSceneActivation = true;
-
-        //        }
-        //    }
-        //    await Task.Delay(500);
-        //}
-
         gameObject.GetComponent<ComonWindow>().Close();
 
     }

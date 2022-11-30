@@ -11,7 +11,6 @@ public class ReadJSON : MonoBehaviour
     private void Start()
     {
         Load("Save_Inventory");
-        //Load("Save_Info");
     }
     public class WorldData<T>
     {
@@ -41,9 +40,7 @@ public class ReadJSON : MonoBehaviour
         Debug.Log(PlayerInfo.name);
     }
     public void Load(string Name)
-    {
-        
-        
+    {      
         if(Name== "Save_Inventory")
         {
             WorldData<Item_info> worldData = JsonConvert.DeserializeObject<WorldData<Item_info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));

@@ -57,23 +57,24 @@ public class PlayerInfo : MonoBehaviour
     }
     public static bool AddMoney(int i)
     {
-
-        if (moneyText.name == "Text" && Check(i,"Money"))
+        if (Check(i,"Money"))
         {
             money += i;
             i = int.Parse(moneyText.GetComponent<Text>().text) + i;
             moneyText.GetComponent<Text>().text = i.ToString();
+            SetMoney(money);
             return true;
         }
         return false;
     }
     public static bool AddCristal(int i) { 
 
-        if (cristalsText.name == "Text" && Check(i, "Cristals"))
+        if (Check(i, "Cristals"))
         {
             cristals += i;
             i = int.Parse(cristalsText.GetComponent<Text>().text) + i;
             cristalsText.GetComponent<Text>().text = i.ToString();
+            SetCristals(cristals);
             return true;
         }
         return false;
