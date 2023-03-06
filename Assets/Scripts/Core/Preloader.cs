@@ -49,10 +49,7 @@ public class Preloader : MonoBehaviour
             if (async.progress >= .9f && !async.allowSceneActivation)
             {
                 Thread.Sleep(500);
-                if (Input.GetMouseButtonDown(0))
-                {
-                    async.allowSceneActivation = true;
-                }
+                async.allowSceneActivation = true;
             }
             yield return null;
         }

@@ -7,7 +7,7 @@ public class PlayerInfo : MonoBehaviour
 {
     public static int lives = 100;
     public static int livesMax = 100;
-    public static int uid = 123123123;
+    public static int uid = 123;
     public static int money = 500;
     public static int cristals = 100;
     public static int damage;

@@ -1,12 +1,10 @@
 {
-  "items": [
+  "user": [
     {
-      "id": 0,
-      "count": 0,
-      "name": "\u0001",
-      "uid": 12,
-      "soft": 1,
-      "hard": 1
+      "name": null,
+      "uid": 123,
+      "soft": 1000,
+      "hard": 10
     }
   ]
 }
