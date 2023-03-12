@@ -32,12 +32,16 @@ public class ReadJSON : MonoBehaviour
     {
         Info user = new Info();
         WorldData<Info> worldData = JsonConvert.DeserializeObject<WorldData<Info>>(request);
-        //user = JsonUtility.FromJson<Info>(request);
         PlayerInfo.name = worldData.user[0].name;
         PlayerInfo.uid = worldData.user[0].uid;
         PlayerInfo.money = worldData.user[0].soft;
         PlayerInfo.cristals = worldData.user[0].hard;
         Debug.Log(PlayerInfo.name);
+    }
+    public T Load2<T>(string Name)
+    {
+        T wData = JsonConvert.DeserializeObject<T>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
+        return wData;
     }
     public void Load(string Name)
     {      

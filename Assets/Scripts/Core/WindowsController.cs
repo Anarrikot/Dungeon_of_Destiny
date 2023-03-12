@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WindowsController 
 {
-    private GameObject myPrefab;
+    private GameObject myPrefab,myPrefab1;
     public List<GameObject> Prefabs = new List<GameObject>();
     private bool access=true;
 
@@ -24,6 +24,16 @@ public class WindowsController
             Prefabs.RemoveAt(0);
             access = false;
         }
+    }
+
+    public GameObject OpenNow(string name)
+    {
+        Prefabs.Add((GameObject)Resources.Load(name));
+        myPrefab = Prefabs[0];
+        myPrefab = Main.Instantiate(myPrefab, Main.instance.windowCanvas.transform);
+        myPrefab.GetComponent<ComonWindow>().Delegate(OpenNextWindow);
+        Prefabs.RemoveAt(0);
+        return myPrefab;
     }
 
     public void OpenNextWindow()

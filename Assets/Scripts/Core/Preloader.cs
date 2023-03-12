@@ -44,7 +44,6 @@ public class Preloader : MonoBehaviour
         async.allowSceneActivation = false;
         while (!async.isDone)
         {
-            Debug.Log("fff");
             slider.value = async.progress;
             if (async.progress >= .9f && !async.allowSceneActivation)
             {
