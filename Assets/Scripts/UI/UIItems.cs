@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class UIItems : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHandler
@@ -13,6 +10,7 @@ public class UIItems : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHan
     public int id;
     public int stack;
     public int quantity;
+
     void Start()
     {
         MainCanvas = GetComponentInParent<Canvas>();
@@ -37,7 +35,4 @@ public class UIItems : MonoBehaviour, IDragHandler,IBeginDragHandler,IEndDragHan
         transform.localPosition = Vector3.zero;
         m_CanvasGroup.blocksRaycasts = true;
     }
-
-
-
 }

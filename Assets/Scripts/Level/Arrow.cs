@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Arrow : MonoBehaviour
 {
@@ -47,7 +44,7 @@ public class Arrow : MonoBehaviour
         this.x = x;
         this.y = y;
     }
-    // Update is called once per frame
+
     void Update()
     {
         Vector3 dir5 = new Vector3(this.gameObject.transform.position.x+x, this.gameObject.transform.position.y+y, this.gameObject.transform.position.z);

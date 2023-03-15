@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class AgentScript : MonoBehaviour
 {
@@ -15,11 +12,9 @@ public class AgentScript : MonoBehaviour
     public bool active=false;
     public bool In_area = false;
     public Animator animator;
-    // Start is called before the first frame update
+
     void Start()
     {
-        //start_position = transform;
-
         start_position = transform.position;
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
@@ -31,7 +26,7 @@ public class AgentScript : MonoBehaviour
         target = new_target;
         active = true;
     }
-    // Update is called once per frame
+
     void Update()
     {
         if(active)
@@ -84,6 +79,5 @@ public class AgentScript : MonoBehaviour
         }
         
         agent.destination = target_position;
-
     }
 }

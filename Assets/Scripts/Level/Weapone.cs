@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Weapone : MonoBehaviour
 {
@@ -14,7 +11,6 @@ public class Weapone : MonoBehaviour
     public GameObject button;
     public Sprite one, two;
 
-
     public bool CheckUpgradeCost(int money)
     {
         if(money < NextUpgradeCost)
@@ -22,9 +18,5 @@ public class Weapone : MonoBehaviour
             return false;
         }
         return true;
-    }
-    public void Start()
-    {
-
     }
 }

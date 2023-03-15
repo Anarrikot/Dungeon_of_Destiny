@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -17,17 +16,9 @@ public class Preloader : MonoBehaviour
     public Slider slider;
     public bool start=false;
    
-    // Start is called before the first frame update
     void Start()
     {
-        //Load();
             LoadSceneWith();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     private void Awake()
     {
@@ -62,7 +53,7 @@ public class Preloader : MonoBehaviour
         await Task.Delay(1000);
         await GetInfo.instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=" + PlayerInfo.uid.ToString(), slider);
         await Task.Delay(3000);
-        gameObject.GetComponent<ComonWindow>().Close();
-
+        if (this != null)
+            gameObject.GetComponent<ComonWindow>().Close();
     }
 }

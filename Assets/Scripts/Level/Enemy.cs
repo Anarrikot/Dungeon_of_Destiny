@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -13,7 +11,6 @@ public class Enemy : MonoBehaviour
     public bool collisionEnemy = false;
     public int lives = 60;
     public int damage = 5;
-    //public Player player;
     public float TimeDelay = 1;
     public float TimeDelayAttack;
     public GameObject[] dropList;
@@ -28,7 +25,6 @@ public class Enemy : MonoBehaviour
     }
     public void Update()
     {
-        //HP.transform.localScale = new Vector3(lives * 0.3f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
         if (TimeDelayShowHP <= 0.7f||target==true)
         {
             HP.SetActive(true);

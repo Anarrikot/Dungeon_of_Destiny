@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class OpenShop : MonoBehaviour
 {
     public GameObject grid;
-    // Start is called before the first frame update
     void Start()
     {
         for (int i = 1; i <= Info.Item_list.Count-1; i++)

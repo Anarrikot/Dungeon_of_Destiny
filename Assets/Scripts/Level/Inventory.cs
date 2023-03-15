@@ -1,14 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
-using System.IO;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] List<GameObject> StartItems = new List<GameObject>();
     public static List<Item> InventoryItems = new List<Item>();
-    // Start is called before the first frame update
 
     public class Item_info
     {

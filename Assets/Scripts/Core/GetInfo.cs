@@ -1,14 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System.IO;
 using UnityEngine.Networking;
-using System.Threading;
-
 public class UserData
 {
     public InfoP user;
@@ -25,13 +19,7 @@ public class GetInfo : MonoBehaviour
 {
     public static GetInfo instance;
     public static bool verified;
-    //public static InfoP output;
-    public AsyncOperation Set_dun_user(string url)
-    {
-        //AsyncOperation async= StartCoroutine(Laodfrom("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123"));
-        //LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=123123123");
-        return null;
-    }
+
     public async Task LaodfromServer(string url,Slider bar)
     {
         WWWForm form = new WWWForm();

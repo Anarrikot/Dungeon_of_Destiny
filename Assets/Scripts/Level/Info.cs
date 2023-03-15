@@ -1,17 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class Info : MonoBehaviour
 {
     public static Info instance;
     public static List<Item> Item_list = new List<Item>();
-    void Start()
-    {
 
-    }
     public void Add_Item(Item item)
     {
         Item_list.Add(item);

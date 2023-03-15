@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class Area_of_aggression : MonoBehaviour
 {
-    // Start is called before the first frame update
     public List<GameObject> enemies = new List<GameObject>();
     public bool start=true;
     void Start()
@@ -32,5 +30,4 @@ public class Area_of_aggression : MonoBehaviour
     {
         enemies.Remove(gameObj);
     }
-    
 }

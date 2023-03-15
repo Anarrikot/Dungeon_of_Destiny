@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Сlosest_enemy : MonoBehaviour
 {
@@ -14,8 +12,6 @@ public class Сlosest_enemy : MonoBehaviour
     public Animator anim;
     public float TimeDelayMp;
     public float TimeDelayAttack;
-    //public Image MP;
-   // public Player player;
     public GameObject splash,splash1;
     private void Start()
     {
@@ -94,7 +90,6 @@ public class Сlosest_enemy : MonoBehaviour
         {
 
             isClicked = true;
-            //anim.SetTrigger("Click");
             PlayerInfo.mp -= 20;
             PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
         }
@@ -122,5 +117,4 @@ public class Сlosest_enemy : MonoBehaviour
             splash1.GetComponent<Arrow>().add_cord(enemy.transform.position.x-gameObject.transform.position.x, enemy.transform.position.y - gameObject.transform.position.y);
         }
     }
-    
 }

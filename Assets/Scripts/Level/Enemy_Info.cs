@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Enemy_Info : MonoBehaviour
 {
@@ -27,7 +24,6 @@ public class Enemy_Info : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (TimeDelayShowHP <= 0.7f || target == true)

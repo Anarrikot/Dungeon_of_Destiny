@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-
 
 public class OpenInventory1 : MonoBehaviour
 {
@@ -72,5 +69,4 @@ public class OpenInventory1 : MonoBehaviour
         }
         ReadJSON.instance.SaveInvenory();
     }
-
 }

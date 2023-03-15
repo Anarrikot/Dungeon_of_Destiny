@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -17,27 +15,23 @@ public class Main : MonoBehaviour
     public Canvas HUD;
     public GameController Game;
     public WindowsController WindowController;
-    //kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+
     void Awake()
     {
 
         if (instance == null)
         {
-            instance = this; // «адаем ссылку на экземпл€р объекта
+            instance = this; 
         }
         else if (instance == this)
         {
-            // Ёкземпл€р объекта уже существует на сцене
-            Destroy(gameObject); // ”дал€ем объект
+            Destroy(gameObject); 
         }
         WindowController = new WindowsController();
         Hud = new HudController();
         WindowController.AddWindow("LoadScene");
     }
-    public void Start_Load()
-    {
-    }
-    // Start is called before the first frame update
+
     public void Start_HUD()
     {
         Hud.Show();
@@ -46,11 +40,7 @@ public class Main : MonoBehaviour
     {
         Hud.Show_HUD();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public void TaskOnClick()
     {

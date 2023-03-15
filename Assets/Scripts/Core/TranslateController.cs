@@ -1,20 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 public class TranslateController : MonoBehaviour
 {
-    private GameObject prefabNotification;
     public static TranslateController instance = null;
     void Awake()
     {
         if (instance == null)
         {
-            instance = this; // Задаем ссылку на экземпляр объекта
+            instance = this; 
         }
         else if (instance == this)
         {
-            // Экземпляр объекта уже существует на сцене
-            Destroy(gameObject); // Удаляем объект
+            Destroy(gameObject); 
         }
 
         DontDestroyOnLoad(gameObject);

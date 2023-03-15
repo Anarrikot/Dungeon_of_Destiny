@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Interactions : MonoBehaviour
 {
-    //public Player player;
     private GameObject npc;
     public GameObject button;
     public Sprite one, two;

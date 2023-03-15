@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 public class Enemy_attack : MonoBehaviour
 {
@@ -11,13 +8,11 @@ public class Enemy_attack : MonoBehaviour
     public bool collisionEnemy = false;
     public Enemy_Info info;
 
-    // Start is called before the first frame update
     void Start()
     {
         info= enemy.GetComponent<Enemy_Info>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (info.attack_delay < info.attack_delay_time)

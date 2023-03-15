@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class attack : MonoBehaviour
 {
@@ -58,7 +56,6 @@ public class attack : MonoBehaviour
         if (PlayerInfo.mp >= 20 && TimeDelayAttack >= PlayerInfo.TimeDelayAttack)
         {
             isClicked = true;
-            //anim.SetTrigger("Click");
             PlayerInfo.mp -= 20;
             PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.mp * 70 / 100);
         }

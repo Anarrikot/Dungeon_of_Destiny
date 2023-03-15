@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +6,7 @@ public class SelectLevelWindow: MonoBehaviour
     
 {
     public List<GameObject> Stars = new List<GameObject>();
-    public GameObject name = new GameObject();
+    public GameObject name;
     
     public GameObject window;
     private int StarsQuantity = 0;
@@ -17,7 +16,7 @@ public class SelectLevelWindow: MonoBehaviour
         foreach (var item in Stars)
             item.GetComponent<Image>().color = Color.white;
     }
-    // Start is called before the first frame update
+
     public void Open(bool star1, bool star2, bool star3, int level)
     {
         LevelNumber = level;
