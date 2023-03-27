@@ -146,3 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   window: {fileID: 0}
+  level: {fileID: 0}
+  Star1: 1
+  Star2: 1
+  Star3: 1
+  active: 1

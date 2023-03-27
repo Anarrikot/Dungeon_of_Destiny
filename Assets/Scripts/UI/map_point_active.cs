@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
+using UnityEngine.UI;
 
 public class map_point_active : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class map_point_active : MonoBehaviour
             if (active)
             {
                 myPoint.GetComponentInChildren<Select_level>().active = true;
+                myPoint.GetComponent<Image>().color = Color.green;
                 myPoint.GetComponentInChildren<Select_level>().Star1 = data.user[i - 1].Star1;
                 myPoint.GetComponentInChildren<Select_level>().Star2 = data.user[i - 1].Star2;
                 myPoint.GetComponentInChildren<Select_level>().Star3 = data.user[i - 1].Star3;

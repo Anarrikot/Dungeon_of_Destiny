@@ -3,7 +3,7 @@
     {
       "name": null,
       "uid": 123,
-      "soft": 1000,
+      "soft": 0,
       "hard": 10
     }
   ]

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class portal : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class portal : MonoBehaviour
         ReadJSON.instance.SaveInfo();
         ReadJSON.instance.SaveInvenory();
         WindowController.AddWindow("Win");
+        Debug.Log("http://game.ispu.ru/game1/dod/api.php?api=lvlSaveInfo&uid=" + PlayerInfo.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1&star2=1&star3=1");
+        GetInfo.instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlSaveInfo&uid=" + PlayerInfo.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1&star2=1&star3=1");
     }
 
     public void OnTriggerExit2D(Collider2D collision)
