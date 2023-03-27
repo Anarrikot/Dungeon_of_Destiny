@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadSceneManadger : MonoBehaviour
 {
@@ -9,5 +10,11 @@ public class LoadSceneManadger : MonoBehaviour
         Preloader.instance.Load(sceneID);
         Time.timeScale = 1;
    }
-    
+    public void NextLevel()
+    {
+        Main.instance.TaskOnClick3();
+        this.GetComponent<ComonWindow>().Close();
+        Preloader.instance.Load(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1;
+    }
 }
