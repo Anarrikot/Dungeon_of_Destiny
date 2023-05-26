@@ -13,7 +13,7 @@ public class PlayerInfo : MonoBehaviour
     public static int this_classes;
     public static float speed = 10, x, y;
     public static float TimeDelayHP = 0.4f;
-    public static float TimeDelayMP = 0.2f;
+    public static float TimeDelayMP = 0.01f;
     public static float TimeDelayAttack = 0.1f;
     public static string name;
     public static PlayerInfo instance;
