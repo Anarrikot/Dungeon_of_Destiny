@@ -1,20 +1,13 @@
 ﻿using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class GameController
 {
-    public static GameController instance = null;
-    void Awake()
+    private static GameController _instance;
+    public static GameController Instance
+        => _instance ??= new GameController();
+
+    public GameController()
     {
-        if (instance == null)
-        {
-            instance = this; 
-        }
-        else if (instance == this)
-        {
-            Destroy(gameObject); 
-        }
-
-        DontDestroyOnLoad(gameObject);
-
+        _instance = this;
     }
 }

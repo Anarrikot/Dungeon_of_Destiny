@@ -3,26 +3,38 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public static int lives = 100;
-    public static int livesMax = 100;
-    public static int uid = 123;
-    public static int money = 500;
-    public static int cristals = 100;
-    public static int damage;
-    public static int mp = 100;
-    public static int this_classes;
-    public static float speed = 10, x, y;
-    public static float TimeDelayHP = 0.4f;
-    public static float TimeDelayMP = 0.01f;
-    public static float TimeDelayAttack = 0.1f;
-    public static string name;
-    public static PlayerInfo instance;
+    public int lives = 100;
+    public int livesMax = 100;
+    public int uid = 123;
+    public int money = 500;
+    public int cristals = 100;
+    public int damage;
+    public int mp = 100;
+    public int this_classes;
+    public float speed = 10, x, y;
+    public float TimeDelayHP = 0.4f;
+    public float TimeDelayMP = 0.01f;
+    public float TimeDelayAttack = 0.1f;
+    public string name;
+    
     public static string[] classes = new string[3];
     public static Button button_atc;
     public static Image HP_Image, MP_Image;
     public static Inventory inventory= new Inventory();
     private static Text moneyText;
     private static Text cristalsText;
+
+
+
+
+    private static PlayerInfo _instance;
+    public static PlayerInfo Instance
+        => _instance ??= new PlayerInfo();
+
+    public PlayerInfo()
+    {
+        _instance = this;
+    }
 
     public static void Start_Set()
     {
@@ -37,17 +49,17 @@ public class PlayerInfo : MonoBehaviour
     }
     public static void SetMoney(int m)
     {
-        money = m;
-        moneyText.text = money.ToString();
+        Instance.money = m;
+        moneyText.text = Instance.money.ToString();
     }
     public static void SetCristals(int m)
     {
-        cristals = m;
-        cristalsText.text = cristals.ToString();
+        Instance.cristals = m;
+        cristalsText.text = Instance.cristals.ToString();
     }
     public void Awake()
     {
-        if (instance == null) instance = this;
+        
         classes[0] = "Archer";
         classes[1] = "Mage";
         classes[2] = "Knight";
@@ -57,10 +69,10 @@ public class PlayerInfo : MonoBehaviour
     {
         if (Check(i,"Money"))
         {
-            money += i;
+            Instance.money += i;
             i = int.Parse(moneyText.text) + i;
             moneyText.text = i.ToString();
-            SetMoney(money);
+            SetMoney(Instance.money);
             return true;
         }
         return false;
@@ -69,10 +81,10 @@ public class PlayerInfo : MonoBehaviour
 
         if (Check(i, "Cristals"))
         {
-            cristals += i;
+            Instance.cristals += i;
             i = int.Parse(cristalsText.text) + i;
             cristalsText.text = i.ToString();
-            SetCristals(cristals);
+            SetCristals(Instance.cristals);
             return true;
         }
         return false;
@@ -82,13 +94,13 @@ public class PlayerInfo : MonoBehaviour
     {
         
         if (type == "Money")
-            if (money >= Mathf.Abs(i))
+            if (Instance.money >= Mathf.Abs(i))
                 return true;   
         if (type == "Cristals")
-            if (cristals >= Mathf.Abs(i))
+            if (Instance.cristals >= Mathf.Abs(i))
                 return true;
        
-        Main.instance.Notification();
+        Main.Instance.Notification();
         return false;
     }
 }

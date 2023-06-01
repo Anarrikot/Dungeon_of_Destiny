@@ -71,6 +71,6 @@ public class OpenInventory1 : MonoBehaviour
                 PlayerInfo.inventory.AddItem(gameObject.GetComponent<Item>());
             }
         }
-        ReadJSON.instance.SaveInvenory();
+        ReadJSON.Instance.SaveInvenory();
     }
 }

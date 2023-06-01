@@ -7,7 +7,10 @@ public class Main : MonoBehaviour
     private GameObject closeWindow;
 
 
-    public static Main instance = null;
+
+
+
+    public static Main Instance = null;
     public AudioController Audio;
     public TranslateController Translate;
     private HudController Hud;
@@ -19,11 +22,11 @@ public class Main : MonoBehaviour
     void Awake()
     {
 
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this; 
+            Instance = this; 
         }
-        else if (instance == this)
+        else if (Instance == this)
         {
             Destroy(gameObject); 
         }

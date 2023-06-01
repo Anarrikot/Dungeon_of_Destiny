@@ -1,18 +1,13 @@
 ﻿using UnityEngine;
-public class TranslateController : MonoBehaviour
+public class TranslateController 
 {
-    public static TranslateController instance = null;
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this; 
-        }
-        else if (instance == this)
-        {
-            Destroy(gameObject); 
-        }
 
-        DontDestroyOnLoad(gameObject);
+    private static TranslateController _instance;
+    public static TranslateController Instance
+        => _instance ??= new TranslateController();
+
+    public TranslateController()
+    {
+        _instance = this;
     }
 }

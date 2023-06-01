@@ -26,9 +26,9 @@ public class portal : MonoBehaviour
     IEnumerator Win()
     {
         yield return new WaitForSeconds(3.0f);
-        PlayerInfo.lives = PlayerInfo.livesMax;
-        ReadJSON.instance.SaveInfo();
-        ReadJSON.instance.SaveInvenory();
+        PlayerInfo.Instance.lives = PlayerInfo.Instance.livesMax;
+        ReadJSON.Instance.SaveInfo();
+        ReadJSON.Instance.SaveInvenory();
         WindowController.AddWindow("Win");
         //GetInfo.instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlSaveInfo&uid=" + PlayerInfo.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1&star2=1&star3=1");
     }

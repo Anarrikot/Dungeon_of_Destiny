@@ -4,13 +4,22 @@ using System;
 
 public class WeaponList : MonoBehaviour
 {
-    public static WeaponList instance;
+
+
+    private static WeaponList _instance;
+    public static WeaponList Instance
+        => _instance ??= new WeaponList();
+
+    public WeaponList()
+    {
+        _instance = this;
+    }
+
     public TextAsset TextAssetData;
     public static List<Weapone> myWeaponeList = new List<Weapone>();
     Dictionary<string,int> specifications = new Dictionary<string,int>();
     private void Awake()
     {
-        if (instance == null) instance = this;
         readCSV();
     }
     public static Weapone Foo(int i)

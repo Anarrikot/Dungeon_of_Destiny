@@ -18,7 +18,7 @@ public class WindowsController
         if (Prefabs.Count != 0&& access)
         {
             myPrefab = Prefabs[0];
-            myPrefab = Main.Instantiate(myPrefab, Main.instance.windowCanvas.transform);
+            myPrefab = Main.Instantiate(myPrefab, Main.Instance.windowCanvas.transform);
             myPrefab.GetComponent<ComonWindow>().Delegate(OpenNextWindow);
             Prefabs.RemoveAt(0);
             access = false;
@@ -29,7 +29,7 @@ public class WindowsController
     {
         Prefabs.Add((GameObject)Resources.Load(name));
         myPrefab = Prefabs[0];
-        myPrefab = Main.Instantiate(myPrefab, Main.instance.windowCanvas.transform);
+        myPrefab = Main.Instantiate(myPrefab, Main.Instance.windowCanvas.transform);
         myPrefab.GetComponent<ComonWindow>().Delegate(OpenNextWindow);
         Prefabs.RemoveAt(0);
         return myPrefab;

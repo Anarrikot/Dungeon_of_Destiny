@@ -24,7 +24,7 @@ public class map_point_active : MonoBehaviour
     {
         active = true;
         WorldData<LevelInfo> data = new WorldData<LevelInfo>();
-        data = ReadJSON.instance.Load2<WorldData<LevelInfo>>("map/map");
+        data = ReadJSON.Instance.Load2<WorldData<LevelInfo>>("map/map");
         int i = 1;
         foreach (Transform point in obj.transform)
         {

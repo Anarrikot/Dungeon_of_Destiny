@@ -16,17 +16,17 @@ public class Swap_class : MonoBehaviour
     public void swap()
     { 
         destroy_class();
-        k = PlayerInfo.this_classes;
+        k = PlayerInfo.Instance.this_classes;
         if (k < 2) k++;
         else k = 0;
         add_class(k);
-        PlayerInfo.this_classes = k;
+        PlayerInfo.Instance.this_classes = k;
     }
     public void swap(int i)
     {
         destroy_class();
         add_class(i);
-        PlayerInfo.this_classes = i;
+        PlayerInfo.Instance.this_classes = i;
         OpenInventory.image.sprite = sprite[i];
 
     }
@@ -35,14 +35,14 @@ public class Swap_class : MonoBehaviour
         destroy_class();
         add_class(int.Parse(i.name));
         OpenInventory.image.sprite = sprite[int.Parse(i.name)];
-        string new_name = PlayerInfo.this_classes.ToString();
-        PlayerInfo.this_classes = int.Parse(i.name);
+        string new_name = PlayerInfo.Instance.this_classes.ToString();
+        PlayerInfo.Instance.this_classes = int.Parse(i.name);
         i.name = new_name;
         i.GetComponent<Image>().sprite = sprite[int.Parse(new_name)];
     }
     private void destroy_class()
     {
-        switch (PlayerInfo.classes[PlayerInfo.this_classes])
+        switch (PlayerInfo.classes[PlayerInfo.Instance.this_classes])
         {
             case "Knight":
                 Destroy(gameObject.GetComponent<attack>());

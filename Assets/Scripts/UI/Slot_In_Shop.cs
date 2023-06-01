@@ -20,15 +20,15 @@ public class Slot_In_Shop : MonoBehaviour
     }
     public async void Buy_Item()
     {
-        if(PlayerInfo.money>=item.price)
+        if(PlayerInfo.Instance.money >=item.price)
         {
             GetInfo.verified = false;
-            await GetInfo.instance.ReturnInfo("http://game.ispu.ru/game1/dod/api.php?api=buyItem&uid="+PlayerInfo.uid.ToString()+"&soft="+item.price.ToString()+"&id="+item.id.ToString(), item.price);
+            await GetInfo.Instance.ReturnInfo("http://game.ispu.ru/game1/dod/api.php?api=buyItem&uid="+PlayerInfo.Instance.uid.ToString()+"&soft="+item.price.ToString()+"&id="+item.id.ToString(), item.price);
             if (GetInfo.verified)
             {
                 PlayerInfo.AddMoney(-item.price);
                 PlayerInfo.inventory.New_Item(item);
-                ReadJSON.instance.SaveInvenory();
+                ReadJSON.Instance.SaveInvenory();
             }
         }       
     }

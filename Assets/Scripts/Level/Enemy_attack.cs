@@ -58,14 +58,14 @@ public class Enemy_attack : MonoBehaviour
     }
     public void attack()
     {
-        if(collisionEnemy==true && PlayerInfo.lives > 0)
+        if(collisionEnemy==true && PlayerInfo.Instance.lives > 0)
         {
-            if (PlayerInfo.lives > info.damage)
+            if (PlayerInfo.Instance.lives > info.damage)
             {
-                PlayerInfo.lives -= info.damage;
+                PlayerInfo.Instance.lives -= info.damage;
             }
             else
-                PlayerInfo.lives = 0;
+                PlayerInfo.Instance.lives = 0;
         }
     }
 }

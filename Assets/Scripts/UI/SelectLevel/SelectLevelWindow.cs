@@ -31,10 +31,10 @@ public class SelectLevelWindow: MonoBehaviour
     }
     public void TaskOnClick()
     {
-        Main.instance.TaskOnClick3();
+        Main.Instance.TaskOnClick3();
         window = GameObject.FindGameObjectWithTag("Window");
         window.GetComponent<ComonWindow>().Close();
-        Preloader.instance.Load(int.Parse(transform.name));
+        Preloader.Instance.Load(int.Parse(transform.name));
         Time.timeScale = 1;
         
     }

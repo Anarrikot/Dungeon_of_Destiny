@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Info : MonoBehaviour
 {
-    public static Info instance;
     public static List<Item> Item_list = new List<Item>();
+
+
+    private static Info _instance;
+    public static Info Instance
+        => _instance ??= new Info();
+
+    public Info()
+    {
+        _instance = this;
+    }
 
     public void Add_Item(Item item)
     {
@@ -13,7 +22,6 @@ public class Info : MonoBehaviour
     }
     public void Awake()
     {
-        if (instance == null) instance = this;
         for (int i = 0; i <= 2; i++)
         {
             GameObject gameObject = Resources.Load("Item/" + i.ToString()) as GameObject;

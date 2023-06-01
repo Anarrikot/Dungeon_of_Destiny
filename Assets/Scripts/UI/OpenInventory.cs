@@ -14,6 +14,6 @@ public class OpenInventory : MonoBehaviour
     }
     public void Open()
     {
-        Main.instance.TaskOnClick();
+        Main.Instance.TaskOnClick();
     }
 }

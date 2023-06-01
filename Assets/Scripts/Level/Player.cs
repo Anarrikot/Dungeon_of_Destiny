@@ -14,13 +14,28 @@ public class Player : MonoBehaviour
     public Button button;
     public GameObject square1;
     public bool death = false;
-    public static Player instance;
+    
     public static GameObject square;
     public static Animator animator;
     public float TimeDelayHp;
     public GameObject drop_item, deathPerfab;
     public Vector3 start_position, target_position;
     [SerializeField] public static NavMeshAgent agent;
+
+
+
+
+
+
+    private static Player _instance;
+    public static Player Instance
+        => _instance ??= new Player();
+
+    public Player()
+    {
+        _instance = this;
+    }
+
     public static void New_skin(GameObject square1)
     {
         square = square1;
@@ -28,11 +43,10 @@ public class Player : MonoBehaviour
     }
     public void Start()
     {
-        Main.instance.Show_HUD();
+        Main.Instance.Show_HUD();
     }
     public void Awake()
     {
-        if (instance == null) instance = this;
         PlayerInfo.button_atc = button;
         myCamera = Camera.main;
         active = true;
@@ -40,7 +54,7 @@ public class Player : MonoBehaviour
         click = true;
         square = square1;
         animator = square.GetComponent<Animator>();
-        Main.instance.Show_HUD();
+        Main.Instance.Show_HUD();
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
@@ -48,20 +62,20 @@ public class Player : MonoBehaviour
     }
     public void Update()
     {
-        PlayerInfo.HP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.lives * 70 / 100);
-        if (PlayerInfo.lives == 0)
+        PlayerInfo.HP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.Instance.lives * 70 / 100);
+        if (PlayerInfo.Instance.lives == 0)
         {
             death = true;
-            deathPerfab = Main.Instantiate(deathPerfab, Main.instance.windowCanvas.transform);
-            PlayerInfo.lives = -1;
+            deathPerfab = Main.Instantiate(deathPerfab, Main.Instance.windowCanvas.transform);
+            PlayerInfo.Instance.lives = -1;
         }
 
-        if (PlayerInfo.lives < 100 && !death)
+        if (PlayerInfo.Instance.lives < 100 && !death)
         {
             TimeDelayHp += Time.deltaTime;
-            if (TimeDelayHp >= PlayerInfo.TimeDelayHP)
+            if (TimeDelayHp >= PlayerInfo.Instance.TimeDelayHP)
             {
-                PlayerInfo.lives ++;
+                PlayerInfo.Instance.lives ++;
                 TimeDelayHp = 0;
             }
         }

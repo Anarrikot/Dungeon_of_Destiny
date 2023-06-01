@@ -1,20 +1,13 @@
 using UnityEngine;
 
-public class AudioController : MonoBehaviour
+public class AudioController
 {
-    public static AudioController instance = null;
-    void Awake()
+    private static AudioController _instance;
+    public static AudioController Instance 
+        =>_instance ??= new AudioController();
+
+    public AudioController()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance == this)
-        {
-            Destroy(gameObject); 
-        }
-
-        DontDestroyOnLoad(gameObject);
-
+        _instance=this;
     }
 }

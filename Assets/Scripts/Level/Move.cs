@@ -93,7 +93,7 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     _playerSpriteRenderer.flipX = true;
                 else if (Input.mousePosition.x - i > 0)
                     _playerSpriteRenderer.flipX = false;
-                Player.agent.destination = new Vector3(Player.instance.gameObject.transform.position.x + x1, Player.instance.gameObject.transform.position.y + y1);
+                Player.agent.destination = new Vector3(Player.Instance.gameObject.transform.position.x + x1, Player.Instance.gameObject.transform.position.y + y1);
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -103,7 +103,7 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             active = true;
             if (Player.animator)
                 Player.animator.SetBool("isRun", false);
-            Player.agent.destination = new Vector3(Player.instance.gameObject.transform.position.x, Player.instance.gameObject.transform.position.y);
+            Player.agent.destination = new Vector3(Player.Instance.gameObject.transform.position.x, Player.Instance.gameObject.transform.position.y);
         }
     }
 }

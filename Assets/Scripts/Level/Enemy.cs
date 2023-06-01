@@ -75,15 +75,15 @@ public class Enemy : MonoBehaviour
         rb.WakeUp();
         if (collision.gameObject.tag == "Player")
         {
-            if (PlayerInfo.lives > 0)
+            if (PlayerInfo.Instance.lives > 0)
             {
                 TimeDelayAttack += Time.deltaTime;
                 if (TimeDelayAttack >= TimeDelay)
                 {
-                    if (PlayerInfo.lives >= damage)
-                        PlayerInfo.lives -= damage;
+                    if (PlayerInfo.Instance.lives >= damage)
+                        PlayerInfo.Instance.lives -= damage;
                     else
-                        PlayerInfo.lives = 0;
+                        PlayerInfo.Instance.lives = 0;
                     TimeDelayAttack = 0;
                 }
             }

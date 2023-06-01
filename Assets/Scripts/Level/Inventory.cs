@@ -30,7 +30,7 @@ public class Inventory : MonoBehaviour
     }
     private void Start()
     {
-        ReadJSON.instance.Load("Save_Inventory");
+        ReadJSON.Instance.Load("Save_Inventory");
     }
     public void New_Item(Item new_item)
     {
@@ -74,6 +74,6 @@ public class Inventory : MonoBehaviour
     }
     public void Save()
     {
-        ReadJSON.instance.SaveInvenory();
+        ReadJSON.Instance.SaveInvenory();
     }
 }

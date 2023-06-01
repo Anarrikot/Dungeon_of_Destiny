@@ -17,7 +17,16 @@ public class InfoP
 
 public class GetInfo : MonoBehaviour
 {
-    public static GetInfo instance;
+
+    private static GetInfo _instance;
+    public static GetInfo Instance
+        => _instance ??= new GetInfo();
+
+    public GetInfo()
+    {
+        _instance = this;
+    }
+
     public static bool verified;
 
     public async Task LaodfromServer(string url,Slider bar)
@@ -39,7 +48,7 @@ public class GetInfo : MonoBehaviour
 
         if (worldData.user.name == "New user")
         {
-            Main.instance.WindowController.AddWindow("NewPlayer");
+            Main.Instance.WindowController.AddWindow("NewPlayer");
         }
     }
 
@@ -69,9 +78,4 @@ public class GetInfo : MonoBehaviour
             verified = true;
     }
 
-
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-    }
 }

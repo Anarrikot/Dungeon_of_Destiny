@@ -5,8 +5,15 @@ using System.IO;
 
 public class ReadJSON : MonoBehaviour
 {
-    public static ReadJSON instance;
-    
+    private static ReadJSON _instance;
+    public static ReadJSON Instance
+        => _instance ??= new ReadJSON();
+
+    public ReadJSON()
+    {
+        _instance = this;
+    }
+
     private void Start()
     {
         Load("Save_Inventory");
@@ -52,10 +59,10 @@ public class ReadJSON : MonoBehaviour
         {
             WorldData<Info> worldData = JsonConvert.DeserializeObject<WorldData<Info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
 
-            PlayerInfo.name = worldData.user[0].name;
-            PlayerInfo.uid = worldData.user[0].uid;
-            PlayerInfo.money = worldData.user[0].soft;
-            PlayerInfo.cristals = worldData.user[0].hard;
+            PlayerInfo.Instance.name = worldData.user[0].name;
+            PlayerInfo.Instance.uid = worldData.user[0].uid;
+            PlayerInfo.Instance.money = worldData.user[0].soft;
+            PlayerInfo.Instance.cristals = worldData.user[0].hard;
         }
     }
     public void SaveInvenory()
@@ -87,10 +94,10 @@ public class ReadJSON : MonoBehaviour
 
         Info info = new Info()
         {
-            name = PlayerInfo.name,
-            uid = PlayerInfo.uid,
-            soft = PlayerInfo.money,
-            hard = PlayerInfo.cristals,
+            name = PlayerInfo.Instance.name,
+            uid = PlayerInfo.Instance.uid,
+            soft = PlayerInfo.Instance.money,
+            hard = PlayerInfo.Instance.cristals,
         };
 
         items1.Add(info);
@@ -101,10 +108,5 @@ public class ReadJSON : MonoBehaviour
         File.WriteAllText(
             "Assets/Resources/Save_Info.json",
             JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
-    }
-
-    private void Awake()
-    {
-        if (instance == null) instance = this;
     }
 }
