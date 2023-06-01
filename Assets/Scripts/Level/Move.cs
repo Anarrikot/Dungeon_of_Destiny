@@ -9,10 +9,12 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private float i, k, x, y,x1,y1;
     public GameObject coll;
     public Image im;
+    private SpriteRenderer _playerSpriteRenderer;
 
     public void Start()
     {
         Time.timeScale = 1;
+        _playerSpriteRenderer = Player.square.GetComponent<SpriteRenderer>();
     }
     public void Awake()
     {
@@ -88,9 +90,9 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     }
                 }
                 if (Input.mousePosition.x - i < 0)
-                    Player.square.GetComponent<SpriteRenderer>().flipX = true;
+                    _playerSpriteRenderer.flipX = true;
                 else if (Input.mousePosition.x - i > 0)
-                    Player.square.GetComponent<SpriteRenderer>().flipX = false;
+                    _playerSpriteRenderer.flipX = false;
                 Player.agent.destination = new Vector3(Player.instance.gameObject.transform.position.x + x1, Player.instance.gameObject.transform.position.y + y1);
             }
         }

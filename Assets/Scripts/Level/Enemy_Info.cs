@@ -21,7 +21,7 @@ public class Enemy_Info : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         HP.SetActive(false);
-        
+
     }
 
     void Update()

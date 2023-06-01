@@ -21,29 +21,29 @@ public class PlayerInfo : MonoBehaviour
     public static Button button_atc;
     public static Image HP_Image, MP_Image;
     public static Inventory inventory= new Inventory();
-    private static Transform moneyText;
-    private static Transform cristalsText;
+    private static Text moneyText;
+    private static Text cristalsText;
 
     public static void Start_Set()
     {
         foreach (Transform child in HudController.Money.transform)
         {
-           moneyText=child;
+           moneyText= child.GetComponent<Text>();
         }
         foreach (Transform child in HudController.Cristals.transform)
         {
-            cristalsText = child;
+            cristalsText = child.GetComponent<Text>();
         }
     }
     public static void SetMoney(int m)
     {
         money = m;
-        moneyText.GetComponent<Text>().text = money.ToString();
+        moneyText.text = money.ToString();
     }
     public static void SetCristals(int m)
     {
         cristals = m;
-        cristalsText.GetComponent<Text>().text = cristals.ToString();
+        cristalsText.text = cristals.ToString();
     }
     public void Awake()
     {
@@ -58,8 +58,8 @@ public class PlayerInfo : MonoBehaviour
         if (Check(i,"Money"))
         {
             money += i;
-            i = int.Parse(moneyText.GetComponent<Text>().text) + i;
-            moneyText.GetComponent<Text>().text = i.ToString();
+            i = int.Parse(moneyText.text) + i;
+            moneyText.text = i.ToString();
             SetMoney(money);
             return true;
         }
@@ -70,8 +70,8 @@ public class PlayerInfo : MonoBehaviour
         if (Check(i, "Cristals"))
         {
             cristals += i;
-            i = int.Parse(cristalsText.GetComponent<Text>().text) + i;
-            cristalsText.GetComponent<Text>().text = i.ToString();
+            i = int.Parse(cristalsText.text) + i;
+            cristalsText.text = i.ToString();
             SetCristals(cristals);
             return true;
         }

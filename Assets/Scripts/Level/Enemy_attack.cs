@@ -7,10 +7,12 @@ public class Enemy_attack : MonoBehaviour
     public bool target = false;
     public bool collisionEnemy = false;
     public Enemy_Info info;
+    private NavMeshAgent _navmeshAgent;
 
     void Start()
     {
         info= enemy.GetComponent<Enemy_Info>();
+        _navmeshAgent = enemy.GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -22,7 +24,7 @@ public class Enemy_attack : MonoBehaviour
             {
                 info.attack_repeat = 0;
                 attack();
-                enemy.GetComponent<NavMeshAgent>().speed = 3.5f;
+                _navmeshAgent.speed = 3.5f;
             }
 
         }
@@ -32,7 +34,7 @@ public class Enemy_attack : MonoBehaviour
         }
         if (info.attack_repeat >= info.attack_repeat_time && info.attack_delay >= info.attack_delay_time && collisionEnemy == true)
         {
-                enemy.GetComponent<NavMeshAgent>().speed = 0;
+            _navmeshAgent.speed = 0;
             info.attack_delay = 0;
         }
     }

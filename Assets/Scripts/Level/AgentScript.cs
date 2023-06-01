@@ -12,6 +12,7 @@ public class AgentScript : MonoBehaviour
     public bool active=false;
     public bool In_area = false;
     public Animator animator;
+    private SpriteRenderer _spriterenderer;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class AgentScript : MonoBehaviour
         agent.updateUpAxis = false;
         agent.updateRotation = false;
         target_position = start_position;
+        _spriterenderer = sprite.GetComponent<SpriteRenderer>();
     }
     public void Set_active(Transform new_target)
     {
@@ -35,11 +37,11 @@ public class AgentScript : MonoBehaviour
         }
         if (target_position.x<this.transform.position.x)
         {
-            sprite.GetComponent<SpriteRenderer>().flipX = true;
+            _spriterenderer.flipX = true;
         }
         else
         {
-            sprite.GetComponent<SpriteRenderer>().flipX = false;
+            _spriterenderer.flipX = false;
         }
 
 
@@ -74,8 +76,11 @@ public class AgentScript : MonoBehaviour
         else
         {
             agent.stoppingDistance = 0;
-            gameObject.GetComponent<Enemy_Info>().lives = gameObject.GetComponent<Enemy_Info>().max_lives;
-            gameObject.GetComponent<Enemy_Info>().ShowHP();
+            if (gameObject.TryGetComponent<Enemy_Info>(out var enemyInfo))
+            {
+                enemyInfo.lives = enemyInfo.max_lives;
+                enemyInfo.ShowHP();
+            }
         }
         
         agent.destination = target_position;

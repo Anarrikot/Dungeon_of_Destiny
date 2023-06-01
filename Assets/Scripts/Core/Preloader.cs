@@ -55,5 +55,7 @@ public class Preloader : MonoBehaviour
         await Task.Delay(3000);
         if (this != null)
             gameObject.GetComponent<ComonWindow>().Close();
+        
+        
     }
 }

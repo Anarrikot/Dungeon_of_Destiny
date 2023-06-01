@@ -6,7 +6,7 @@ public class WindowsController
     private GameObject myPrefab,myPrefab1;
     public List<GameObject> Prefabs = new List<GameObject>();
     private bool access=true;
-
+     
     public void AddWindow(string name)
     {
         Prefabs.Add((GameObject)Resources.Load(name));

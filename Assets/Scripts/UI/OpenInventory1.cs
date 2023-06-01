@@ -19,10 +19,14 @@ public class OpenInventory1 : MonoBehaviour
             {
                 
                 s.transform.Find("UIItem").Find("ImageIcon").GetComponent<Image>().sprite = Inventory.InventoryItems[i].Icon;
-                s.transform.Find("UIItem").GetComponent<UIItems>().name = Inventory.InventoryItems[i].Name;
-                s.transform.Find("UIItem").GetComponent<UIItems>().stack = Inventory.InventoryItems[i].stack;
-                s.transform.Find("UIItem").GetComponent<UIItems>().quantity = Inventory.InventoryItems[i].quantity;
-                s.transform.Find("UIItem").GetComponent<UIItems>().id = Inventory.InventoryItems[i].id;
+                if (s.transform.Find("UIItem").TryGetComponent<UIItems>(out var s1))
+                {
+                    s1.name = Inventory.InventoryItems[i].Name;
+                    s1.stack = Inventory.InventoryItems[i].stack;
+                    s1.quantity = Inventory.InventoryItems[i].quantity;
+                    s1.id = Inventory.InventoryItems[i].id;
+
+                }
                 if (Inventory.InventoryItems[i].quantity > 1)
                 {
                     s.transform.Find("UIItem").Find("Text").GetComponent<Text>().text = Inventory.InventoryItems[i].quantity.ToString();

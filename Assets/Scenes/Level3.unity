@@ -5915,8 +5915,8 @@ MonoBehaviour:
   prefabNotification: {fileID: 0}
   Audio: {fileID: 0}
   Translate: {fileID: 0}
-  windowCanvas: {fileID: 0}
-  HUD: {fileID: 0}
+  windowCanvas: {fileID: 1151410108}
+  HUD: {fileID: 1887016111}
   Game: {fileID: 0}
 --- !u!81 &1026713213
 AudioListener:
@@ -6457,7 +6457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1515678256}
-  coll: {fileID: 0}
+  coll: {fileID: 1679931579}
   im: {fileID: 1187914557}
 --- !u!114 &1187914557
 MonoBehaviour:
@@ -6787,7 +6787,7 @@ MonoBehaviour:
   m_VoxelSize: 0.06666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: e9189dd9d7ba5b7498935c13ff72b123, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d8923cd06d75caa4ab0f76c1fb7e0f57, type: 2}
 --- !u!1 &1679931579
 GameObject:
   m_ObjectHideFlags: 0
@@ -7027,7 +7027,7 @@ MonoBehaviour:
   controller: {fileID: 941845432}
   coll: {fileID: 1679931579}
   rb: {fileID: 1703452907}
-  button: {fileID: 0}
+  button: {fileID: 149578411}
   square1: {fileID: 402678887}
   death: 0
   TimeDelayHp: 0

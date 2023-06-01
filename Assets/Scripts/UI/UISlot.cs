@@ -7,17 +7,19 @@ public class UISlot : MonoBehaviour,IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         var otherItemTransform = eventData.pointerDrag.transform;
-        if(GetComponentInChildren<UIItems>()!=null)
+        var otherItemTransformInfo = otherItemTransform.GetComponent<UIItems>();
+        if (GetComponentInChildren<UIItems>()!=null)
         {
             var thisItemTransform = GetComponentInChildren<UIItems>().transform;
-            if(thisItemTransform.GetComponent<UIItems>().name== otherItemTransform.GetComponent<UIItems>().name && (otherItemTransform.GetComponent<UIItems>().quantity + thisItemTransform.GetComponent<UIItems>().quantity) <= thisItemTransform.GetComponent<UIItems>().stack)
+            var thisItemTransformInfo = thisItemTransform.GetComponent<UIItems>();
+            if (thisItemTransformInfo.name== otherItemTransformInfo.name && (otherItemTransformInfo.quantity + thisItemTransformInfo.quantity) <= thisItemTransform.GetComponent<UIItems>().stack)
             {
-                otherItemTransform.GetComponent<UIItems>().quantity += thisItemTransform.GetComponent<UIItems>().quantity;
-                if(otherItemTransform.GetComponent<UIItems>().quantity-thisItemTransform.GetComponent<UIItems>().quantity==1)
+                otherItemTransformInfo.quantity += thisItemTransformInfo.quantity;
+                if(otherItemTransformInfo.quantity- thisItemTransformInfo.quantity==1)
                 {
                     otherItemTransform.transform.Find("Text").gameObject.SetActive(true);
                 }
-                otherItemTransform.transform.Find("Text").GetComponent<Text>().text= otherItemTransform.GetComponent<UIItems>().quantity.ToString();
+                otherItemTransform.transform.Find("Text").GetComponent<Text>().text= otherItemTransformInfo.quantity.ToString();
                 Destroy(thisItemTransform.gameObject);
             }
             else

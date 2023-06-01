@@ -15,6 +15,13 @@ public class LoadSceneManadger : MonoBehaviour
         Main.instance.TaskOnClick3();
         this.GetComponent<ComonWindow>().Close();
         Preloader.instance.Load(SceneManager.GetActiveScene().buildIndex + 1);
+        Time.timeScale = 1; 
+    }
+    public void ReloadScene()
+    {
+        Main.instance.TaskOnClick3();
+        this.GetComponent<ComonWindow>().Close();
+        Preloader.instance.Load(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
 }

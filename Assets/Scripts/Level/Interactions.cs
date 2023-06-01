@@ -6,7 +6,12 @@ public class Interactions : MonoBehaviour
     private GameObject npc;
     public GameObject button;
     public Sprite one, two;
+    private Sprite _buttonSprite;
 
+    public void Start()
+    {
+        _buttonSprite = button.GetComponent<Image>().sprite;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Untagged" && collision.gameObject.tag != "Wall")
@@ -39,10 +44,10 @@ public class Interactions : MonoBehaviour
     }
     public void first_button()
     {
-        button.GetComponent<Image>().sprite = one;
+        _buttonSprite = one;
     }
     public void second_button()
     {
-        button.GetComponent<Image>().sprite = two;
+        _buttonSprite = two;
     }
 }

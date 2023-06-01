@@ -22,13 +22,17 @@ public class Arrow : MonoBehaviour
         {
             if(collision.tag == "Enemy")
             {
-                collision.GetComponent<Enemy_Info>().TakeDamage(PlayerInfo.damage);
-                if (collision.GetComponent<Enemy_Info>().lives <= 0)
+                if (collision.TryGetComponent<Enemy_Info>(out var _enemyInfo))
                 {
-                    collision.GetComponent<Enemy_Info>().Drop();
-                    Destroy(collision.gameObject);
+                    _enemyInfo.TakeDamage(PlayerInfo.damage);
+                    if (_enemyInfo.lives <= 0)
+                    {
+                        _enemyInfo.Drop();
+                        Destroy(collision.gameObject);
 
+                    }
                 }
+                
             }
             
             Destroy(gameObject);

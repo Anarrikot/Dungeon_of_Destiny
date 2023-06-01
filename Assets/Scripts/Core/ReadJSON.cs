@@ -6,7 +6,7 @@ using System.IO;
 public class ReadJSON : MonoBehaviour
 {
     public static ReadJSON instance;
-
+    
     private void Start()
     {
         Load("Save_Inventory");
@@ -26,16 +26,6 @@ public class ReadJSON : MonoBehaviour
         public int uid = new int();
         public int soft = new int();
         public int hard = new int();
-    }
-    public void fff(string request)
-    {
-        Info user = new Info();
-        WorldData<Info> worldData = JsonConvert.DeserializeObject<WorldData<Info>>(request);
-        PlayerInfo.name = worldData.user[0].name;
-        PlayerInfo.uid = worldData.user[0].uid;
-        PlayerInfo.money = worldData.user[0].soft;
-        PlayerInfo.cristals = worldData.user[0].hard;
-        Debug.Log(PlayerInfo.name);
     }
     public T Load2<T>(string Name)
     {
@@ -61,6 +51,7 @@ public class ReadJSON : MonoBehaviour
         if (Name == "Save_Info")
         {
             WorldData<Info> worldData = JsonConvert.DeserializeObject<WorldData<Info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
+
             PlayerInfo.name = worldData.user[0].name;
             PlayerInfo.uid = worldData.user[0].uid;
             PlayerInfo.money = worldData.user[0].soft;
