@@ -3218,6 +3218,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729f22497ed89654a8da94c9aae3f1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 100
+  livesMax: 100
+  uid: 123
+  money: 500
+  cristals: 100
+  damage: 0
+  mp: 100
+  this_classes: 0
+  speed: 10
+  x: 0
+  y: 0
+  TimeDelayHP: 0.4
+  TimeDelayMP: 0.01
+  TimeDelayAttack: 0.1
+  name: 
 --- !u!4 &531147745
 Transform:
   m_ObjectHideFlags: 0
@@ -7300,7 +7315,7 @@ PrefabInstance:
     - target: {fileID: 4510037934500567108, guid: 526eae04c05bc26428b736b2f1d6523c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4510037934500567108, guid: 526eae04c05bc26428b736b2f1d6523c,
         type: 3}
@@ -7583,11 +7598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabNotification: {fileID: 0}
-  Audio: {fileID: 0}
-  Translate: {fileID: 0}
   windowCanvas: {fileID: 1253402527}
   HUD: {fileID: 2043948483}
-  Game: {fileID: 0}
 --- !u!4 &1782746490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7121767128902115591, guid: 0b11a716c79a9fe42b960bfca7804ec2,
@@ -7669,6 +7681,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803828298}
   m_CullTransparentMesh: 1
+--- !u!1001 &1806939904
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1879780823}
+    m_Modifications:
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.891434
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.1389537
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -131.55324
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686396203840975984, guid: 12effa0c79da2034db6e9aa60e76e099,
+        type: 3}
+      propertyPath: m_Name
+      value: Chort
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12effa0c79da2034db6e9aa60e76e099, type: 3}
+--- !u!4 &1806939905 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 20032172664511166, guid: 12effa0c79da2034db6e9aa60e76e099,
+    type: 3}
+  m_PrefabInstance: {fileID: 1806939904}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1810211478
 GameObject:
   m_ObjectHideFlags: 0
@@ -7744,6 +7831,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729f22497ed89654a8da94c9aae3f1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 100
+  livesMax: 100
+  uid: 123
+  money: 500
+  cristals: 100
+  damage: 0
+  mp: 100
+  this_classes: 0
+  speed: 10
+  x: 0
+  y: 0
+  TimeDelayHP: 0.4
+  TimeDelayMP: 0.01
+  TimeDelayAttack: 0.1
+  name: 
 --- !u!114 &1810211482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7915,6 +8017,7 @@ Transform:
   - {fileID: 1782746490}
   - {fileID: 1832159609}
   - {fileID: 1225915208}
+  - {fileID: 1806939905}
   - {fileID: 1213780563}
   m_Father: {fileID: 0}
   m_RootOrder: 0
