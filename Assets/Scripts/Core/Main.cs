@@ -33,6 +33,7 @@ public class Main : MonoBehaviour
         WindowController = new WindowsController();
         Hud = new HudController();
         WindowController.AddWindow("LoadScene");
+        Player.Instance.Init();
     }
 
     public void Start_HUD()

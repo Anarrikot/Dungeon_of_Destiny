@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     {
         Main.Instance.Show_HUD();
     }
-    public void Awake()
+    public void Init()
     {
         PlayerInfo.button_atc = button;
         myCamera = Camera.main;
@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
         click = true;
         square = square1;
         animator = square.GetComponent<Animator>();
-        Main.Instance.Show_HUD();
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateUpAxis = false;
