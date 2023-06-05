@@ -44,20 +44,19 @@ public class Player : MonoBehaviour
     public void Start()
     {
         Main.Instance.Show_HUD();
+        controller.SetActive(false);
+        animator = square.GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateUpAxis = false;
+        agent.updateRotation = false;
     }
     public void Init()
     {
         PlayerInfo.button_atc = button;
         myCamera = Camera.main;
         active = true;
-        controller.SetActive(false);
         click = true;
         square = square1;
-        animator = square.GetComponent<Animator>();
-
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateUpAxis = false;
-        agent.updateRotation = false;
     }
     public void Update()
     {

@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4812561057f94b459258aea7fd10b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Copper
+  Name: Copper_ore
   quantity: 1
   stack: 99
   price: 100

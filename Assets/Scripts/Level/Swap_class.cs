@@ -10,8 +10,6 @@ public class Swap_class : MonoBehaviour
     private void Start()
     {
         swap(2);
-        
-
     }
     public void swap()
     { 
