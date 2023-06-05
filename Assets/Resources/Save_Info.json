@@ -1,7 +1,7 @@
 {
   "user": [
     {
-      "name": "",
+      "name": null,
       "uid": 123,
       "soft": 0,
       "hard": 10
