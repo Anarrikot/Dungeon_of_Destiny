@@ -10,4 +10,14 @@ public class AudioController
     {
         _instance=this;
     }
+
+    public void PlaySound(AudioSource audioSource)
+    {
+        audioSource.Play();
+    }
+
+    public void StopSound(AudioSource audioSource)
+    {
+        audioSource.Stop();
+    }
 }

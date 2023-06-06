@@ -10,6 +10,8 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public GameObject coll;
     public Image im;
     private SpriteRenderer _playerSpriteRenderer;
+    public AudioSource audioSource;
+    private AudioController AudioController = AudioController.Instance;
 
     public void Start()
     {
@@ -33,7 +35,6 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (Input.GetMouseButton(0)&& start)
         {
-            
             Vector3 dir4 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10);
             controller.active = true;
             if (active)
@@ -95,9 +96,12 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     _playerSpriteRenderer.flipX = false;
                 Player.agent.destination = new Vector3(Player.Instance.gameObject.transform.position.x + x1, Player.Instance.gameObject.transform.position.y + y1);
             }
+            if (audioSource.isPlaying) return;
+            audioSource.Play();
         }
         if (Input.GetMouseButtonUp(0))
         {
+            audioSource.Stop();
             controller.SetActive(false);
             click = true;
             active = true;
