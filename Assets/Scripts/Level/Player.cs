@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public static GameObject square;
     public static Animator animator;
     public float TimeDelayHp;
-    public GameObject drop_item, deathPerfab;
+    public GameObject drop_item, deathPerfab, death_anim;
     public Vector3 start_position, target_position;
     [SerializeField] public static NavMeshAgent agent;
 
@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
         PlayerInfo.HP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.Instance.lives * 70 / 100);
         if (PlayerInfo.Instance.lives == 0)
         {
+            Instantiate(death_anim, transform.position, Quaternion.identity);
             death = true;
             deathPerfab = Main.Instantiate(deathPerfab, Main.Instance.windowCanvas.transform);
             PlayerInfo.Instance.lives = -1;

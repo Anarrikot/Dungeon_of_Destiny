@@ -1178,6 +1178,8 @@ MonoBehaviour:
     type: 3}
   deathPerfab: {fileID: 4567798770836979305, guid: 763833bb93f61d3418f7ae0d31b707e9,
     type: 3}
+  death_anim: {fileID: 888889635763128656, guid: d433d58fd946a664ea1b4bb1fdda04fc,
+    type: 3}
   start_position: {x: 0, y: 0, z: 0}
   target_position: {x: 0, y: 0, z: 0}
 --- !u!58 &1095031131

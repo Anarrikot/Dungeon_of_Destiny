@@ -14,7 +14,7 @@ public class Enemy_Info : MonoBehaviour
     public bool target = false;
     public Animator animator;
     public float Chance=100f;
-    public GameObject drop_item;
+    public GameObject drop_item, death;
     public Die die;
     public delegate void Die(GameObject gameObj);
     void Awake()
@@ -52,6 +52,7 @@ public class Enemy_Info : MonoBehaviour
         int rand = Random.Range(0, 100);
         if (float.Parse(rand.ToString()) <= Chance)
         {
+            Instantiate(death, transform.position, Quaternion.identity);
             GameObject new_item = Instantiate(drop_item, gameObject.transform.parent.transform);
             new_item.GetComponent<DropItem>().active(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y-0.5f, gameObject.transform.position.z));
         }

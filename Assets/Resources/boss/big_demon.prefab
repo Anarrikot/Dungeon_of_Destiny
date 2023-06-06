@@ -349,6 +349,7 @@ MonoBehaviour:
   Chance: 100
   drop_item: {fileID: 1589323571836779466, guid: 115762e442195364292d620be30fa9fc,
     type: 3}
+  death: {fileID: 888889635763128656, guid: d433d58fd946a664ea1b4bb1fdda04fc, type: 3}
 --- !u!114 &6901110356864891557
 MonoBehaviour:
   m_ObjectHideFlags: 0
