@@ -36,7 +36,7 @@ public class Move : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (Input.GetMouseButton(0)&& start)
         {
             Vector3 dir4 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10);
-            controller.active = true;
+            controller.SetActive(true);
             if (active)
             {
                 i = Input.mousePosition.x;
