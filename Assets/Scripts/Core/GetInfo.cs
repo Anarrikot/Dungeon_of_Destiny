@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine.Networking;
+using System;
+
 public class UserData
 {
     public InfoP user;
@@ -13,6 +15,20 @@ public class InfoP
     public string name;
     public int soft;
     public int hard; 
+}
+
+public class MineData
+{
+    public InfoMine mine;
+}
+
+public class InfoMine
+{
+    public int uid;
+    public DateTime time_money;
+    public int lvl_money;
+    public DateTime time_crystal;
+    public int lvl_crystal;
 }
 
 public class GetInfo : MonoBehaviour
@@ -78,4 +94,22 @@ public class GetInfo : MonoBehaviour
             verified = true;
     }
 
+    public async Task GetInfoMine(string url)
+    {
+        WWWForm form = new WWWForm();
+        using var www = UnityWebRequestTexture.GetTexture(url);
+        await Task.Yield();
+        www.SetRequestHeader("Content-type", "aplication/json");
+        var fff = www.SendWebRequest();
+        while (!fff.isDone)
+        {
+            await Task.Yield();
+        }
+        MineData worldData = JsonConvert.DeserializeObject<MineData>(www.downloadHandler.text);
+
+        Mine_script.lvl_money = worldData.mine.lvl_money;
+        Mine_script.lvl_crystal = worldData.mine.lvl_crystal;
+        Mine_script.time_money = worldData.mine.time_money;
+        Mine_script.time_crystal = worldData.mine.time_crystal;
+    }
 }

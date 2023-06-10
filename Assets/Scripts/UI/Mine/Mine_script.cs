@@ -1,36 +1,45 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mine_script : MonoBehaviour
 {
     private double collect;
-    private int lvl_money = 1;
+    public static int lvl_money;
     private int reward_money = 60;
-    private int lvl_crystal = 1;
+    public static int lvl_crystal;
     private int reward_crystal = 1;
+    public static DateTime time_crystal;
+    public static DateTime time_money;
 
-    private DateTime TimeNow = DateTime.Now;
+    public Text moneyText;
+    public Text cristalText;
 
+
+    public async void Start()
+    {
+        await GetInfo.Instance.GetInfoMine("http://game.ispu.ru/game1/dod/api.php?api=getInfoMine&uid=" + PlayerInfo.Instance.uid.ToString());
+        
+        double time = Convert.ToInt64((DateTime.Now - time_money).Ticks / 10000000);
+        if (time < 86400)
+            moneyText.text = (Math.Floor(time / 60) * lvl_money * reward_money / 60).ToString();
+        else
+            moneyText.text = (24 * lvl_money * reward_money).ToString();
+        
+        time = Convert.ToInt64((DateTime.Now - time_crystal).Ticks / 10000000);
+        if (time < 86400)
+            cristalText.text = (Math.Floor(time / 60) * lvl_crystal * reward_crystal / 60).ToString();
+        else
+            cristalText.text = (24 * lvl_crystal * reward_crystal).ToString();
+    }
 
     public void Collect_Money()
     {
-        DateTime time_money = DateTime.Now.AddSeconds(86400);
-        double time = Convert.ToInt64((TimeNow - time_money).Ticks / 10000000);
-        if (time < 86400)
-            collect = Math.Floor(time / 60) * lvl_money * reward_money / 60;
-        else
-            collect = 24 * lvl_money * reward_money;
+      
     }
 
     public void Collect_Crysatl()
     {
-        DateTime time_crystal = DateTime.Now.AddSeconds(86400);
-        double time = Convert.ToInt64((TimeNow - time_crystal).Ticks / 10000000);
-        if (time < 86400)
-            collect = Math.Floor(time / 60) * lvl_crystal * reward_crystal / 60;
-        else
-            collect = 24 * lvl_crystal * reward_crystal;
+      
     }
 }

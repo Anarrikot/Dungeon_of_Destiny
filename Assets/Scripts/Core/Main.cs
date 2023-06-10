@@ -6,10 +6,6 @@ public class Main : MonoBehaviour
     private GameObject prefabNotification;
     private GameObject closeWindow;
 
-
-
-
-
     public static Main Instance = null;
     public AudioController Audio;
     public TranslateController Translate;
@@ -62,6 +58,11 @@ public class Main : MonoBehaviour
     public void Shop()
     {
         WindowController.AddWindow("Shop");
+    }
+
+    public void Mine()
+    {
+        WindowController.AddWindow("Mine");
     }
     public void TaskOnClick1()
     {
