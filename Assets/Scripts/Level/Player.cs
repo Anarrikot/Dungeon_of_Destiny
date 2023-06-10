@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     }
     public void Start()
     {
-        Main.Instance.Show_HUD();
+        
         controller.SetActive(false);
         animator = square.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();

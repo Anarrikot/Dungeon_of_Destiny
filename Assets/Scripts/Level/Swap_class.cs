@@ -9,6 +9,7 @@ public class Swap_class : MonoBehaviour
     public Sprite []sprite;
     private void Start()
     {
+        Main.Instance.Show_HUD();
         swap(2);
     }
     public void swap()
