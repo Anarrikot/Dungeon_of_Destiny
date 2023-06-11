@@ -22,13 +22,13 @@ public class Mine_script : MonoBehaviour
         
         double time = Convert.ToInt64((DateTime.Now - time_money).Ticks / 10000000);
         if (time < 86400)
-            moneyText.text = (Math.Floor(time / 60) * lvl_money * reward_money / 60).ToString();
+            moneyText.text = (Math.Floor(time / 60 * lvl_money * reward_money / 60)).ToString();
         else
             moneyText.text = (24 * lvl_money * reward_money).ToString();
         
         time = Convert.ToInt64((DateTime.Now - time_crystal).Ticks / 10000000);
         if (time < 86400)
-            cristalText.text = (Math.Floor(time / 60) * lvl_crystal * reward_crystal / 60).ToString();
+            cristalText.text = (Math.Floor(time / 60 * lvl_crystal * reward_crystal / 60)).ToString();
         else
             cristalText.text = (24 * lvl_crystal * reward_crystal).ToString();
     }
