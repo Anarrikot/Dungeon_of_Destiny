@@ -103,4 +103,19 @@ public class PlayerInfo : MonoBehaviour
         Main.Instance.Notification();
         return false;
     }
+
+    public static void AddMoneyPlayer(int i)
+    {
+            Instance.money += i;
+            i = int.Parse(moneyText.text) + i;
+            moneyText.text = i.ToString();
+            SetMoney(Instance.money);
+    }
+    public static void AddCristalPlayer(int i)
+    {
+            Instance.cristals += i;
+            i = int.Parse(cristalsText.text) + i;
+            cristalsText.text = i.ToString();
+            SetCristals(Instance.cristals);
+    }
 }

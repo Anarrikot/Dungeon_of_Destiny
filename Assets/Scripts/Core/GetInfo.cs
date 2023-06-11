@@ -112,4 +112,16 @@ public class GetInfo : MonoBehaviour
         Mine_script.time_money = worldData.mine.time_money;
         Mine_script.time_crystal = worldData.mine.time_crystal;
     }
+
+    public async Task SetInfoForServer(string url)
+    {
+        WWWForm form = new WWWForm();
+
+        using var www = UnityWebRequestTexture.GetTexture(url);
+        await Task.Yield();
+        www.SetRequestHeader("Content-type", "aplication/json");
+        var fff = www.SendWebRequest();
+        while (!fff.isDone)
+            await Task.Yield();
+    }
 }

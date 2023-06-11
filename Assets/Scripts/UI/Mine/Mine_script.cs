@@ -33,13 +33,19 @@ public class Mine_script : MonoBehaviour
             cristalText.text = (24 * lvl_crystal * reward_crystal).ToString();
     }
 
-    public void Collect_Money()
+    public async void Collect_Money()
     {
-      
+        PlayerInfo.AddMoneyPlayer(int.Parse(moneyText.text));
+        moneyText.text = "0";
+        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
+        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=collectMine&uid=" + PlayerInfo.Instance.uid.ToString() + "&type=money");
     }
 
-    public void Collect_Crysatl()
+    public async void Collect_Crysatl()
     {
-      
+        PlayerInfo.AddCristalPlayer(int.Parse(cristalText.text));
+        cristalText.text = "0";
+        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
+        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=collectMine&uid=" + PlayerInfo.Instance.uid.ToString() + "&type=crystal");
     }
 }

@@ -209,7 +209,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5471711748955656549}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3367987072206845506}
+        m_TargetAssemblyTypeName: Mine_script, Assembly-CSharp
+        m_MethodName: Collect_Crysatl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3323023850477640624
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +869,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5426272824502352110}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3367987072206845506}
+        m_TargetAssemblyTypeName: Mine_script, Assembly-CSharp
+        m_MethodName: Collect_Money
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8265166101591507202
 GameObject:
   m_ObjectHideFlags: 0
