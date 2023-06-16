@@ -15,8 +15,8 @@ public class Enemy_Info : MonoBehaviour
     public bool target = false;
     public Animator animator;
     public float Chance=100f;
-    public GameObject drop_item, death;
-    public GameObject show_damage;
+    public GameObject drop_item, death, gold;
+    //public GameObject show_damage;
     public Text damage_text;
     public Die die;
     public delegate void Die(GameObject gameObj);
@@ -60,7 +60,12 @@ public class Enemy_Info : MonoBehaviour
             GameObject new_item = Instantiate(drop_item, gameObject.transform.parent.transform);
             new_item.GetComponent<DropItem>().active(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y-0.5f, gameObject.transform.position.z));
         }
-        
+        int randMoney = Random.Range(1, 3);
+        for (int i = 1; i <= randMoney; i++)
+        {
+            GameObject money = Instantiate(gold, gameObject.transform.parent.transform);
+            money.GetComponent<Drop_money>().active(new Vector3(gameObject.transform.position.x + Random.Range(-1f, 1f), gameObject.transform.position.y + Random.Range(-1f, 1f), gameObject.transform.position.z));
+        }
     }
     public void active()
     {

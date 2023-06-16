@@ -880,7 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 100
   livesMax: 100
-  uid: 123
+  uid: 11111111
   money: 200
   cristals: 10
   damage: 0
