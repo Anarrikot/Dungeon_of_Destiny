@@ -18,6 +18,15 @@ public class map_point_active : MonoBehaviour
         public string star1;
         public string star2;
         public string star3;
+
+        public LevelInfo(int uid, string level, string star1, string star2, string star3)
+        {
+            this.uid = uid;
+            this.level = level;
+            this.star1 = star1;
+            this.star2 = star2;
+            this.star3 = star3;
+        }
     }
     public class WorldData<T>
     {
@@ -60,6 +69,8 @@ public class map_point_active : MonoBehaviour
                 myPoint.GetComponentInChildren<Select_level>().Star2 = false;
                 myPoint.GetComponentInChildren<Select_level>().Star3 = false;
                 points.Add(myPoint.transform.parent.gameObject);
+                dataLvl.lvl.Add(new LevelInfo(PlayerInfo.Instance.uid, (i-1).ToString(), "0", "0", "0"));
+                break;
             }
             i++;
         }

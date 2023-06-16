@@ -29,7 +29,7 @@ public class portal : MonoBehaviour
         PlayerInfo.Instance.lives = PlayerInfo.Instance.livesMax;
         ReadJSON.Instance.SaveInfo();
         ReadJSON.Instance.SaveInvenory();
-        if (map_point_active.dataLvl.lvl[1].star1 == "0")
+        if (map_point_active.dataLvl.lvl[SceneManager.GetActiveScene().buildIndex - 1].star1 == "0")
             GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlSaveInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1");
         else
             GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlUpdateInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1");
