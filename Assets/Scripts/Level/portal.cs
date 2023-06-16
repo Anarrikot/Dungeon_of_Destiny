@@ -29,8 +29,9 @@ public class portal : MonoBehaviour
         PlayerInfo.Instance.lives = PlayerInfo.Instance.livesMax;
         ReadJSON.Instance.SaveInfo();
         ReadJSON.Instance.SaveInvenory();
+        GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlSaveInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1");
         WindowController.AddWindow("Win");
-        //GetInfo.instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlSaveInfo&uid=" + PlayerInfo.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1&star2=1&star3=1");
+        
     }
 
     public void OnTriggerExit2D(Collider2D collision)

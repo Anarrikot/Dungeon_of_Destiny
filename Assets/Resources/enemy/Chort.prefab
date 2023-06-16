@@ -185,6 +185,8 @@ MonoBehaviour:
   drop_item: {fileID: 1589323571836779466, guid: cb265f28a08618044b9816c2ca226e2f,
     type: 3}
   death: {fileID: 888889635763128656, guid: d433d58fd946a664ea1b4bb1fdda04fc, type: 3}
+  show_damage: {fileID: 0}
+  damage_text: {fileID: 0}
 --- !u!114 &9006215218579245499
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class InfoMine
     public int lvl_crystal;
 }
 
+
 public class GetInfo : MonoBehaviour
 {
 
@@ -111,6 +112,20 @@ public class GetInfo : MonoBehaviour
         Mine_script.lvl_crystal = worldData.mine.lvl_crystal;
         Mine_script.time_money = worldData.mine.time_money;
         Mine_script.time_crystal = worldData.mine.time_crystal;
+    }
+
+    public async Task GetInfoLvl(string url)
+    {
+        WWWForm form = new WWWForm();
+        using var www = UnityWebRequestTexture.GetTexture(url);
+        await Task.Yield();
+        www.SetRequestHeader("Content-type", "aplication/json");
+        var fff = www.SendWebRequest();
+        while (!fff.isDone)
+        {
+            await Task.Yield();
+        }
+        map_point_active.dataLvl = JsonConvert.DeserializeObject<map_point_active.WorldData<map_point_active.LevelInfo>>(www.downloadHandler.text);
     }
 
     public async Task SetInfoForServer(string url)

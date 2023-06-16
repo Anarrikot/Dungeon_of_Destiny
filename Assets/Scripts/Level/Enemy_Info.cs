@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy_Info : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Enemy_Info : MonoBehaviour
     public Animator animator;
     public float Chance=100f;
     public GameObject drop_item, death;
+    public GameObject show_damage;
+    public Text damage_text;
     public Die die;
     public delegate void Die(GameObject gameObj);
     void Awake()
@@ -46,6 +49,7 @@ public class Enemy_Info : MonoBehaviour
     {
         HP.transform.localScale = new Vector3(lives * 0.1f / 60, HP.transform.localScale.y, HP.transform.localScale.z);
     }
+
     public void Drop()
     {
         die(gameObject);
