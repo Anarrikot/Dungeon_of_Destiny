@@ -15,7 +15,7 @@ public class Enemy_Info : MonoBehaviour
     public bool target = false;
     public Animator animator;
     public float Chance=100f;
-    public GameObject drop_item, death, gold;
+    public GameObject drop_item, death, gold, door, dooropen;
     //public GameObject show_damage;
     public Text damage_text;
     public Die die;
@@ -53,6 +53,11 @@ public class Enemy_Info : MonoBehaviour
     public void Drop()
     {
         die(gameObject);
+        if (door != null)
+        {
+            door.SetActive(false);
+            dooropen.SetActive(true);
+        }
         int rand = Random.Range(0, 100);
         if (float.Parse(rand.ToString()) <= Chance)
         {
