@@ -55,6 +55,8 @@ MonoBehaviour:
   Image: {fileID: 5105151021433279027}
   Name: {fileID: 5105151022312213276}
   button: {fileID: 5105151020859464622}
+  buttonInWindow: {fileID: 0}
+  recipeWindow: {fileID: 0}
   grid: {fileID: 0}
 --- !u!1 &5105151020859464620
 GameObject:
@@ -353,15 +355,15 @@ RectTransform:
   m_GameObject: {fileID: 5105151022312213274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 5105151020482218960}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 48.3112, y: 0.2253}
-  m_SizeDelta: {x: 303.3756, y: 61.55}
+  m_AnchoredPosition: {x: -31, y: 0.22526}
+  m_SizeDelta: {x: 589.657, y: 225.1394}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5105151022312213277
 CanvasRenderer:
@@ -393,11 +395,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0350747f57018cd4ba8602dbca0932f8, type: 3}
-    m_FontSize: 20
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
