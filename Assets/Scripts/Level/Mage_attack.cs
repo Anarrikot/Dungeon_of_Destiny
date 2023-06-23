@@ -22,7 +22,7 @@ public class Mage_attack : MonoBehaviour
             {
                 if(enemies[i].TryGetComponent<Enemy_Info>(out var _enemyInfo))
                 {
-                    _enemyInfo.TakeDamage(PlayerInfo.Instance.damage * 50 / 100);
+                    _enemyInfo.TakeDamage(Player.Instance.thisClass.damage * 50 / 100);
                     if (_enemyInfo.lives <= 0)
                     {
                         enemy1 = enemies[i];

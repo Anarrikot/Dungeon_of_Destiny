@@ -3,19 +3,11 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public int lives = 100;
-    public int livesMax = 100;
     public int uid = 111111111;
     public int money = 500;
     public int cristals = 100;
-    public int damage = 20;
-    public int mp = 100;
-    public int armor = 1;
     public int this_classes;
     public float speed = 10, x, y;
-    public float TimeDelayHP = 0.4f;
-    public float TimeDelayMP = 0.01f;
-    public float TimeDelayAttack = 0.1f;
     public string name;
     
     public static string[] classes = new string[3];
