@@ -71,18 +71,21 @@ public class Swap_class : MonoBehaviour
         switch (PlayerInfo.classes[i])
         {
             case "Knight":
+                Player.Instance.thisClass = PlayerInfo.khigth;
                 Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square"));
                 gameObject.AddComponent<attack>();
                 PlayerInfo.button_atc.onClick.AddListener(()=>gameObject.GetComponent<attack>().TaskOnClick());
 
                 break;
             case "Mage":
+                Player.Instance.thisClass = PlayerInfo.mag;
                 Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square 1"));
                 new_class = Instantiate((GameObject)Resources.Load("Mage"), gameObject.transform);
                 PlayerInfo.button_atc.onClick.AddListener(() => new_class.GetComponent<Ñlosest_enemy>().TaskOnClick());
 
                 break;
             case "Archer":
+                Player.Instance.thisClass = PlayerInfo.archer;
                 Player.square.GetComponent<Animator>().runtimeAnimatorController = Instantiate(Resources.Load<RuntimeAnimatorController>("Animations/Square 2"));
                 new_class = Instantiate((GameObject)Resources.Load("Mage"), gameObject.transform);
                 new_class.GetComponent<Ñlosest_enemy>().splash = (GameObject)Resources.Load("arrow");

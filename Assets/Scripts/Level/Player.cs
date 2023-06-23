@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public float TimeDelayHp;
     public GameObject drop_item, deathPerfab, death_anim;
     public Vector3 start_position, target_position;
+    public ClassInfo thisClass;
     [SerializeField] public static NavMeshAgent agent;
 
 
@@ -57,24 +58,25 @@ public class Player : MonoBehaviour
         active = true;
         click = true;
         square = square1;
+        thisClass = PlayerInfo.khigth;
     }
     public void Update()
     {
-        PlayerInfo.HP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.Instance.lives * 70 / 100);
-        if (PlayerInfo.Instance.lives == 0)
+        PlayerInfo.HP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisClass.lives * 70 / thisClass.livesMax);
+        if (thisClass.lives == 0)
         {
             Instantiate(death_anim, transform.position, Quaternion.identity);
             death = true;
             deathPerfab = Main.Instantiate(deathPerfab, Main.Instance.windowCanvas.transform);
-            PlayerInfo.Instance.lives = -1;
+            thisClass.lives = -1;
         }
 
-        if (PlayerInfo.Instance.lives < 100 && !death)
+        if (thisClass.lives < thisClass.livesMax && !death)
         {
             TimeDelayHp += Time.deltaTime;
-            if (TimeDelayHp >= PlayerInfo.Instance.TimeDelayHP)
+            if (TimeDelayHp >= thisClass.TimeDelayHP)
             {
-                PlayerInfo.Instance.lives ++;
+                thisClass.lives ++;
                 TimeDelayHp = 0;
             }
         }

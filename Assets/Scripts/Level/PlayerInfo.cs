@@ -24,9 +24,9 @@ public class PlayerInfo : MonoBehaviour
     public static Inventory inventory= new Inventory();
     private static Text moneyText;
     private static Text cristalsText;
-    public static ClassInfo khigth = new ClassInfo() { lives = 200, livesMax = 200, mp = 100, damage = 20, armor = 5, TimeDelayAttack = 0.1f, TimeDelayHP =  0.4f, TimeDelayMP = 0.01f};
-    public static ClassInfo archer = new ClassInfo() { lives = 100, livesMax = 100, mp = 100, damage = 30, armor = 1, TimeDelayAttack = 0.1f, TimeDelayHP = 0.4f, TimeDelayMP = 0.01f };
-    public static ClassInfo mag = new ClassInfo() { lives = 100, livesMax = 100, mp = 300, damage = 20, armor = 1, TimeDelayAttack = 0.1f, TimeDelayHP = 0.4f, TimeDelayMP = 0.01f };
+    public static ClassInfo khigth = new ClassInfo() { lives = 200, livesMax = 200, mp = 100, mpMax = 100, damage = 20, armor = 5, TimeDelayAttack = 0.1f, TimeDelayHP =  0.4f, TimeDelayMP = 0.01f};
+    public static ClassInfo archer = new ClassInfo() { lives = 100, livesMax = 100, mp = 100, mpMax = 100, damage = 30, armor = 1, TimeDelayAttack = 0.1f, TimeDelayHP = 0.4f, TimeDelayMP = 0.01f };
+    public static ClassInfo mag = new ClassInfo() { lives = 100, livesMax = 100, mp = 300, mpMax=300, damage = 20, armor = 1, TimeDelayAttack = 0.1f, TimeDelayHP = 0.4f, TimeDelayMP = 0.01f };
 
 
 

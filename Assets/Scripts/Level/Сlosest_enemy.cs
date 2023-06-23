@@ -13,21 +13,25 @@ public class Сlosest_enemy : MonoBehaviour
     public float TimeDelayMp;
     public float TimeDelayAttack;
     public GameObject splash,splash1;
-   
+    public ClassInfo thisClass;
 
 
-    private void Update()
+    public void Start()
     {
-        if (TimeDelayAttack <= PlayerInfo.Instance.TimeDelayAttack)
+        thisClass = Player.Instance.thisClass;   
+    }
+        private void Update()
+    {
+        if (TimeDelayAttack <= thisClass.TimeDelayAttack)
             TimeDelayAttack += Time.deltaTime;
-        if (PlayerInfo.Instance.mp < 100)
+        if (thisClass.mp < thisClass.mpMax)
         {
             TimeDelayMp += Time.deltaTime;
-            if (TimeDelayMp >= PlayerInfo.Instance.TimeDelayMP)
+            if (TimeDelayMp >= thisClass.TimeDelayMP)
             {
-                PlayerInfo.Instance.mp++;
+                thisClass.mp++;
                 TimeDelayMp = 0;
-                PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.Instance.mp * 70 / 100);
+                PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisClass.mp * 70 / thisClass.mpMax);
             }
         }
         if(enemies.Count > 0)
@@ -85,14 +89,14 @@ public class Сlosest_enemy : MonoBehaviour
     public void TaskOnClick()
     {
 
-        if (PlayerInfo.Instance.mp >= 20 && TimeDelayAttack >= PlayerInfo.Instance.TimeDelayAttack && enemy!=null)
+        if (thisClass.mp >= 20 && TimeDelayAttack >= thisClass.TimeDelayAttack && enemy!=null)
         {
 
             isClicked = true;
-            PlayerInfo.Instance.mp -= 20;
-            PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.Instance.mp * 70 / 100);
+            thisClass.mp -= 20;
+            PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, thisClass.mp * 70 / thisClass.mpMax);
         }
-        if (isClicked && TimeDelayAttack >= PlayerInfo.Instance.TimeDelayAttack)
+        if (isClicked && TimeDelayAttack >= thisClass.TimeDelayAttack)
         {
 
             hit();
@@ -106,7 +110,7 @@ public class Сlosest_enemy : MonoBehaviour
         splash1 = GameObject.Instantiate(splash);
         if(PlayerInfo.classes[PlayerInfo.Instance.this_classes]=="Mage")
         {
-            enemy.GetComponent<Enemy_Info>().TakeDamage(PlayerInfo.Instance.damage * 50 / 100);
+            enemy.GetComponent<Enemy_Info>().TakeDamage(thisClass.damage * 50 / 100);
             splash1.transform.position = enemy.transform.position;
         }
 

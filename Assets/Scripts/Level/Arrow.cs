@@ -24,7 +24,7 @@ public class Arrow : MonoBehaviour
             {
                 if (collision.TryGetComponent<Enemy_Info>(out var _enemyInfo))
                 {
-                    _enemyInfo.TakeDamage(PlayerInfo.Instance.damage);
+                    _enemyInfo.TakeDamage(PlayerInfo.archer.damage);
                     if (_enemyInfo.lives <= 0)
                     {
                         _enemyInfo.Drop();

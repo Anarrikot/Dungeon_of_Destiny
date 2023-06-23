@@ -5,6 +5,7 @@ public class ClassInfo
     public int livesMax;
     public int damage;
     public int mp;
+    public int mpMax;
     public int armor;
     public float TimeDelayHP = 0.4f;
     public float TimeDelayMP = 0.01f;

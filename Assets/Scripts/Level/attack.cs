@@ -16,16 +16,16 @@ public class attack : MonoBehaviour
 
     private void Update()
     {
-        if (TimeDelayAttack <= PlayerInfo.Instance.TimeDelayAttack)
+        if (TimeDelayAttack <= PlayerInfo.khigth.TimeDelayAttack)
             TimeDelayAttack += Time.deltaTime;
-        if (PlayerInfo.Instance.mp < 100)
+        if (PlayerInfo.khigth.mp < PlayerInfo.khigth.mpMax)
         {
             TimeDelayMp += Time.deltaTime;
-            if (TimeDelayMp >= PlayerInfo.Instance.TimeDelayMP)
+            if (TimeDelayMp >= PlayerInfo.khigth.TimeDelayMP)
             {
-                PlayerInfo.Instance.mp++;
+                PlayerInfo.khigth.mp++;
                 TimeDelayMp = 0;
-                PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.Instance.mp * 70 / 100);
+                PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.khigth.mp * 70 / PlayerInfo.khigth.mpMax);
             }
         }
     }
@@ -49,13 +49,13 @@ public class attack : MonoBehaviour
     public void TaskOnClick()
     {
        
-        if (PlayerInfo.Instance.mp >= 20 && TimeDelayAttack >= PlayerInfo.Instance.TimeDelayAttack)
+        if (PlayerInfo.khigth.mp >= 20 && TimeDelayAttack >= PlayerInfo.khigth.TimeDelayAttack)
         {
             isClicked = true;
-            PlayerInfo.Instance.mp -= 20;
-            PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.Instance.mp * 70 / 100);
+            PlayerInfo.khigth.mp -= 20;
+            PlayerInfo.MP_Image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, PlayerInfo.khigth.mp * 70 / PlayerInfo.khigth.mpMax);
         }
-        if (isClicked && TimeDelayAttack >= PlayerInfo.Instance.TimeDelayAttack)
+        if (isClicked && TimeDelayAttack >= PlayerInfo.khigth.TimeDelayAttack)
         {
             hit();
             isClicked = false;
@@ -71,7 +71,7 @@ public class attack : MonoBehaviour
             {
                 if(enemies[i].TryGetComponent<Enemy_Info>(out var _enemyInfo))
                 {
-                    _enemyInfo.TakeDamage(PlayerInfo.Instance.damage);
+                    _enemyInfo.TakeDamage(PlayerInfo.khigth.damage);
                     if (_enemyInfo.lives <= 0)
                     {
                         enemy1 = enemies[i];
