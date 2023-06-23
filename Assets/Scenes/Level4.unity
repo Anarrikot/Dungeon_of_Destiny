@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 478960826}
   - component: {fileID: 478960825}
   - component: {fileID: 478960824}
+  - component: {fileID: 478960827}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -676,6 +677,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &478960827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478960822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaaa7d33064cea847ac40b7258a69a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 478960822}
+  damageTextPrefab: {fileID: 1586139329612538456, guid: fdc3000fd0624414b926c93cdba3faec,
+    type: 3}
 --- !u!1 &484253370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,21 +1038,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729f22497ed89654a8da94c9aae3f1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 100
-  livesMax: 100
   uid: 123
   money: 500
   cristals: 100
-  damage: 0
-  mp: 100
-  armor: 1
   this_classes: 0
   speed: 10
   x: 0
   y: 0
-  TimeDelayHP: 0.4
-  TimeDelayMP: 0.01
-  TimeDelayAttack: 0.1
   name: 
 --- !u!4 &705565142
 Transform:
@@ -7807,21 +7815,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729f22497ed89654a8da94c9aae3f1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 100
-  livesMax: 100
   uid: 123
   money: 0
   cristals: 100
-  damage: 20
-  mp: 100
-  armor: 1
   this_classes: 0
   speed: 10
   x: 0
   y: 0
-  TimeDelayHP: 0.4
-  TimeDelayMP: 0.01
-  TimeDelayAttack: 0.1
   name: 
 --- !u!50 &1659139930
 Rigidbody2D:

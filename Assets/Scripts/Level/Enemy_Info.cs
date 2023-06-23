@@ -42,6 +42,7 @@ public class Enemy_Info : MonoBehaviour
         TimeDelayShowHP = 0;
         lives = lives - damage;
         ShowHP();
+        FindObjectOfType<DamageTextController>().ShowDamageText(damage, this.transform.position);
     }
     public void ShowHP()
     {
