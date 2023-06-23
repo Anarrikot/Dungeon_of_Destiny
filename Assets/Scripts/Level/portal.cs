@@ -26,7 +26,9 @@ public class portal : MonoBehaviour
     IEnumerator Win()
     {
         yield return new WaitForSeconds(3.0f);
-        Player.Instance.thisClass.lives = Player.Instance.thisClass.livesMax;
+        PlayerInfo.khigth.lives = PlayerInfo.khigth.livesMax;
+        PlayerInfo.mag.lives = PlayerInfo.mag.livesMax;
+        PlayerInfo.archer.lives = PlayerInfo.archer.livesMax;
         ReadJSON.Instance.SaveInfo();
         ReadJSON.Instance.SaveInvenory();
         if (map_point_active.dataLvl.lvl[SceneManager.GetActiveScene().buildIndex - 1].star1 == "0")

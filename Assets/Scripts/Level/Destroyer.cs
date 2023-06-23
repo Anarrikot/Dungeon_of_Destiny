@@ -17,7 +17,9 @@ public class Destroyer : MonoBehaviour
     IEnumerator DestroyObj()
     {
         yield return new WaitForSeconds(5.0f);
-        Player.Instance.thisClass.lives = Player.Instance.thisClass.livesMax;
+        PlayerInfo.khigth.lives = PlayerInfo.khigth.livesMax;
+        PlayerInfo.mag.lives = PlayerInfo.mag.livesMax;
+        PlayerInfo.archer.lives = PlayerInfo.archer.livesMax;
         WindowController.AddWindow("Lose");
         Destroy(gameObject);
     }
