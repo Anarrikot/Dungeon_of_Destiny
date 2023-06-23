@@ -34,10 +34,13 @@ public class ReadJSON : MonoBehaviour
         public int soft = new int();
         public int hard = new int();
     }
-    public T Load2<T>(string Name)
+    public List<T> Load2<T>(string Name)
     {
-        T wData = JsonConvert.DeserializeObject<T>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
-        return wData;
+        WorldData<T> worldData = JsonConvert.DeserializeObject<WorldData<T>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
+        return worldData.user;
+
+        //T wData = JsonConvert.DeserializeObject<T>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
+        //return wData;
     }
     public void Load(string Name)
     {      
@@ -108,5 +111,20 @@ public class ReadJSON : MonoBehaviour
         File.WriteAllText(
             "Assets/Resources/Save_Info.json",
             JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
+    }
+    public void SaveRecipe(List<Recipe> recipe_list)
+    {
+
+        var data = new WorldData<Recipe>()
+        {
+            user = recipe_list
+        };
+        Debug.Log(recipe_list);
+        File.WriteAllText(
+            "Assets/Resources/Save_Recipe.json",
+            JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore })
+
+            );
+
     }
 }

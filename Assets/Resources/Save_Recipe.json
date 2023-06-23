@@ -1,0 +1,16 @@
+{
+  "user": [
+    {
+      "Name": "Blue fabric",
+      "id": 0,
+      "Cost": 20,
+      "Craftable_item_id": 8,
+      "Components": [
+        {
+          "Count": 2,
+          "Item_id": 3
+        }
+      ]
+    }
+  ]
+}

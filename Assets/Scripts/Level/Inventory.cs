@@ -5,7 +5,7 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] List<GameObject> StartItems = new List<GameObject>();
     public static List<Item> InventoryItems = new List<Item>();
-
+    private int _count;
     public class Item_info
     {
         public int id = new int();
@@ -15,7 +15,10 @@ public class Inventory : MonoBehaviour
     {
       public List<Item_info> items = new List<Item_info>(); 
     }
-
+    private void Update()
+    {
+       
+    }
     public void AddItem(Item prefab)
     {
         Item item= new Item();
@@ -28,9 +31,20 @@ public class Inventory : MonoBehaviour
             item.Icon = prefab.Icon;
         InventoryItems.Add(item);
     }
-    private void Start()
+    public int CheckItem(int id)
     {
-        ReadJSON.Instance.Load("Save_Inventory");
+        _count = 0;
+        if (InventoryItems.Count != 0)
+        {
+            foreach (Item item in InventoryItems)
+            {
+                if (item.id == id)
+                {
+                    _count += item.quantity; 
+                }
+            } 
+        }
+        return _count;
     }
     public void New_Item(Item new_item)
     {

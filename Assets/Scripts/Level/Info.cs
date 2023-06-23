@@ -22,9 +22,10 @@ public class Info : MonoBehaviour
     }
     public void Awake()
     {
-        for (int i = 0; i <= 2; i++)
+        for (int i = 0; i <= 8; i++)
         {
             GameObject gameObject = Resources.Load("Item/" + i.ToString()) as GameObject;
+            
             Add_Item(gameObject.GetComponent<Item>());
         }
     }
