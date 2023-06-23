@@ -11,6 +11,18 @@
           "Item_id": 3
         }
       ]
+    },
+    {
+      "Name": "Iron Ingot",
+      "id": 1,
+      "Cost": 20,
+      "Craftable_item_id": 2,
+      "Components": [
+        {
+          "Count": 3,
+          "Item_id": 1
+        }
+      ]
     }
   ]
 }

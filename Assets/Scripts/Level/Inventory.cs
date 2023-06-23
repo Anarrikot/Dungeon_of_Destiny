@@ -31,6 +31,30 @@ public class Inventory : MonoBehaviour
             item.Icon = prefab.Icon;
         InventoryItems.Add(item);
     }
+    public void DeleteItem(int id,int count)
+    {
+        if (InventoryItems.Count != 0)
+        {
+            foreach (Item item in InventoryItems)
+            {
+                if (count > 0)
+                {
+                    if (item.id == id&& item.quantity>=count)
+                    {
+                        item.quantity -= count;
+                        if (item.quantity <= 0)
+                        {
+                            item.Name = "Empty";
+                            item.id = 0;
+                        }
+                    }
+                }
+                else
+                    return;
+                
+            }
+        }
+    }
     public int CheckItem(int id)
     {
         _count = 0;

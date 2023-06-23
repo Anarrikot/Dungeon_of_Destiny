@@ -64,6 +64,10 @@ public class Main : MonoBehaviour
     {
         WindowController.AddWindow("Mine");
     }
+    public void Blacksmith()
+    {
+        WindowController.AddWindow("Blacksmith/Blacksmith");
+    }
     public void TaskOnClick1()
     {
         WindowController.AddWindow("Store");

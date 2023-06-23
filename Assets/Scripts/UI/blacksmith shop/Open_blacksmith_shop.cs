@@ -10,6 +10,7 @@ public class Recipe
     public int id;
     public int Cost;
     public int Craftable_item_id;
+    
     public List<Item_count> Components;
 }
 public class WorldData<T>
@@ -29,6 +30,7 @@ public class Open_blacksmith_shop : MonoBehaviour
     public GameObject RecipeImage;
     public GameObject MaterialsList;
     public GameObject RecipeWindow;
+    public Button buttonInWindow;
     public Image ImageWindow; 
 
 
@@ -38,7 +40,7 @@ public class Open_blacksmith_shop : MonoBehaviour
         foreach (Recipe recipe in Recipes)
         {
             GameObject gameObject = Instantiate(Resources.Load("Blacksmith/Recipe") as GameObject, grid.transform);
-            gameObject.GetComponent<Slot_In_BS>().Load_Info(recipe,MaterialsList, RecipeWindow, ImageWindow);
+            gameObject.GetComponent<Slot_In_BS>().Load_Info(recipe,MaterialsList, RecipeWindow, ImageWindow, buttonInWindow);
         }
           
     }
