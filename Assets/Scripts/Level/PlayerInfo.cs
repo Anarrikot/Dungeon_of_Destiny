@@ -8,8 +8,9 @@ public class PlayerInfo : MonoBehaviour
     public int uid = 111111111;
     public int money = 500;
     public int cristals = 100;
-    public int damage;
+    public int damage = 20;
     public int mp = 100;
+    public int armor = 1;
     public int this_classes;
     public float speed = 10, x, y;
     public float TimeDelayHP = 0.4f;
@@ -23,7 +24,9 @@ public class PlayerInfo : MonoBehaviour
     public static Inventory inventory= new Inventory();
     private static Text moneyText;
     private static Text cristalsText;
-
+    public static ClassInfo khigth = new ClassInfo() { lives = 200, livesMax = 200, mp = 100, damage = 20, armor = 5, TimeDelayAttack = 0.1f, TimeDelayHP =  0.4f, TimeDelayMP = 0.01f};
+    public static ClassInfo archer = new ClassInfo() { lives = 100, livesMax = 100, mp = 100, damage = 30, armor = 1, TimeDelayAttack = 0.1f, TimeDelayHP = 0.4f, TimeDelayMP = 0.01f };
+    public static ClassInfo mag = new ClassInfo() { lives = 100, livesMax = 100, mp = 300, damage = 20, armor = 1, TimeDelayAttack = 0.1f, TimeDelayHP = 0.4f, TimeDelayMP = 0.01f };
 
 
 

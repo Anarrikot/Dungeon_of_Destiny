@@ -5,11 +5,19 @@ using UnityEngine.UI;
 public class OpenInventory1 : MonoBehaviour
 {
     public GameObject grid;
+    public Text hpText;
+    public Text manaText;
+    public Text damageText;
+    public Text armorText;
     Item Item;
     
     [SerializeField]List<GameObject> list = new List<GameObject>();
     void Start()
     {
+        hpText.text = PlayerInfo.khigth.livesMax.ToString();
+        manaText.text = PlayerInfo.khigth.mp.ToString();
+        damageText.text = PlayerInfo.khigth.damage.ToString();
+        armorText.text = PlayerInfo.khigth.armor.ToString() + "%";
         grid = gameObject.transform.Find("Grid").gameObject;
         int i = 0;
         foreach (Transform s in grid.transform)
@@ -72,5 +80,27 @@ public class OpenInventory1 : MonoBehaviour
             }
         }
         ReadJSON.Instance.SaveInvenory();
+    }
+
+    public void buttomKnigth() 
+    {
+        hpText.text = PlayerInfo.khigth.livesMax.ToString();
+        manaText.text = PlayerInfo.khigth.mp.ToString();
+        damageText.text = PlayerInfo.khigth.damage.ToString();
+        armorText.text = PlayerInfo.khigth.armor.ToString() + "%";
+    }
+    public void buttomArcher()
+    {
+        hpText.text = PlayerInfo.archer.livesMax.ToString();
+        manaText.text = PlayerInfo.archer.mp.ToString();
+        damageText.text = PlayerInfo.archer.damage.ToString();
+        armorText.text = PlayerInfo.archer.armor.ToString() + "%";
+    }
+    public void buttomMag()
+    {
+        hpText.text = PlayerInfo.mag.livesMax.ToString();
+        manaText.text = PlayerInfo.mag.mp.ToString();
+        damageText.text = PlayerInfo.mag.damage.ToString();
+        armorText.text = PlayerInfo.mag.armor.ToString() + "%";
     }
 }

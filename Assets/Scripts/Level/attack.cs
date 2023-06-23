@@ -14,10 +14,6 @@ public class attack : MonoBehaviour
     public float TimeDelayMp;
     public float TimeDelayAttack;
 
-    private void Start()
-    {
-        PlayerInfo.Instance.damage = 20;
-    }
     private void Update()
     {
         if (TimeDelayAttack <= PlayerInfo.Instance.TimeDelayAttack)

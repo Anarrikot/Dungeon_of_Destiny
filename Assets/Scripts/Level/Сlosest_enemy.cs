@@ -13,10 +13,9 @@ public class Сlosest_enemy : MonoBehaviour
     public float TimeDelayMp;
     public float TimeDelayAttack;
     public GameObject splash,splash1;
-    private void Start()
-    {
-        PlayerInfo.Instance.damage = 20;
-    }
+   
+
+
     private void Update()
     {
         if (TimeDelayAttack <= PlayerInfo.Instance.TimeDelayAttack)
