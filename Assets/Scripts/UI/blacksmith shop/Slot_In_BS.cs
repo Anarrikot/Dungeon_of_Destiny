@@ -40,7 +40,7 @@ public class Slot_In_BS : MonoBehaviour
         {
             GameObject gameObject = Instantiate(Resources.Load("Blacksmith/Frame") as GameObject, grid.transform);
             _count = PlayerInfo.inventory.CheckItem(item_Count.Item_id);
-            _check = _count > item_Count.Count;
+            _check = _count >= item_Count.Count;
             _countText = _count.ToString()+"/"+ item_Count.Count.ToString();
             gameObject.GetComponent<Frame_Info>().Load_Info(_countText, Info.Item_list[item_Count.Item_id].GetComponent<Item>().Icon, _check, item_Count.Item_id, item_Count.Count);
         }
@@ -72,12 +72,13 @@ public class Slot_In_BS : MonoBehaviour
 
                 }
                 PlayerInfo.inventory.New_Item(Info.Item_list[_recipe.Craftable_item_id].GetComponent<Item>());
-                PlayerInfo.inventory.Save();
-                OpenGrid();
+                ReadJSON.Instance.SaveInvenory();
+                
             }
              
         }
         else
             Debug.Log("no");
+        OpenGrid();
     }
 }

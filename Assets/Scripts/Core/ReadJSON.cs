@@ -16,6 +16,9 @@ public class ReadJSON : MonoBehaviour
 
     private void Start()
     {
+        if(PlayerInfo.inventory.NullInventory())
+            SaveInvenory();
+        PlayerInfo.inventory.ClearInventory();
         Load("Save_Inventory");
     }
     public class WorldData<T>
@@ -46,6 +49,7 @@ public class ReadJSON : MonoBehaviour
     {      
         if(Name== "Save_Inventory")
         {
+            
             WorldData<Item_info> worldData = JsonConvert.DeserializeObject<WorldData<Item_info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
             if (worldData != null)
             {

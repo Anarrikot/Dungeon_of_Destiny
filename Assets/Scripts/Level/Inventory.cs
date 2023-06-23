@@ -11,6 +11,17 @@ public class Inventory : MonoBehaviour
         public int id = new int();
         public int count = new int();
     }
+    public bool NullInventory()
+    {
+        if(InventoryItems.Count > 0) 
+            return true;
+        else
+            return false;
+    }
+    public void ClearInventory()
+    {
+        InventoryItems.Clear();
+    }
     public class WorldData
     {
       public List<Item_info> items = new List<Item_info>(); 
@@ -57,6 +68,7 @@ public class Inventory : MonoBehaviour
     }
     public int CheckItem(int id)
     {
+
         _count = 0;
         if (InventoryItems.Count != 0)
         {

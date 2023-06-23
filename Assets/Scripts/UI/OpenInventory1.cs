@@ -52,6 +52,7 @@ public class OpenInventory1 : MonoBehaviour
             list.Add(s.gameObject);
             i++;
         }
+        
     }
     public void save()
     {
