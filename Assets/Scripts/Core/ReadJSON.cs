@@ -3,6 +3,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
 
+
 public class ReadJSON : MonoBehaviour
 {
     private static ReadJSON _instance;
@@ -39,12 +40,21 @@ public class ReadJSON : MonoBehaviour
     }
     public List<T> Load2<T>(string Name)
     {
-        WorldData<T> worldData = JsonConvert.DeserializeObject<WorldData<T>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
+        WorldData<T> worldData =new WorldData<T>();
+        try
+        {
+            worldData = JsonConvert.DeserializeObject<WorldData<T>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
+        }
+        catch
+        {
+            worldData = JsonConvert.DeserializeObject<WorldData<T>>(File.ReadAllText("Assets/Resources/" + Name + ".txt"));
+        }
         return worldData.user;
 
         //T wData = JsonConvert.DeserializeObject<T>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
         //return wData;
     }
+
     public void Load(string Name)
     {      
         if(Name== "Save_Inventory")
