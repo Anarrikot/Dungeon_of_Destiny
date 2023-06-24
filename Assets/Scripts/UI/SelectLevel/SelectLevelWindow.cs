@@ -7,6 +7,7 @@ public class SelectLevelWindow: MonoBehaviour
 {
     public List<GameObject> Stars = new List<GameObject>();
     public GameObject name;
+    public Sprite star;
     
     public GameObject window;
     private int StarsQuantity = 0;
@@ -23,11 +24,11 @@ public class SelectLevelWindow: MonoBehaviour
         transform.name = level.ToString();
         name.GetComponent<Text>().text = name.GetComponent<Text>().text+" " + LevelNumber.ToString();
         if (star1)
-            Stars[0].GetComponent<Image>().color = Color.green;
+            Stars[0].GetComponent<Image>().sprite = star;
         if (star2)
-            Stars[1].GetComponent<Image>().color = Color.green;
+            Stars[1].GetComponent<Image>().sprite = star;
         if (star3)
-            Stars[2].GetComponent<Image>().color = Color.green;
+            Stars[2].GetComponent<Image>().sprite = star;
     }
     public void TaskOnClick()
     {
