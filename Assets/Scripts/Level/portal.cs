@@ -31,12 +31,14 @@ public class portal : MonoBehaviour
         PlayerInfo.archer.lives = PlayerInfo.archer.livesMax;
         ReadJSON.Instance.SaveInfo();
         ReadJSON.Instance.SaveInvenory();
-        if (map_point_active.dataLvl.lvl[SceneManager.GetActiveScene().buildIndex - 1].star1 == "0")
-            GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlSaveInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1");
+        if (map_point_active.dataLvl.lvl[SceneManager.GetActiveScene().buildIndex - 1].star1 == "0" && SceneManager.GetActiveScene().buildIndex == 1)
+            GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlUpdateInfo&uid=" + PlayerInfo.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1");
+        else if (map_point_active.dataLvl.lvl[SceneManager.GetActiveScene().buildIndex - 1].star1 == "0")
+            GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlSaveInfo&uid=" + PlayerInfo.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1");
         else
-            GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlUpdateInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1");
+            GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=lvlUpdateInfo&uid=" + PlayerInfo.uid.ToString() + "&level=" + SceneManager.GetActiveScene().buildIndex.ToString() + "&star1=1");
         WindowController.AddWindow("Win");
-        
+        map_point_active.dataLvl.lvl.Add(new map_point_active.LevelInfo(PlayerInfo.uid, SceneManager.GetActiveScene().buildIndex.ToString(), "0", "0", "0"));
     }
 
     public void OnTriggerExit2D(Collider2D collision)

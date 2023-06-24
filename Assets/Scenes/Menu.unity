@@ -1010,21 +1010,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729f22497ed89654a8da94c9aae3f1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 100
-  livesMax: 100
-  uid: 123
   money: 200
   cristals: 10
-  damage: 20
-  mp: 100
-  armor: 1
   this_classes: 0
   speed: 10
   x: 0
   y: 0
-  TimeDelayHP: 0.4
-  TimeDelayMP: 0.01
-  TimeDelayAttack: 0.1
   name: 
 --- !u!114 &1438509934
 MonoBehaviour:

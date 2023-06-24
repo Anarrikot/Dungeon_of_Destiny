@@ -22,7 +22,7 @@ public class Mine_script : MonoBehaviour
 
     public async void Start()
     {
-        await GetInfo.Instance.GetInfoMine("http://game.ispu.ru/game1/dod/api.php?api=getInfoMine&uid=" + PlayerInfo.Instance.uid.ToString());
+        await GetInfo.Instance.GetInfoMine("http://game.ispu.ru/game1/dod/api.php?api=getInfoMine&uid=" + PlayerInfo.uid.ToString());
         
         double time = Convert.ToInt64((DateTime.Now - time_money).Ticks / 10000000);
         if (time < 86400)
@@ -45,16 +45,16 @@ public class Mine_script : MonoBehaviour
     {
         PlayerInfo.AddMoneyPlayer(int.Parse(moneyText.text));
         moneyText.text = "0";
-        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
-        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=collectMine&uid=" + PlayerInfo.Instance.uid.ToString() + "&type=money");
+        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
+        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=collectMine&uid=" + PlayerInfo.uid.ToString() + "&type=money");
     }
 
     public async void Collect_Crystal()
     {
         PlayerInfo.AddCristalPlayer(int.Parse(cristalText.text));
         cristalText.text = "0";
-        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
-        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=collectMine&uid=" + PlayerInfo.Instance.uid.ToString() + "&type=crystal");
+        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
+        await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=collectMine&uid=" + PlayerInfo.uid.ToString() + "&type=crystal");
     }
 
     public async void Upgrade_Money()
@@ -65,8 +65,8 @@ public class Mine_script : MonoBehaviour
             lvl_money += 1;
             moneyTextLvl.text = lvl_money.ToString() + " уровень";
             moneyUpgradeText.text = (lvl_money * reward_money * 24).ToString();
-            await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=builtMine&uid=" + PlayerInfo.Instance.uid.ToString() + "&lvl_money=" + lvl_money.ToString() + "&lvl_crystal=" + lvl_crystal.ToString());
-            await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
+            await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=builtMine&uid=" + PlayerInfo.uid.ToString() + "&lvl_money=" + lvl_money.ToString() + "&lvl_crystal=" + lvl_crystal.ToString());
+            await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
         } else
         {
             Main.Instance.Notification();
@@ -80,8 +80,8 @@ public class Mine_script : MonoBehaviour
             lvl_crystal += 1;
             cristalTextLvl.text = lvl_crystal.ToString() + " уровень";
             cristalUpgradeText.text = (lvl_crystal * reward_crystal * 24).ToString();
-            await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=builtMine&uid=" + PlayerInfo.Instance.uid.ToString() + "&lvl_money=" + lvl_money.ToString() + "&lvl_crystal=" + lvl_crystal.ToString());
-            await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.Instance.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
+            await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=builtMine&uid=" + PlayerInfo.uid.ToString() + "&lvl_money=" + lvl_money.ToString() + "&lvl_crystal=" + lvl_crystal.ToString());
+            await GetInfo.Instance.SetInfoForServer("http://game.ispu.ru/game1/dod/api.php?api=userUpdateInfo&uid=" + PlayerInfo.uid.ToString() + "&soft=" + PlayerInfo.Instance.money.ToString() + "&hard=" + PlayerInfo.Instance.cristals.ToString());
         }
         else
         {

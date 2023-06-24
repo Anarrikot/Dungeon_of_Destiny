@@ -56,7 +56,7 @@ public class Preloader : MonoBehaviour
         PlayerInfo.Start_Set();
         AsyncOperation async = new AsyncOperation();
         await Task.Delay(1000);
-        await GetInfo.Instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=" + PlayerInfo.Instance.uid.ToString(), slider);
+        await GetInfo.Instance.LaodfromServer("http://game.ispu.ru/game1/dod/api.php?api=getUser&uid=" + PlayerInfo.uid.ToString(), slider);
         await Task.Delay(3000);
         if (this != null)
             gameObject.GetComponent<ComonWindow>().Close();

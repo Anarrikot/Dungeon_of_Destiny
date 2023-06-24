@@ -3,13 +3,14 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public int uid = 111111111;
+    
     public int money = 500;
     public int cristals = 100;
     public int this_classes;
     public float speed = 10, x, y;
     public string name;
-    
+
+    public static int uid = 111111111;
     public static string[] classes = new string[3];
     public static Button button_atc;
     public static Image HP_Image, MP_Image;

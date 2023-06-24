@@ -77,7 +77,7 @@ public class ReadJSON : MonoBehaviour
             WorldData<Info> worldData = JsonConvert.DeserializeObject<WorldData<Info>>(File.ReadAllText("Assets/Resources/" + Name + ".json"));
 
             PlayerInfo.Instance.name = worldData.user[0].name;
-            PlayerInfo.Instance.uid = worldData.user[0].uid;
+            PlayerInfo.uid = worldData.user[0].uid;
             PlayerInfo.Instance.money = worldData.user[0].soft;
             PlayerInfo.Instance.cristals = worldData.user[0].hard;
         }
@@ -112,7 +112,7 @@ public class ReadJSON : MonoBehaviour
         Info info = new Info()
         {
             name = PlayerInfo.Instance.name,
-            uid = PlayerInfo.Instance.uid,
+            uid = PlayerInfo.uid,
             soft = PlayerInfo.Instance.money,
             hard = PlayerInfo.Instance.cristals,
         };

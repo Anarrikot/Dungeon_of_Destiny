@@ -35,11 +35,22 @@ public class map_point_active : MonoBehaviour
     async void Awake()
     {
         active = true;
-        await GetInfo.Instance.GetInfoLvl("http://game.ispu.ru/game1/dod/api.php?api=getLvl&uid=" + PlayerInfo.Instance.uid.ToString());
+        await GetInfo.Instance.GetInfoLvl("http://game.ispu.ru/game1/dod/api.php?api=getLvl&uid=" + PlayerInfo.uid.ToString());
         int i = 1;
         foreach (Transform point in obj.transform)
         {
-            if (i <= dataLvl.lvl.Count)
+            if (dataLvl.lvl[0].star1 == "0")
+            {
+                GameObject myPoint = point.GetComponent<GameObject>();
+                myPoint = Instantiate(Resources.Load("Button") as GameObject, point.transform);
+                myPoint.name = dataLvl.lvl[i - 1].level;
+                myPoint.GetComponentInChildren<Select_level>().Star1 = dataLvl.lvl[i - 1].star1 == "1";
+                myPoint.GetComponentInChildren<Select_level>().Star2 = dataLvl.lvl[i - 1].star2 == "1";
+                myPoint.GetComponentInChildren<Select_level>().Star3 = dataLvl.lvl[i - 1].star3 == "1";
+                points.Add(myPoint.transform.parent.gameObject);
+                break;
+            }
+            else if (i <= dataLvl.lvl.Count)
             {
                 GameObject myPoint = point.GetComponent<GameObject>();
                 myPoint = Instantiate(Resources.Load("Button") as GameObject, point.transform);
@@ -59,56 +70,20 @@ public class map_point_active : MonoBehaviour
                     myPoint.GetComponentInChildren<Select_level>().active = false;
                 points.Add(myPoint.transform.parent.gameObject);
             }
-            else if (i == dataLvl.lvl.Count+1)
+            else if (i == dataLvl.lvl.Count + 1)
             {
                 GameObject myPoint = point.GetComponent<GameObject>();
                 myPoint = Instantiate(Resources.Load("Button") as GameObject, point.transform);
-                myPoint.name = i+1.ToString();
+                myPoint.name = i + 1.ToString();
                 myPoint.GetComponentInChildren<Select_level>().active = true;
                 myPoint.GetComponentInChildren<Select_level>().Star1 = false;
                 myPoint.GetComponentInChildren<Select_level>().Star2 = false;
                 myPoint.GetComponentInChildren<Select_level>().Star3 = false;
                 points.Add(myPoint.transform.parent.gameObject);
-                dataLvl.lvl.Add(new LevelInfo(PlayerInfo.Instance.uid, (i-1).ToString(), "0", "0", "0"));
+                dataLvl.lvl.Add(new LevelInfo(PlayerInfo.uid, (i - 1).ToString(), "0", "0", "0"));
                 break;
             }
             i++;
         }
     }
-    //public void Save()
-    //{
-    //    List<LevelInfo> levels = new List<LevelInfo>();
-    //    int i =0;
-    //    foreach (Transform point in obj.transform)
-    //    {
-    //        GameObject myPoint = point.GetComponent<GameObject>();
-    //        myPoint = Instantiate(Resources.Load("Button") as GameObject, point.transform);
-    //        points.Add(myPoint.transform.parent.gameObject);
-    //        LevelInfo info = new LevelInfo()
-    //        {
-    //            level = myPoint.transform.parent.gameObject.name,
-    //            star1 = true,
-    //            star2 = true,
-    //            star3 = true,
-    //        };
-    //        if (i>4)
-    //        {
-    //            info.star1 = false;
-    //            info.star2 = false;
-    //            info.star3 = false;
-    //        }
-
-    //        i++;
-
-    //        levels.Add(info);
-    //    }
-
-    //    var data = new WorldData<LevelInfo>()
-    //    {
-    //        lvl = levels
-    //    };
-    //    File.WriteAllText(
-    //        "Assets/Resources/map/map.json",
-    //        JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore }));
-    //}
 }

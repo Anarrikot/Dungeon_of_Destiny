@@ -6,7 +6,7 @@ public class NewPlayer : MonoBehaviour
     public Text name;
     public void TaskOnClick()
     {
-        GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=changeName&uid=" + PlayerInfo.Instance.uid.ToString() + "&name=" + name.text);
+        GetInfo.Instance.SetForServer("http://game.ispu.ru/game1/dod/api.php?api=changeName&uid=" + PlayerInfo.uid.ToString() + "&name=" + name.text);
         gameObject.GetComponent<ComonWindow>().Close();
     }
 }
