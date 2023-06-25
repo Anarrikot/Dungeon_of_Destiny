@@ -10,7 +10,7 @@ public class PlayerInfo : MonoBehaviour
     public float speed = 10, x, y;
     public string name;
 
-    public static int uid = 111111111;
+    public static int uid = 123;
     public static string[] classes = new string[3];
     public static Button button_atc;
     public static Image HP_Image, MP_Image;

@@ -30,6 +30,8 @@ public class Slot_In_Shop : MonoBehaviour
                 PlayerInfo.inventory.New_Item(item);
                 ReadJSON.Instance.SaveInvenory();
             }
-        }       
+        }
+        else
+            Main.Instance.Notification();
     }
 }
