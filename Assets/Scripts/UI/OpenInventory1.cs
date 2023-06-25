@@ -9,6 +9,9 @@ public class OpenInventory1 : MonoBehaviour
     public Text manaText;
     public Text damageText;
     public Text armorText;
+    public Button knigth;
+    public Button archer;
+    public Button mag;
     Item Item;
     
     [SerializeField]List<GameObject> list = new List<GameObject>();
@@ -19,6 +22,7 @@ public class OpenInventory1 : MonoBehaviour
         damageText.text = PlayerInfo.khigth.damage.ToString();
         armorText.text = PlayerInfo.khigth.armor.ToString() + "%";
         grid = gameObject.transform.Find("Grid").gameObject;
+        knigth.GetComponent<Image>().color = Color.green;
         int i = 0;
         foreach (Transform s in grid.transform)
         {
@@ -89,6 +93,9 @@ public class OpenInventory1 : MonoBehaviour
         manaText.text = PlayerInfo.khigth.mp.ToString();
         damageText.text = PlayerInfo.khigth.damage.ToString();
         armorText.text = PlayerInfo.khigth.armor.ToString() + "%";
+        knigth.GetComponent<Image>().color = Color.green;
+        archer.GetComponent<Image>().color = Color.white;
+        mag.GetComponent<Image>().color = Color.white;
     }
     public void buttomArcher()
     {
@@ -96,6 +103,9 @@ public class OpenInventory1 : MonoBehaviour
         manaText.text = PlayerInfo.archer.mp.ToString();
         damageText.text = PlayerInfo.archer.damage.ToString();
         armorText.text = PlayerInfo.archer.armor.ToString() + "%";
+        archer.GetComponent<Image>().color = Color.green;
+        knigth.GetComponent<Image>().color = Color.white;
+        mag.GetComponent<Image>().color = Color.white;
     }
     public void buttomMag()
     {
@@ -103,5 +113,8 @@ public class OpenInventory1 : MonoBehaviour
         manaText.text = PlayerInfo.mag.mp.ToString();
         damageText.text = PlayerInfo.mag.damage.ToString();
         armorText.text = PlayerInfo.mag.armor.ToString() + "%";
+        mag.GetComponent<Image>().color = Color.green;
+        archer.GetComponent<Image>().color = Color.white;
+        archer.GetComponent<Image>().color = Color.white;
     }
 }
